@@ -1,0 +1,6 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:GroupBox name="network-container" style="width: 200px; height: 100px;">
+        <ui:Button text="Start Host" name="btn-start_host"/>
+        <ui:Button text="Start Client" name="btn-start_client"/>
+    </ui:GroupBox>
+</ui:UXML>
