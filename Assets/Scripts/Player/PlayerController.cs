@@ -1,9 +1,11 @@
+using Unity.Cinemachine;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace MMOJam.Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : NetworkBehaviour
     {
         [Header("Configuration")]
         [SerializeField]
@@ -21,10 +23,18 @@ namespace MMOJam.Player
             _controller = GetComponent<CharacterController>();
         }
 
+        private void Start()
+        {
+            if (IsOwner)
+            {
+                FindFirstObjectByType<CinemachineCamera>().Target.TrackingTarget = transform;
+            }
+        }
+
 
         protected virtual void Update()
         {
-            if (!_controller.enabled)
+            if (!_controller.enabled || !IsOwner)
                 return;
 
             var pos = _mov;
@@ -56,7 +66,7 @@ namespace MMOJam.Player
 
         public void OnMovement(InputAction.CallbackContext value)
         {
-            _mov = value.ReadValue<Vector2>();
+            if (IsOwner) _mov = value.ReadValue<Vector2>();
         }
     }
 }
