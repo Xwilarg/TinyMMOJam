@@ -3,7 +3,7 @@ using MMOJam.Manager;
 
 namespace MMOJam
 {
-    public abstract class RessourcesHolder : NetworkBehaviour
+    public class RessourcesHolder : NetworkBehaviour
     {
         public override void OnNetworkSpawn()
         {
