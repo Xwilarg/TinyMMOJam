@@ -1,4 +1,6 @@
 using Sketch.Common;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.Cinemachine;
 using Unity.Netcode;
 using UnityEngine;
@@ -24,6 +26,8 @@ namespace MMOJam.Player
 
         public bool IsAi { set; get; }
 
+        private readonly List<AInteractible> _interactibles = new();
+
         // Server only
 
         private void Awake()
@@ -42,9 +46,23 @@ namespace MMOJam.Player
                 FindFirstObjectByType<CinemachineCamera>().Target.TrackingTarget = transform;
             }
 
-            if (IsHost || IsServer)
+            if (IsHost || IsServer || (IsOwner && !IsAi))
             {
                 var tArea = GetComponentInChildren<TriggerArea>();
+                tArea.OnTriggerEnterEvent.AddListener((c) =>
+                {
+                    if (c.TryGetComponent<AInteractible>(out var cComp) && !_interactibles.Any(x => x.gameObject.GetEntityId() == c.gameObject.GetEntityId()))
+                    {
+                        _interactibles.Add(cComp);
+                    }
+                });
+                tArea.OnTriggerExitEvent.AddListener((c) =>
+                {
+                    if (c.TryGetComponent<AInteractible>(out var cComp))
+                    {
+                        _interactibles.RemoveAll(x => x.gameObject.GetEntityId() == c.gameObject.GetEntityId());
+                    }
+                });
             }
         }
 
