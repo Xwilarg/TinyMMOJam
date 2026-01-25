@@ -134,7 +134,6 @@ namespace MMOJam.Player
             {
                 var mousePos = CursorUtils.GetPosition(_pInput);
                 var ray = _cam.ScreenPointToRay(mousePos.Value);
-                Debug.Log(mousePos);
                 if (Physics.Raycast(ray, out var hitInfo, float.MaxValue, LayerMask.GetMask("World")))
                 {
                     var dir = (hitInfo.point - transform.position).normalized;
