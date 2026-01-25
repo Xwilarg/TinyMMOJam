@@ -1,4 +1,6 @@
 using MMOJam.Manager;
+using MMOJam.SO;
+using MMOJam.Vehicle;
 using Sketch.Common;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,12 @@ using UnityEngine.InputSystem;
 
 namespace MMOJam.Player
 {
+    public class EquippedVehicle
+    {
+        public RuntimeVehicle Vehicle;
+        public SeatType Seat;
+    }
+
     public class PlayerController : NetworkBehaviour
     {
         [Header("Configuration")]
@@ -22,6 +30,7 @@ namespace MMOJam.Player
         private GameObject _renderer;
 
         public NetworkVariable<bool> InVehicle { private set; get; } = new(false);
+        public EquippedVehicle CurrentVehicle { set; get; }
 
         protected CharacterController _controller;
         private PlayerInput _pInput;
@@ -101,36 +110,49 @@ namespace MMOJam.Player
             ServerManager.Instance.InteractWith(key, this);
         }
 
+        [Rpc(SendTo.Server)]
+        public void LeaveVehicleRpc()
+        {
+            InVehicle.Value = false;
+        }
+
         protected virtual void Update()
         {
             if (!_controller.enabled || !IsOwner)
                 return;
 
-            var pos = _mov;
-            Vector3 desiredMove = transform.forward * pos.y + transform.right * pos.x;
-
-            // Get a normal for the surface that is being touched to move along it
-            Physics.SphereCast(transform.position, _controller.radius, Vector3.down, out RaycastHit hitInfo,
-                               _controller.height / 2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
-            desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
-
-            Vector3 moveDir = Vector3.zero;
-            moveDir.x = desiredMove.x * _mouvementSpeed;
-            moveDir.z = desiredMove.z * _mouvementSpeed;
-
-            if (_controller.isGrounded && _verticalSpeed < 0f) // We are on the ground and not jumping
+            if (InVehicle.Value && CurrentVehicle.Seat == SeatType.Driver)
             {
-                moveDir.y = -.1f; // Stick to the ground
-                _verticalSpeed = -_gravityMultiplier;
+                CurrentVehicle.Vehicle.Move(_mov);
             }
             else
             {
-                // We are currently jumping, reduce our jump velocity by gravity and apply it
-                _verticalSpeed += Physics.gravity.y * _gravityMultiplier * Time.deltaTime;
-                moveDir.y += _verticalSpeed;
-            }
+                var pos = _mov;
+                Vector3 desiredMove = transform.forward * pos.y + transform.right * pos.x;
 
-            _controller.Move(moveDir * Time.deltaTime);
+                // Get a normal for the surface that is being touched to move along it
+                Physics.SphereCast(transform.position, _controller.radius, Vector3.down, out RaycastHit hitInfo,
+                                   _controller.height / 2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
+                desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
+
+                Vector3 moveDir = Vector3.zero;
+                moveDir.x = desiredMove.x * _mouvementSpeed;
+                moveDir.z = desiredMove.z * _mouvementSpeed;
+
+                if (_controller.isGrounded && _verticalSpeed < 0f) // We are on the ground and not jumping
+                {
+                    moveDir.y = -.1f; // Stick to the ground
+                    _verticalSpeed = -_gravityMultiplier;
+                }
+                else
+                {
+                    // We are currently jumping, reduce our jump velocity by gravity and apply it
+                    _verticalSpeed += Physics.gravity.y * _gravityMultiplier * Time.deltaTime;
+                    moveDir.y += _verticalSpeed;
+                }
+
+                _controller.Move(moveDir * Time.deltaTime);
+            }
         }
 
         public void OnMovement(InputAction.CallbackContext value)
@@ -140,7 +162,7 @@ namespace MMOJam.Player
 
         public void OnShoot(InputAction.CallbackContext value)
         {
-            if (IsOwner && !IsAi && value.phase == InputActionPhase.Started)
+            if (IsOwner && !IsAi && value.phase == InputActionPhase.Started && !InVehicle.Value)
             {
                 var mousePos = CursorUtils.GetPosition(_pInput);
                 var ray = _cam.ScreenPointToRay(mousePos.Value);
@@ -157,7 +179,15 @@ namespace MMOJam.Player
         {
             if (IsOwner && !IsAi && _interactibles.Count > 0 && value.phase == InputActionPhase.Started)
             {
-                InteractPlayerRpc();
+                if (CurrentVehicle != null)
+                {
+                    CurrentVehicle = null;
+                    LeaveVehicleRpc();
+                }
+                else
+                {
+                    InteractPlayerRpc();
+                }
             }
         }
     }
