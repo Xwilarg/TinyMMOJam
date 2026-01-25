@@ -6,13 +6,19 @@ namespace MMOJam
 {
     public abstract class AInteractible : NetworkBehaviour
     {
+        private ulong _id;
+
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
+
+            _id = GetComponent<NetworkObject>().NetworkObjectId;
 
             ServerManager.Instance.RegisterInteractible(this);
         }
 
         public abstract void Interact(PlayerController player);
+
+        public ulong Key => _id;
     }
 }

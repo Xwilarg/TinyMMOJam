@@ -18,7 +18,7 @@ namespace MMOJam.Manager
         [SerializeField]
         private int _spawnsCount;
 
-        private Dictionary<EntityId, AInteractible> _interactibles = new();
+        private Dictionary<ulong, AInteractible> _interactibles = new();
 
         public bool IsAuthority => IsHost || IsServer;
 
@@ -29,14 +29,12 @@ namespace MMOJam.Manager
 
         public void RegisterInteractible(AInteractible elem)
         {
-            _interactibles.Add(elem.gameObject.GetEntityId(), elem);
+            _interactibles.Add(elem.Key, elem);
         }
 
-        public void InteractWith(EntityId entity, PlayerController player)
+        public void InteractWith(ulong key, PlayerController player)
         {
-            Debug.Log(entity);
-            Debug.Log(_interactibles.Count);
-            if (_interactibles.TryGetValue(entity, out var i)) i.Interact(player);
+            if (_interactibles.TryGetValue(key, out var i)) i.Interact(player);
         }
 
         public override void OnNetworkSpawn()

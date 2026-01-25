@@ -81,14 +81,14 @@ namespace MMOJam.Player
         {
             if (_interactibles.Count > 0)
             {
-                InteractWithRpc(_interactibles[0].gameObject.GetEntityId());
+                InteractWithRpc(_interactibles[0].Key);
             }
         }
 
         [Rpc(SendTo.ClientsAndHost)]
-        public void InteractWithRpc(int entity)
+        public void InteractWithRpc(ulong key)
         {
-            ServerManager.Instance.InteractWith(entity, this);
+            ServerManager.Instance.InteractWith(key, this);
         }
 
         protected virtual void Update()
