@@ -24,6 +24,8 @@ namespace MMOJam.Player
 
         public bool IsAi { set; get; }
 
+        // Server only
+
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
@@ -38,6 +40,12 @@ namespace MMOJam.Player
             if (IsOwner && !IsAi)
             {
                 FindFirstObjectByType<CinemachineCamera>().Target.TrackingTarget = transform;
+            }
+
+            if (IsHost || IsServer)
+            {
+                var tArea = GetComponentInChildren<TriggerArea>();
+                tArea.
             }
         }
 

@@ -1,4 +1,5 @@
 using MMOJam.Player;
+using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -17,11 +18,18 @@ namespace MMOJam.Manager
         [SerializeField]
         private int _spawnsCount;
 
+        private Dictionary<EntityId, AInteractible> _interactibles = new();
+
         public bool IsAuthority => IsHost || IsServer;
 
         private void Awake()
         {
             Instance = this;
+        }
+
+        public void RegisterInteractible(AInteractible elem)
+        {
+            _interactibles.Add(elem.gameObject.GetEntityId(), elem);
         }
 
         public override void OnNetworkSpawn()
