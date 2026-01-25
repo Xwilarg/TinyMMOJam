@@ -34,6 +34,8 @@ namespace MMOJam.Manager
 
         public void InteractWith(EntityId entity, PlayerController player)
         {
+            Debug.Log(entity);
+            Debug.Log(_interactibles.Count);
             if (_interactibles.TryGetValue(entity, out var i)) i.Interact(player);
         }
 

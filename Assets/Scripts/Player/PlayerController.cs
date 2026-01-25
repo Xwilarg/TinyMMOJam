@@ -67,7 +67,7 @@ namespace MMOJam.Player
                     if (c.TryGetComponent<AInteractible>(out var cComp))
                     {
                         _interactibles.RemoveAll(x => x.gameObject.GetEntityId() == c.gameObject.GetEntityId());
-                        if (_interactibles.Count == 0 && IsOwnedByServer && !IsAi)
+                        if (_interactibles.Count == 0 && IsOwner && !IsAi)
                         {
                             UIManager.Instance.ShowInteractionText(false);
                         }
@@ -134,6 +134,7 @@ namespace MMOJam.Player
             {
                 var mousePos = CursorUtils.GetPosition(_pInput);
                 var ray = _cam.ScreenPointToRay(mousePos.Value);
+                Debug.Log(mousePos);
                 if (Physics.Raycast(ray, out var hitInfo, float.MaxValue, LayerMask.GetMask("World")))
                 {
                     var dir = (hitInfo.point - transform.position).normalized;
