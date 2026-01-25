@@ -8,6 +8,11 @@ namespace MMOJam.Manager
     {
         public static RessourcesManager Instance { private set; get; }
         private Dictionary<ulong, RessourcesHolder> _ressources_holders = new();
+
+        private void Awake()
+        {
+            Instance = this;
+        }
         public void RegisterHolder(RessourcesHolder elem)
         {
             _ressources_holders.Add(elem.GetComponent<NetworkObject>().NetworkObjectId, elem);
