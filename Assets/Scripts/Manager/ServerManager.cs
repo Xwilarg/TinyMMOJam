@@ -6,6 +6,8 @@ namespace MMOJam.Manager
 {
     public class ServerManager : NetworkBehaviour
     {
+        public static ServerManager Instance { private set; get; }
+
         [SerializeField]
         private GameObject _playerPrefab;
 
@@ -15,13 +17,20 @@ namespace MMOJam.Manager
         [SerializeField]
         private int _spawnsCount;
 
+        public bool IsAuthority => IsHost || IsServer;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
 
-            if (!IsHost && !IsServer)
+            if (!IsAuthority)
             {
-                Destroy(gameObject);
+                return;
             }
 
             for (int i = 0; i < _spawnsCount; i++)

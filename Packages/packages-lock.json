@@ -261,6 +261,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "eu.zirk.sketch.common": {
+      "version": "https://github.com/Xwilarg/Sketch.git?path=/Packages/eu.zirk.sketch.common",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "2f52945505074189586e75c6fc4a4aac2e509333"
+    },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
       "depth": 0,

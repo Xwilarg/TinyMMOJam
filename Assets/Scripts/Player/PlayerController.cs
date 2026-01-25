@@ -1,3 +1,4 @@
+using Sketch.Common;
 using Unity.Cinemachine;
 using Unity.Netcode;
 using UnityEngine;
@@ -15,6 +16,9 @@ namespace MMOJam.Player
         private float _gravityMultiplier = .75f;
 
         protected CharacterController _controller;
+        private PlayerInput _pInput;
+        private Camera _cam;
+
         private Vector2 _mov;
         private float _verticalSpeed;
 
@@ -23,6 +27,8 @@ namespace MMOJam.Player
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
+            _pInput = GetComponentInChildren<PlayerInput>();
+            _cam = Camera.main;
         }
 
         public override void OnNetworkSpawn()
@@ -71,6 +77,21 @@ namespace MMOJam.Player
         public void OnMovement(InputAction.CallbackContext value)
         {
             if (IsOwner && !IsAi) _mov = value.ReadValue<Vector2>();
+        }
+
+        public void OnShoot(InputAction.CallbackContext value)
+        {
+            if (IsOwner && !IsAi && value.phase == InputActionPhase.Started)
+            {
+                var mousePos = CursorUtils.GetPosition(_pInput);
+                var ray = _cam.ScreenPointToRay(mousePos.Value);
+                if (Physics.Raycast(ray, out var hitInfo, float.MaxValue, LayerMask.GetMask("World")))
+                {
+                    _controller.enabled = false;
+                    transform.position = hitInfo.point;
+                    _controller.enabled = true;
+                }
+            }
         }
     }
 }
