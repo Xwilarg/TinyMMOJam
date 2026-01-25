@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6589206133631893636}
   - component: {fileID: 1088012517773502284}
   - component: {fileID: 484018656790385749}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 4034604548097521104}
   - component: {fileID: 7410924407539411994}
   - component: {fileID: 4234760882259439802}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RessourceNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3635912164
+  GlobalObjectIdHash: 453268201
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -184,5 +184,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.IsRessource
   ShowTopMostFoldoutHeaderGroup: 1
-  _rid: 0
+  _res_id: 0
   _amount: 1
