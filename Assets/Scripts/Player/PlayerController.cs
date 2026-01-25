@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Cinemachine;
 using Unity.Netcode;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -75,6 +76,20 @@ namespace MMOJam.Player
             }
         }
 
+        [Rpc(SendTo.Server)]
+        public void InteractPlayerRpc()
+        {
+            if (_interactibles.Count > 0)
+            {
+                InteractWithRpc(_interactibles[0].gameObject.GetEntityId());
+            }
+        }
+
+        [Rpc(SendTo.ClientsAndHost)]
+        public void InteractWithRpc(int entity)
+        {
+            ServerManager.Instance.InteractWith(entity, this);
+        }
 
         protected virtual void Update()
         {
@@ -125,6 +140,14 @@ namespace MMOJam.Player
                     dir.y = 0f;
                     Debug.DrawLine(transform.position, transform.position + (dir * 5f), Color.red, 2f);
                 }
+            }
+        }
+
+        public void OnInteract(InputAction.CallbackContext value)
+        {
+            if (IsOwner && !IsAi && _interactibles.Count > 0 && value.phase == InputActionPhase.Started)
+            {
+                InteractPlayerRpc();
             }
         }
     }

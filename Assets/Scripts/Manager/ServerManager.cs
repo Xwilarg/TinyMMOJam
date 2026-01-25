@@ -32,6 +32,11 @@ namespace MMOJam.Manager
             _interactibles.Add(elem.gameObject.GetEntityId(), elem);
         }
 
+        public void InteractWith(EntityId entity, PlayerController player)
+        {
+            if (_interactibles.TryGetValue(entity, out var i)) i.Interact(player);
+        }
+
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();

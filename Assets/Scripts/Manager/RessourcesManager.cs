@@ -1,6 +1,4 @@
 using Unity.Netcode;
-using UnityEngine.Networking;
-using UnityEngine;
 
 namespace MMOJam.Manager
 {
