@@ -17,7 +17,8 @@ namespace MMOJam
             ServerManager.Instance.RegisterInteractible(this);
         }
 
-        public abstract void Interact(PlayerController player);
+        public abstract void InteractClient(PlayerController player);
+        public abstract void InteractServer(PlayerController player);
 
         public ulong Key => _id;
     }

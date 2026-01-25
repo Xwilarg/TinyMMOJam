@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Cinemachine;
 using Unity.Netcode;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +17,11 @@ namespace MMOJam.Player
 
         [SerializeField]
         private float _gravityMultiplier = .75f;
+
+        [SerializeField]
+        private GameObject _renderer;
+
+        public NetworkVariable<bool> InVehicle { private set; get; } = new(false);
 
         protected CharacterController _controller;
         private PlayerInput _pInput;
@@ -37,6 +41,11 @@ namespace MMOJam.Player
             _controller = GetComponent<CharacterController>();
             _pInput = GetComponentInChildren<PlayerInput>();
             _cam = Camera.main;
+
+            InVehicle.OnValueChanged += (oldValue, newValue) =>
+            {
+                _renderer.SetActive(!newValue);
+            };
         }
 
         public override void OnNetworkSpawn()
@@ -81,6 +90,7 @@ namespace MMOJam.Player
         {
             if (_interactibles.Count > 0)
             {
+                _interactibles[0].InteractServer(this);
                 InteractWithRpc(_interactibles[0].Key);
             }
         }

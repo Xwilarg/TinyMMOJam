@@ -9,9 +9,13 @@ namespace MMOJam.Vehicle
         [SerializeField]
         private VehicleInfo _info;
 
-        public override void Interact(PlayerController player)
+        public override void InteractClient(PlayerController player)
         {
-            Debug.Log("Player interacted with me!");
+        }
+
+        public override void InteractServer(PlayerController player)
+        {
+            player.InVehicle.Value = true;
         }
     }
 }

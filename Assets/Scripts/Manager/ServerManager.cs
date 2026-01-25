@@ -34,7 +34,7 @@ namespace MMOJam.Manager
 
         public void InteractWith(ulong key, PlayerController player)
         {
-            if (_interactibles.TryGetValue(key, out var i)) i.Interact(player);
+            if (_interactibles.TryGetValue(key, out var i)) i.InteractClient(player);
         }
 
         public override void OnNetworkSpawn()

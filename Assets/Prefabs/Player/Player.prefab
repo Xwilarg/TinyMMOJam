@@ -156,6 +156,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   _mouvementSpeed: 5
   _gravityMultiplier: 0.75
+  _renderer: {fileID: 5674750210678366613}
 --- !u!114 &6201763479911881374
 MonoBehaviour:
   m_ObjectHideFlags: 0
