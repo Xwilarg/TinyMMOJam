@@ -14,18 +14,22 @@ namespace MMOJam.Player
         [SerializeField]
         private float _gravityMultiplier = .75f;
 
-        private CharacterController _controller;
+        protected CharacterController _controller;
         private Vector2 _mov;
         private float _verticalSpeed;
+
+        public bool IsAi { set; get; }
 
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
         }
 
-        private void Start()
+        public override void OnNetworkSpawn()
         {
-            if (IsOwner)
+            base.OnNetworkSpawn();
+
+            if (IsOwner && !IsAi)
             {
                 FindFirstObjectByType<CinemachineCamera>().Target.TrackingTarget = transform;
             }
@@ -66,7 +70,7 @@ namespace MMOJam.Player
 
         public void OnMovement(InputAction.CallbackContext value)
         {
-            if (IsOwner) _mov = value.ReadValue<Vector2>();
+            if (IsOwner && !IsAi) _mov = value.ReadValue<Vector2>();
         }
     }
 }
