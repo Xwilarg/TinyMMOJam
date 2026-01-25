@@ -1,3 +1,4 @@
+using MMOJam.Manager;
 using Sketch.Common;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,11 @@ namespace MMOJam.Player
                     if (c.TryGetComponent<AInteractible>(out var cComp) && !_interactibles.Any(x => x.gameObject.GetEntityId() == c.gameObject.GetEntityId()))
                     {
                         _interactibles.Add(cComp);
+
+                        if (IsOwnedByServer && !IsAi)
+                        {
+                            UIManager.Instance.ShowInteractionText(true);
+                        }
                     }
                 });
                 tArea.OnTriggerExitEvent.AddListener((c) =>
@@ -61,6 +67,10 @@ namespace MMOJam.Player
                     if (c.TryGetComponent<AInteractible>(out var cComp))
                     {
                         _interactibles.RemoveAll(x => x.gameObject.GetEntityId() == c.gameObject.GetEntityId());
+                        if (_interactibles.Count == 0 && IsOwnedByServer && !IsAi)
+                        {
+                            UIManager.Instance.ShowInteractionText(false);
+                        }
                     }
                 });
             }
