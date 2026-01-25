@@ -1,16 +1,8 @@
-using Unity.Netcode;
+using MMOJam.Player;
 
-namespace MMOJam
+namespace MMOJam.Manager
 {
-    public abstract class RessourcesHolder : NetworkBehaviour
+    public abstract class RessourcesHolder : AInteractible
     {
-        public override void OnNetworkSpawn()
-        {
-            base.OnNetworkSpawn();
-
-            RessourcesManager.Instance.RegisterInteractible(this);
-        }
-
-        public abstract void Interact(PlayerController player);
     }
 }
