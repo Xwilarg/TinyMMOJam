@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 1981552}
   - component: {fileID: 1981551}
   - component: {fileID: 1981550}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Radar Station
   m_TagString: RadarStation
   m_Icon: {fileID: 0}
@@ -618,7 +618,7 @@ GameObject:
   - component: {fileID: 478752728}
   - component: {fileID: 478752727}
   - component: {fileID: 478752726}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Command Center
   m_TagString: CommandCenter
   m_Icon: {fileID: 0}
@@ -730,7 +730,7 @@ GameObject:
   - component: {fileID: 611358652}
   - component: {fileID: 611358651}
   - component: {fileID: 611358650}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Command Center
   m_TagString: CommandCenter
   m_Icon: {fileID: 0}
@@ -1133,7 +1133,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -1519,7 +1519,7 @@ GameObject:
   - component: {fileID: 1434201131}
   - component: {fileID: 1434201130}
   - component: {fileID: 1434201129}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Radar Station
   m_TagString: RadarStation
   m_Icon: {fileID: 0}
@@ -1631,7 +1631,7 @@ GameObject:
   - component: {fileID: 1523479317}
   - component: {fileID: 1523479316}
   - component: {fileID: 1523479315}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Factory
   m_TagString: Factory
   m_Icon: {fileID: 0}
@@ -1875,7 +1875,7 @@ GameObject:
   - component: {fileID: 2088996449}
   - component: {fileID: 2088996448}
   - component: {fileID: 2088996447}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Factory
   m_TagString: Factory
   m_Icon: {fileID: 0}
