@@ -3,4 +3,5 @@
         <ui:Button text="Start Host" name="btn-start_host"/>
         <ui:Button text="Start Client" name="btn-start_client"/>
     </ui:GroupBox>
+    <ui:Label text="Press &apos;E&apos; to interact" name="interact_text" style="position: absolute; top: 0; right: 0;"/>
 </ui:UXML>
