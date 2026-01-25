@@ -87,6 +87,9 @@ namespace MMOJam.Player
                 var ray = _cam.ScreenPointToRay(mousePos.Value);
                 if (Physics.Raycast(ray, out var hitInfo, float.MaxValue, LayerMask.GetMask("World")))
                 {
+                    var dir = (hitInfo.point - transform.position).normalized;
+                    dir.y = 0f;
+                    Debug.DrawLine(transform.position, transform.position + (dir * 5f), Color.red, 2f);
                 }
             }
         }
