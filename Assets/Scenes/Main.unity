@@ -369,6 +369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 440216062}
   - component: {fileID: 440216063}
+  - component: {fileID: 440216066}
   - component: {fileID: 440216065}
   - component: {fileID: 440216064}
   m_Layer: 0
@@ -480,6 +481,19 @@ MonoBehaviour:
     OldPrefabList: []
   RunInBackground: 1
   LogLevel: 1
+--- !u!114 &440216066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440216061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30db7847e1573344c916bb38c5b7c295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MMOJam.Manager.UIManager
+  _ui: {fileID: 822625186}
 --- !u!1 &822625185
 GameObject:
   m_ObjectHideFlags: 0

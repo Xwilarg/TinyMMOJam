@@ -22,7 +22,7 @@ namespace MMOJam.Manager
 
         public void ShowInteractionText(bool value)
         {
-            _label.visible = false;
+            _label.visible = value;
         }
     }
 }
