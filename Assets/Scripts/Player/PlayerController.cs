@@ -45,7 +45,6 @@ namespace MMOJam.Player
             if (IsHost || IsServer)
             {
                 var tArea = GetComponentInChildren<TriggerArea>();
-                tArea.
             }
         }
 
