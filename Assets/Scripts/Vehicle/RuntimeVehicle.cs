@@ -1,7 +1,6 @@
 using MMOJam.Player;
 using MMOJam.SO;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 namespace MMOJam.Vehicle
 {
@@ -19,11 +18,11 @@ namespace MMOJam.Vehicle
 
         public override void InteractClient(PlayerController player)
         {
-            player.CurrentVehicle = new()
+            player.SetVehicle(new()
             {
                 Vehicle = this,
                 Seat = SeatType.Driver
-            };
+            });
         }
 
         public override void InteractServer(PlayerController player)
@@ -33,9 +32,11 @@ namespace MMOJam.Vehicle
 
         public void Move(Vector2 mov)
         {
-            Vector3 desiredMove = transform.forward * mov.y;// + transform.right * mov.x;
+            Vector3 desiredMove = transform.forward * mov.y * Time.deltaTime * 5_000f;// + transform.right * mov.x;
             _rb.AddForce(desiredMove);
-            _rb.linearVelocity = _rb.linearVelocity.normalized * Mathf.Clamp(_rb.linearVelocity.magnitude, 0f, 20f);
+            _rb.linearVelocity = _rb.linearVelocity.normalized * Mathf.Clamp(_rb.linearVelocity.magnitude, 0f, 10f);
+
+            transform.Rotate(Vector3.up, mov.x * _rb.linearVelocity.magnitude * Time.deltaTime * 10f);
         }
     }
 }

@@ -30,11 +30,12 @@ namespace MMOJam.Player
         private GameObject _renderer;
 
         public NetworkVariable<bool> InVehicle { private set; get; } = new(false);
-        public EquippedVehicle CurrentVehicle { set; get; }
+        public EquippedVehicle CurrentVehicle { private set; get; }
 
         protected CharacterController _controller;
         private PlayerInput _pInput;
         private Camera _cam;
+        private Collider _coll;
 
         private Vector2 _mov;
         private float _verticalSpeed;
@@ -50,11 +51,24 @@ namespace MMOJam.Player
             _controller = GetComponent<CharacterController>();
             _pInput = GetComponentInChildren<PlayerInput>();
             _cam = Camera.main;
+            _coll = GetComponent<Collider>();
 
             InVehicle.OnValueChanged += (oldValue, newValue) =>
             {
                 _renderer.SetActive(!newValue);
+                _coll.enabled = !newValue;
+                _controller.enabled = !newValue;
             };
+        }
+
+        public void SetVehicle(EquippedVehicle vehicle)
+        {
+            CurrentVehicle = vehicle;
+            transform.parent = vehicle == null ? null : vehicle.Vehicle.transform;
+            if (vehicle != null)
+            {
+                transform.position = vehicle.Vehicle.transform.position;
+            }
         }
 
         public override void OnNetworkSpawn()
@@ -118,7 +132,7 @@ namespace MMOJam.Player
 
         protected virtual void Update()
         {
-            if (!_controller.enabled || !IsOwner)
+            if (!IsOwner)
                 return;
 
             if (InVehicle.Value && CurrentVehicle.Seat == SeatType.Driver)
@@ -181,7 +195,7 @@ namespace MMOJam.Player
             {
                 if (CurrentVehicle != null)
                 {
-                    CurrentVehicle = null;
+                    SetVehicle(null);
                     LeaveVehicleRpc();
                 }
                 else
