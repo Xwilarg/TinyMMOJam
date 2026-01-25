@@ -87,9 +87,6 @@ namespace MMOJam.Player
                 var ray = _cam.ScreenPointToRay(mousePos.Value);
                 if (Physics.Raycast(ray, out var hitInfo, float.MaxValue, LayerMask.GetMask("World")))
                 {
-                    _controller.enabled = false;
-                    transform.position = hitInfo.point;
-                    _controller.enabled = true;
                 }
             }
         }
