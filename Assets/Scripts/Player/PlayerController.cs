@@ -53,6 +53,8 @@ namespace MMOJam.Player
                 _renderer.SetActive(newValue == 0);
                 _coll.enabled = newValue == 0;
                 _controller.enabled = newValue == 0;
+
+                _currentVehicleObject = newValue == 0 ? null : ServerManager.Instance.GetVehicle(newValue);
             };
         }
 
@@ -95,8 +97,7 @@ namespace MMOJam.Player
 
         public void SetVehicle(RuntimeVehicle vehicle, SeatType seat)
         {
-            _currentVehicleObject = vehicle;
-            CurrentVehicle.Value = vehicle.Key;
+            CurrentVehicle.Value = vehicle == null ? 0 : vehicle.Key;
             CurrentSeat.Value = seat;
 
             transform.parent = vehicle == null ? null : vehicle.transform;

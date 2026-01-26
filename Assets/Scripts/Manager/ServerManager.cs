@@ -1,4 +1,5 @@
 using MMOJam.Player;
+using MMOJam.Vehicle;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -35,6 +36,11 @@ namespace MMOJam.Manager
         public void InteractWith(ulong key, PlayerController player)
         {
             if (_interactibles.TryGetValue(key, out var i)) i.InteractClient(player);
+        }
+
+        public RuntimeVehicle GetVehicle(ulong key)
+        {
+            return _interactibles[key] as RuntimeVehicle;
         }
 
         public override void OnNetworkSpawn()
