@@ -1,4 +1,5 @@
-﻿using Unity.Netcode;
+﻿using MMOJam.Player;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace MMOJam.Zone
@@ -20,6 +21,14 @@ namespace MMOJam.Zone
         private void Start()
         {
             ZoneManager.Instance.RegisterZone(this);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                other.GetComponent<PlayerController>().SetZone(this);
+            }
         }
 
         public bool Contains(Transform transform)

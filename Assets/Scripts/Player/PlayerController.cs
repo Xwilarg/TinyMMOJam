@@ -1,6 +1,7 @@
 using MMOJam.Manager;
 using MMOJam.SO;
 using MMOJam.Vehicle;
+using MMOJam.Zone;
 using Sketch.Common;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace MMOJam.Player
         private RuntimeVehicle _currentVehicleObject;
         public NetworkVariable<ulong> CurrentVehicle { private set; get; } = new(0);
         public NetworkVariable<SeatType> CurrentSeat { private set; get; } = new((SeatType)(-1));
+        public ZoneController CurrentZone { get; private set; }
 
         protected CharacterController _controller;
         private PlayerInput _pInput;
@@ -106,6 +108,13 @@ namespace MMOJam.Player
             {
                 transform.position = vehicle.transform.position;
             }
+        }
+
+        public void SetZone(ZoneController zone)
+        {
+            CurrentZone = zone;
+
+            Debug.Log("Now entering " + zone.Name);
         }
 
         [Rpc(SendTo.Server)]
