@@ -55,6 +55,7 @@ namespace MMOJam.Player
                 _controller.enabled = newValue == 0;
 
                 _currentVehicleObject = newValue == 0 ? null : ServerManager.Instance.GetVehicle(newValue);
+                transform.rotation = Quaternion.identity;
             };
         }
 
@@ -193,7 +194,7 @@ namespace MMOJam.Player
         {
             if (IsOwner && !IsAi && _interactibles.Count > 0 && value.phase == InputActionPhase.Started)
             {
-                if (CurrentVehicle != null)
+                if (CurrentVehicle.Value != 0)
                 {
                     SetVehicle(null, (SeatType)(-1));
                     LeaveVehicleRpc();
