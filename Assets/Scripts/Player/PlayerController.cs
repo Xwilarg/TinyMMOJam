@@ -11,12 +11,6 @@ using UnityEngine.InputSystem;
 
 namespace MMOJam.Player
 {
-    public class EquippedVehicle
-    {
-        public RuntimeVehicle Vehicle;
-        public SeatType Seat;
-    }
-
     public class PlayerController : NetworkBehaviour
     {
         [Header("Configuration")]
@@ -29,8 +23,9 @@ namespace MMOJam.Player
         [SerializeField]
         private GameObject _renderer;
 
-        public NetworkVariable<bool> InVehicle { private set; get; } = new(false);
-        public EquippedVehicle CurrentVehicle { private set; get; }
+        private RuntimeVehicle _currentVehicleObject;
+        public NetworkVariable<ulong> CurrentVehicle { private set; get; } = new(0);
+        public NetworkVariable<SeatType> CurrentSeat { private set; get; } = new((SeatType)(-1));
 
         protected CharacterController _controller;
         private PlayerInput _pInput;
@@ -53,22 +48,12 @@ namespace MMOJam.Player
             _cam = Camera.main;
             _coll = GetComponent<Collider>();
 
-            InVehicle.OnValueChanged += (oldValue, newValue) =>
+            CurrentVehicle.OnValueChanged += (oldValue, newValue) =>
             {
-                _renderer.SetActive(!newValue);
-                _coll.enabled = !newValue;
-                _controller.enabled = !newValue;
+                _renderer.SetActive(newValue == 0);
+                _coll.enabled = newValue == 0;
+                _controller.enabled = newValue == 0;
             };
-        }
-
-        public void SetVehicle(EquippedVehicle vehicle)
-        {
-            CurrentVehicle = vehicle;
-            transform.parent = vehicle == null ? null : vehicle.Vehicle.transform;
-            if (vehicle != null)
-            {
-                transform.position = vehicle.Vehicle.transform.position;
-            }
         }
 
         public override void OnNetworkSpawn()
@@ -108,6 +93,19 @@ namespace MMOJam.Player
             }
         }
 
+        public void SetVehicle(RuntimeVehicle vehicle, SeatType seat)
+        {
+            _currentVehicleObject = vehicle;
+            CurrentVehicle.Value = vehicle.Key;
+            CurrentSeat.Value = seat;
+
+            transform.parent = vehicle == null ? null : vehicle.transform;
+            if (vehicle != null)
+            {
+                transform.position = vehicle.transform.position;
+            }
+        }
+
         [Rpc(SendTo.Server)]
         public void InteractPlayerRpc()
         {
@@ -127,7 +125,8 @@ namespace MMOJam.Player
         [Rpc(SendTo.Server)]
         public void LeaveVehicleRpc()
         {
-            InVehicle.Value = false;
+            CurrentVehicle.Value = 0;
+            CurrentSeat.Value = (SeatType)(-1);
         }
 
         protected virtual void Update()
@@ -135,9 +134,9 @@ namespace MMOJam.Player
             if (!IsOwner)
                 return;
 
-            if (InVehicle.Value && CurrentVehicle.Seat == SeatType.Driver)
+            if (CurrentVehicle.Value != 0 && CurrentSeat.Value == SeatType.Driver)
             {
-                CurrentVehicle.Vehicle.Move(_mov);
+                _currentVehicleObject.Move(_mov);
             }
             else
             {
@@ -176,7 +175,7 @@ namespace MMOJam.Player
 
         public void OnShoot(InputAction.CallbackContext value)
         {
-            if (IsOwner && !IsAi && value.phase == InputActionPhase.Started && !InVehicle.Value)
+            if (IsOwner && !IsAi && value.phase == InputActionPhase.Started && CurrentVehicle.Value == 0)
             {
                 var mousePos = CursorUtils.GetPosition(_pInput);
                 var ray = _cam.ScreenPointToRay(mousePos.Value);
@@ -195,7 +194,7 @@ namespace MMOJam.Player
             {
                 if (CurrentVehicle != null)
                 {
-                    SetVehicle(null);
+                    SetVehicle(null, (SeatType)(-1));
                     LeaveVehicleRpc();
                 }
                 else

@@ -18,16 +18,11 @@ namespace MMOJam.Vehicle
 
         public override void InteractClient(PlayerController player)
         {
-            player.SetVehicle(new()
-            {
-                Vehicle = this,
-                Seat = SeatType.Driver
-            });
         }
 
         public override void InteractServer(PlayerController player)
         {
-            player.InVehicle.Value = true;
+            player.SetVehicle(this, SeatType.Driver);
         }
 
         public void Move(Vector2 mov)
