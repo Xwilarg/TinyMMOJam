@@ -1,5 +1,6 @@
 using MMOJam.Player;
 using MMOJam.SO;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace MMOJam.Vehicle
@@ -26,6 +27,12 @@ namespace MMOJam.Vehicle
         }
 
         public void Move(Vector2 mov)
+        {
+            MoveServerRpc(mov);
+        }
+
+        [Rpc(SendTo.Server)]
+        public void MoveServerRpc(Vector2 mov)
         {
             if (mov.y < 0f)
             {
