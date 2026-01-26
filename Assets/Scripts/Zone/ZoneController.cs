@@ -1,7 +1,7 @@
 ﻿using Unity.Netcode;
 using UnityEngine;
 
-namespace Assets.Scripts.Zone
+namespace MMOJam.Zone
 {
     public class ZoneController : NetworkBehaviour
     {
