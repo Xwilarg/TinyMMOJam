@@ -27,6 +27,10 @@ namespace MMOJam.Vehicle
 
         public void Move(Vector2 mov)
         {
+            if (mov.y < 0f)
+            {
+                mov.x = -mov.x;
+            }
             Vector3 desiredMove = transform.forward * mov.y * Time.deltaTime * 5_000f;// + transform.right * mov.x;
             _rb.AddForce(desiredMove);
             _rb.linearVelocity = _rb.linearVelocity.normalized * Mathf.Clamp(_rb.linearVelocity.magnitude, 0f, 10f);
