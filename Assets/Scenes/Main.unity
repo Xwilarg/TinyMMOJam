@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 617244663}
   - component: {fileID: 617244664}
   - component: {fileID: 617244665}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Zone 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1428,7 +1428,7 @@ GameObject:
   - component: {fileID: 1193665329}
   - component: {fileID: 1193665330}
   - component: {fileID: 1193665331}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Zone 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
