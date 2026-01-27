@@ -1,6 +1,7 @@
 using MMOJam.Manager;
 using MMOJam.Player;
 using MMOJam.SO;
+using System.Collections.Generic;
 using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
@@ -41,6 +42,11 @@ namespace MMOJam.Vehicle
                     break;
                 }
             }
+        }
+
+        public IEnumerable<PlayerController> GetPlayersInVehicle()
+        {
+            return ServerManager.Instance.GetPlayersInVehicle(Key);
         }
 
         public void Move(Vector2 mov)

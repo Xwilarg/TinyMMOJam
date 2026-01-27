@@ -27,7 +27,7 @@ namespace MMOJam.Player
         private RuntimeVehicle _currentVehicleObject;
         public NetworkVariable<ulong> CurrentVehicle { private set; get; } = new(0);
         public NetworkVariable<SeatType> CurrentSeat { private set; get; } = new((SeatType)(-1));
-        public ZoneController CurrentZone { get; private set; }
+        public NetworkVariable<NetworkObjectReference> CurrentZone { private set; get; } = new();
 
         protected CharacterController _controller;
         private PlayerInput _pInput;
@@ -58,6 +58,20 @@ namespace MMOJam.Player
 
                 _currentVehicleObject = newValue == 0 ? null : ServerManager.Instance.GetVehicle(newValue);
                 transform.rotation = Quaternion.identity;
+            };
+
+            CurrentZone.OnValueChanged += (oldValue, newValue) =>
+            {
+                if (newValue.TryGet(out var networkObject))
+                {
+                    var zone = networkObject.GetComponent<ZoneController>();
+
+                    Debug.Log("Now entering " + zone.Name);
+                }
+                else
+                {
+                    Debug.Log("Now exiting");
+                }
             };
         }
 
@@ -121,9 +135,7 @@ namespace MMOJam.Player
 
         public void SetZone(ZoneController zone)
         {
-            CurrentZone = zone;
-
-            Debug.Log("Now entering " + zone.Name);
+            CurrentZone.Value = zone != null ? zone.gameObject : null;
         }
 
         [Rpc(SendTo.Server)]

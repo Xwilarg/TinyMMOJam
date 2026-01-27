@@ -1,4 +1,6 @@
 ﻿using MMOJam.Player;
+using MMOJam.SO;
+using MMOJam.Vehicle;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -25,9 +27,29 @@ namespace MMOJam.Zone
 
         private void OnTriggerEnter(Collider other)
         {
+            OnEnterExit(other, this);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            OnEnterExit(other, null);
+        }
+
+        private void OnEnterExit(Collider other, ZoneController newZone)
+        {
             if (other.CompareTag("Player"))
             {
-                other.GetComponent<PlayerController>().SetZone(this);
+                other.GetComponent<PlayerController>().SetZone(newZone);
+            }
+
+            if (other.CompareTag("Vehicle"))
+            {
+                var vehicle = other.GetComponent<RuntimeVehicle>();
+
+                foreach (var player in vehicle.GetPlayersInVehicle())
+                {
+                    player.SetZone(newZone);
+                }
             }
         }
 

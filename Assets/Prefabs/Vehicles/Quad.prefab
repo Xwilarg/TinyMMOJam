@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2032466652937257116}
   m_Layer: 8
   m_Name: Quad
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 698238120
+  GlobalObjectIdHash: 334835458
   InScenePlacedSourceGlobalObjectIdHash: 334835458
   DeferredDespawnTick: 0
   Ownership: 1
