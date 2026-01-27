@@ -1,5 +1,7 @@
+using MMOJam.Manager;
 using MMOJam.Player;
 using MMOJam.SO;
+using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -23,7 +25,22 @@ namespace MMOJam.Vehicle
 
         public override void InteractServer(PlayerController player)
         {
-            player.SetVehicle(this, SeatType.Driver);
+            var players = ServerManager.Instance.GetPlayersInVehicle(Key).ToList();
+
+            for (int i = 0; i < _info.Seats.Length; i++)
+            {
+                var match = players.FirstOrDefault(x => x.CurrentSeat.Value == _info.Seats[i]);
+                if (match != null)
+                {
+                    players.Remove(match);
+                }
+                else
+                {
+                    Debug.Log($"[VHC] Entered {_info.Name} as {_info.Seats[i]}");
+                    player.SetVehicle(this, _info.Seats[i]);
+                    break;
+                }
+            }
         }
 
         public void Move(Vector2 mov)

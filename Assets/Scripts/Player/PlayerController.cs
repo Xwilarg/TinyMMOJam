@@ -96,6 +96,15 @@ namespace MMOJam.Player
                     }
                 });
             }
+
+            ServerManager.Instance.RegisterPlayer(this);
+        }
+
+        public override void OnNetworkDespawn()
+        {
+            base.OnNetworkDespawn();
+
+            ServerManager.Instance.UnregisterPlayer(this);
         }
 
         public void SetVehicle(RuntimeVehicle vehicle, SeatType seat)

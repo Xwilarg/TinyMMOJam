@@ -20,12 +20,27 @@ namespace MMOJam.Manager
         private int _spawnsCount;
 
         private Dictionary<ulong, AInteractible> _interactibles = new();
+        private readonly List<PlayerController> _players = new();
 
         public bool IsAuthority => IsHost || IsServer;
 
         private void Awake()
         {
             Instance = this;
+        }
+
+        public void RegisterPlayer(PlayerController player) => _players.Add(player);
+        public void UnregisterPlayer(PlayerController player) => _players.Remove(player);
+
+        public IEnumerable<PlayerController> GetPlayersInVehicle(ulong vehicleId)
+        {
+            lock (_players)
+            {
+                foreach (var player in _players)
+                {
+                    if (player.CurrentVehicle.Value == vehicleId) yield return player;
+                }
+            }
         }
 
         public void RegisterInteractible(AInteractible elem)
