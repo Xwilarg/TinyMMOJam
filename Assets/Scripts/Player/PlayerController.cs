@@ -218,7 +218,7 @@ namespace MMOJam.Player
                     dir.y = 0f;
                     Debug.DrawLine(transform.position, transform.position + (dir * 5f), Color.red, 2f);
 
-                    Physics.Raycast(transform.position, dir, out var hit, float.MaxValue, LayerMask.GetMask("World", "Prop"));
+                    Physics.Raycast(transform.position, dir, out var hit, float.MaxValue, LayerMask.GetMask("World", "Prop", "MovableProp"));
                     if (hit.collider != null)
                     {
                         Debug.Log($"[HIT] {name} raycast hit {hit.collider.name}");
