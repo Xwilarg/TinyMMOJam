@@ -32,8 +32,8 @@ namespace MMOJam.Manager
             _factionName.visible = true;
             _factionSubtitle.visible = true;
 
-            _factionName.text = factionId == 1 ? "You are in the MARC faction" : "TODO";
-            _factionSubtitle.text = factionId == 1 ? "Massively Anarchist Revolutionary Congregate, basically the bad guys" : "";
+            _factionName.text = factionId == 1 ? "You are in the MARC faction" : "You are in the Überwurst faction";
+            _factionSubtitle.text = factionId == 1 ? "Massively Anarchist Revolutionary Congregate, basically the bad guys" : "Please Indra this is a placeholder name, think of THE USER, replace this";
 
             StartCoroutine(WaitAndHideFactionNameCoroutine());
         }
