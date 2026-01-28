@@ -906,7 +906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Zone.ZoneController
   ShowTopMostFoldoutHeaderGroup: 1
-  _name: North Korea
+  _faction: {fileID: 11400000, guid: a8f606ab604766847b3ad3b79a553bd6, type: 2}
 --- !u!65 &617244665
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1416,6 +1416,9 @@ MonoBehaviour:
   _spawns:
   - {fileID: 1847050461}
   _spawnsCount: 1
+  _factions:
+  - {fileID: 11400000, guid: 870a85175cbc35f49bd70a9f4118943a, type: 2}
+  - {fileID: 11400000, guid: a8f606ab604766847b3ad3b79a553bd6, type: 2}
 --- !u!1 &1193665324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1492,7 +1495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Zone.ZoneController
   ShowTopMostFoldoutHeaderGroup: 1
-  _name: France
+  _faction: {fileID: 11400000, guid: 870a85175cbc35f49bd70a9f4118943a, type: 2}
 --- !u!65 &1193665331
 BoxCollider:
   m_ObjectHideFlags: 0

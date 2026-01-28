@@ -1,4 +1,5 @@
 using MMOJam.Player;
+using MMOJam.SO;
 using MMOJam.Vehicle;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,9 @@ namespace MMOJam.Manager
 
         [SerializeField]
         private int _spawnsCount;
+
+        [SerializeField]
+        private FactionInfo[] _factions;
 
         private Dictionary<ulong, AInteractible> _interactibles = new();
         private readonly List<PlayerController> _players = new();
@@ -62,14 +66,22 @@ namespace MMOJam.Manager
             return _interactibles[key] as RuntimeVehicle;
         }
 
-        public int GetNextFaction()
+        public FactionInfo GetFaction(int factionId)
         {
-            var faction1Count = _players.Count(x => x.CurrentFaction.Value == 1);
-            var faction2Count = _players.Count(x => x.CurrentFaction.Value == 2);
+            return _factions.FirstOrDefault(f => f.Id == factionId);
+        }
 
-            if (faction1Count == faction2Count) return Random.Range(1, 3);
-            if (faction1Count > faction2Count) return 2;
-            return 1;
+        public FactionInfo GetNextFaction()
+        {
+#if DEBUG
+            if (_factions.Any(f => f.Id == 0) || _factions.GroupBy(f => f.Id).Any(x => x.Count() > 1))
+            {
+                throw new System.InvalidOperationException("You should properly setup your SO");
+            }
+#endif
+
+            // Get next faction with least players
+            return _factions.OrderBy(f => _players.Count(p => p.CurrentFaction.Value == f.Id)).First();
         }
 
         public override void OnNetworkSpawn()

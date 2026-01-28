@@ -67,7 +67,7 @@ namespace MMOJam.Player
                 {
                     var zone = networkObject.GetComponent<ZoneController>();
 
-                    Debug.Log("Now entering " + zone.Name);
+                    Debug.Log("Now entering " + zone.name);
                 }
                 else
                 {
@@ -84,10 +84,12 @@ namespace MMOJam.Player
         [Rpc(SendTo.Server)]
         public void SetupServerRpc()
         {
-            CurrentFaction.Value = ServerManager.Instance.GetNextFaction();
+            var faction = ServerManager.Instance.GetNextFaction();
+
+            CurrentFaction.Value = faction.Id;
 
             _controller.enabled = false;
-            // TODO: Indra, move character to spawn pos
+            ZoneManager.Instance.SpawnAtFaction(faction, this);
             _controller.enabled = true;
         }
 

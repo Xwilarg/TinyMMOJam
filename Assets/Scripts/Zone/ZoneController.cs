@@ -9,11 +9,11 @@ namespace MMOJam.Zone
     public class ZoneController : NetworkBehaviour
     {
         [SerializeField]
-        private string _name;
+        private FactionInfo _faction;
 
         private Collider _collider;
 
-        public string Name => _name;
+        public FactionInfo Faction => _faction;
 
         private void Awake()
         {
@@ -51,6 +51,11 @@ namespace MMOJam.Zone
                     player.SetZone(newZone);
                 }
             }
+        }
+
+        public void SpawnPlayer(PlayerController player)
+        {
+            player.transform.position = transform.position;
         }
 
         public bool Contains(Transform transform)

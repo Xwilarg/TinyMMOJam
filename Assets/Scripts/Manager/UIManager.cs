@@ -29,11 +29,13 @@ namespace MMOJam.Manager
 
         public void ShowFactionName(int factionId)
         {
+            var faction = ServerManager.Instance.GetFaction(factionId);
+
             _factionName.visible = true;
             _factionSubtitle.visible = true;
 
-            _factionName.text = factionId == 1 ? "You are in the MARC faction" : "You are in the Überwurst faction";
-            _factionSubtitle.text = factionId == 1 ? "Massively Anarchist Revolutionary Congregate, basically the bad guys" : "Please Indra this is a placeholder name, think of THE USER, replace this";
+            _factionName.text = faction.Name;
+            _factionSubtitle.text = faction.Description;
 
             StartCoroutine(WaitAndHideFactionNameCoroutine());
         }
