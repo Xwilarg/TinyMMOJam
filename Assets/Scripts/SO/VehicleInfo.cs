@@ -13,6 +13,7 @@ namespace MMOJam.SO
     {
         Driver,
         Passenger,
-        Miner
+        Miner,
+        Shooter
     }
 }

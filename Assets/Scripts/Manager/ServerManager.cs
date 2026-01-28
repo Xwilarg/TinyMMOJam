@@ -22,11 +22,14 @@ namespace MMOJam.Manager
         private Dictionary<ulong, AInteractible> _interactibles = new();
         private readonly List<PlayerController> _players = new();
 
+        private NetworkManager _manager;
+
         public bool IsAuthority => IsHost || IsServer;
 
         private void Awake()
         {
             Instance = this;
+            _manager = GetComponent<NetworkManager>();
         }
 
         public void RegisterPlayer(PlayerController player) => _players.Add(player);

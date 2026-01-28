@@ -205,9 +205,10 @@ namespace MMOJam.Player
             if (IsOwner && !IsAi) _mov = value.ReadValue<Vector2>();
         }
 
-        public void OnShoot(InputAction.CallbackContext value)
+        [Rpc(SendTo.Server)]
+        public void ShootServerRpc()
         {
-            if (IsOwner && !IsAi && value.phase == InputActionPhase.Started && CurrentVehicle.Value == 0)
+            if (CurrentVehicle.Value == 0)
             {
                 var mousePos = CursorUtils.GetPosition(_pInput);
                 var ray = _cam.ScreenPointToRay(mousePos.Value);
@@ -216,7 +217,30 @@ namespace MMOJam.Player
                     var dir = (hitInfo.point - transform.position).normalized;
                     dir.y = 0f;
                     Debug.DrawLine(transform.position, transform.position + (dir * 5f), Color.red, 2f);
+
+                    Physics.Raycast(transform.position, dir, out var hit, float.MaxValue, LayerMask.GetMask("World", "Prop"));
+                    if (hit.collider != null)
+                    {
+                        Debug.Log($"[HIT] {name} raycast hit {hit.collider.name}");
+                        if (hit.collider.TryGetComponent<LivingEntity>(out var living))
+                        {
+                            Debug.Log($"[HIT] {name} shot {hit.collider.name}");
+                            living.TakeDamage(5);
+                        }
+                    }
                 }
+            }
+            else if (CurrentSeat.Value == SeatType.Shooter) // We are in a turret that can shoot!
+            {
+
+            }
+        }
+
+        public void OnShoot(InputAction.CallbackContext value)
+        {
+            if (IsOwner && !IsAi && value.phase == InputActionPhase.Started)
+            {
+                ShootServerRpc();
             }
         }
 
