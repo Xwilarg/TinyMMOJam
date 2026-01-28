@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace MMOJam.Manager
@@ -11,6 +12,7 @@ namespace MMOJam.Manager
         private UIDocument _ui;
 
         private Label _label;
+        private Label _factionName, _factionSubtitle;
 
         private void Awake()
         {
@@ -18,6 +20,29 @@ namespace MMOJam.Manager
 
             _label = _ui.rootVisualElement.Q<Label>("interact_text");
             _label.visible = false;
+
+            _factionName = _ui.rootVisualElement.Q<Label>("faction_text");
+            _factionSubtitle = _ui.rootVisualElement.Q<Label>("subfaction_text");
+            _factionName.visible = false;
+            _factionSubtitle.visible = false;
+        }
+
+        public void ShowFactionName(int factionId)
+        {
+            _factionName.visible = true;
+            _factionSubtitle.visible = true;
+
+            _factionName.text = factionId == 1 ? "You are in the MARC faction" : "TODO";
+            _factionSubtitle.text = factionId == 1 ? "Massively Anarchist Revolutionary Congregate, basically the bad guys" : "";
+
+            StartCoroutine(WaitAndHideFactionNameCoroutine());
+        }
+
+        private IEnumerator WaitAndHideFactionNameCoroutine()
+        {
+            yield return new WaitForSeconds(3f);
+            _factionName.visible = false;
+            _factionSubtitle.visible = false;
         }
 
         public void ShowInteractionText(bool value)

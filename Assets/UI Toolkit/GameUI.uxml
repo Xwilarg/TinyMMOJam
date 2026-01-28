@@ -4,4 +4,6 @@
         <ui:Button text="Start Client" name="btn-start_client"/>
     </ui:GroupBox>
     <ui:Label text="Press &apos;E&apos; to interact" name="interact_text" style="position: absolute; top: 0; right: 0;"/>
+    <ui:Label text="You are in faction name" name="faction_text" style="align-self: center; font-size: 25px;"/>
+    <ui:Label text="You are in faction name" name="subfaction_text" style="align-self: center;"/>
 </ui:UXML>

@@ -28,6 +28,7 @@ namespace MMOJam.Player
         public NetworkVariable<ulong> CurrentVehicle { private set; get; } = new(0);
         public NetworkVariable<SeatType> CurrentSeat { private set; get; } = new((SeatType)(-1));
         public NetworkVariable<NetworkObjectReference> CurrentZone { private set; get; } = new();
+        public NetworkVariable<int> CurrentFaction { private set; get; } = new(0);
 
         protected CharacterController _controller;
         private PlayerInput _pInput;
@@ -73,6 +74,21 @@ namespace MMOJam.Player
                     Debug.Log("Now exiting");
                 }
             };
+
+            CurrentFaction.OnValueChanged += (oldValue, newValue) =>
+            {
+                UIManager.Instance.ShowFactionName(CurrentFaction.Value);
+            };
+        }
+
+        [Rpc(SendTo.Server)]
+        public void SetupServerRpc()
+        {
+            CurrentFaction.Value = ServerManager.Instance.GetNextFaction();
+
+            _controller.enabled = false;
+            // TODO: Indra, move character to spawn pos
+            _controller.enabled = true;
         }
 
         public override void OnNetworkSpawn()
@@ -112,6 +128,8 @@ namespace MMOJam.Player
             }
 
             ServerManager.Instance.RegisterPlayer(this);
+
+            SetupServerRpc();
         }
 
         public override void OnNetworkDespawn()

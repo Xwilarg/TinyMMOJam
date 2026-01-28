@@ -1,6 +1,7 @@
 using MMOJam.Player;
 using MMOJam.Vehicle;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -59,6 +60,16 @@ namespace MMOJam.Manager
         public RuntimeVehicle GetVehicle(ulong key)
         {
             return _interactibles[key] as RuntimeVehicle;
+        }
+
+        public int GetNextFaction()
+        {
+            var faction1Count = _players.Count(x => x.CurrentFaction.Value == 1);
+            var faction2Count = _players.Count(x => x.CurrentFaction.Value == 2);
+
+            if (faction1Count == faction2Count) return Random.Range(1, 3);
+            if (faction1Count > faction2Count) return 2;
+            return 1;
         }
 
         public override void OnNetworkSpawn()
