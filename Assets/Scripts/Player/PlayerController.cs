@@ -214,11 +214,12 @@ namespace MMOJam.Player
                 var ray = _cam.ScreenPointToRay(mousePos.Value);
                 if (Physics.Raycast(ray, out var hitInfo, float.MaxValue, LayerMask.GetMask("World")))
                 {
+                    var startPos = transform.position + Vector3.up * 1f;
                     var dir = (hitInfo.point - transform.position).normalized;
                     dir.y = 0f;
-                    Debug.DrawLine(transform.position, transform.position + (dir * 5f), Color.red, 2f);
+                    Debug.DrawLine(startPos, startPos + (dir * 10f), Color.red, 2f);
 
-                    Physics.Raycast(transform.position, dir, out var hit, float.MaxValue, LayerMask.GetMask("World", "Prop", "MovableProp"));
+                    Physics.Raycast(startPos, dir, out var hit, float.MaxValue, LayerMask.GetMask("World", "Prop", "MovingProp"));
                     if (hit.collider != null)
                     {
                         Debug.Log($"[HIT] {name} raycast hit {hit.collider.name}");

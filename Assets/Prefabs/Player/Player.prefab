@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5691978183258197482}
   - component: {fileID: 8181979042263402989}
   - component: {fileID: 1944831495720818567}
+  - component: {fileID: 1411841755755137457}
   - component: {fileID: 6201763479911881374}
   - component: {fileID: 4535722061611544216}
   m_Layer: 7
@@ -157,6 +158,19 @@ MonoBehaviour:
   _mouvementSpeed: 5
   _gravityMultiplier: 0.75
   _renderer: {fileID: 5674750210678366613}
+--- !u!114 &1411841755755137457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391345014138801944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70e6a6e2d5ce7c4e9a94c1f41e550c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MMOJam.Player.LivingEntity
+  ShowTopMostFoldoutHeaderGroup: 1
 --- !u!114 &6201763479911881374
 MonoBehaviour:
   m_ObjectHideFlags: 0
