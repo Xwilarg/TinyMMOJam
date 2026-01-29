@@ -3,6 +3,7 @@ using MMOJam.SO;
 using MMOJam.Vehicle;
 using MMOJam.Zone;
 using Sketch.Common;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Cinemachine;
@@ -23,6 +24,9 @@ namespace MMOJam.Player
 
         [SerializeField]
         private GameObject _renderer;
+
+        [SerializeField]
+        private LineRenderer _lr;
 
         private RuntimeVehicle _currentVehicleObject;
         public NetworkVariable<ulong> CurrentVehicle { private set; get; } = new(0);
@@ -50,6 +54,8 @@ namespace MMOJam.Player
             _pInput = GetComponentInChildren<PlayerInput>();
             _cam = Camera.main;
             _coll = GetComponent<Collider>();
+
+            _lr.gameObject.SetActive(false);
 
             CurrentVehicle.OnValueChanged += (oldValue, newValue) =>
             {
@@ -225,6 +231,24 @@ namespace MMOJam.Player
             if (IsOwner && !IsAi) _mov = value.ReadValue<Vector2>();
         }
 
+        [Rpc(SendTo.ClientsAndHost)]
+        public void ShootClientVfxRpc(Vector3 dest)
+        {
+            _lr.gameObject.SetActive(true);
+            _lr.SetPositions(new Vector3[]
+            {
+                transform.position,
+                dest
+            });
+            StartCoroutine(ShootVfx());
+        }
+
+        private IEnumerator ShootVfx()
+        {
+            yield return new WaitForSeconds(.2f);
+            _lr.gameObject.SetActive(false);
+        }
+
         [Rpc(SendTo.Server)]
         public void ShootServerRpc()
         {
@@ -248,7 +272,9 @@ namespace MMOJam.Player
                             Debug.Log($"[HIT] {name} shot {hit.collider.name}");
                             living.TakeDamage(5);
                         }
+                        ShootClientVfxRpc(hit.point);
                     }
+                    else ShootClientVfxRpc(startPos + (dir * 50f));
                 }
             }
             else if (CurrentSeat.Value == SeatType.Shooter) // We are in a turret that can shoot!
