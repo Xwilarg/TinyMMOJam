@@ -34,7 +34,7 @@ namespace MMOJam.Manager
             _factionName.visible = true;
             _factionSubtitle.visible = true;
 
-            _factionName.text = faction.Name;
+            _factionName.text = "You are in the " + faction.Name + " faction";
             _factionSubtitle.text = faction.Description;
 
             StartCoroutine(WaitAndHideFactionNameCoroutine());

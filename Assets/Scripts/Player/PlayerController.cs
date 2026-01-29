@@ -73,11 +73,11 @@ namespace MMOJam.Player
                 {
                     var zone = networkObject.GetComponent<ZoneController>();
 
-                    Debug.Log("Now entering " + zone.name);
+                    Debug.Log("[ZNE] Now entering " + zone.name);
                 }
                 else
                 {
-                    Debug.Log("Now exiting");
+                    Debug.Log("[ZNE] Now exiting");
                 }
             };
 

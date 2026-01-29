@@ -73,7 +73,7 @@ namespace MMOJam.Manager
 
         public FactionInfo GetNextFaction()
         {
-#if DEBUG
+#if UNITY_EDITOR
             if (_factions.Any(f => f.Id == 0) || _factions.GroupBy(f => f.Id).Any(x => x.Count() > 1))
             {
                 throw new System.InvalidOperationException("You should properly setup your SO");
