@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MMOJam.Player
 {
-    public class LivingEntity : NetworkBehaviour
+    public class LivingEntity : NetworkBehaviour, IShootable
     {
         private int _health = 10;
 

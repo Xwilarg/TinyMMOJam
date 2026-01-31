@@ -267,7 +267,7 @@ namespace MMOJam.Player
                     if (hit.collider != null)
                     {
                         Debug.Log($"[HIT] {name} raycast hit {hit.collider.name}");
-                        if (hit.collider.TryGetComponent<LivingEntity>(out var living))
+                        if (hit.collider.TryGetComponent<IShootable>(out var living))
                         {
                             Debug.Log($"[HIT] {name} shot {hit.collider.name}");
                             living.TakeDamage(5);
