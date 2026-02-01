@@ -1,5 +1,6 @@
 using MMOJam.Player;
 using MMOJam.Manager;
+using TMPro;
 using UnityEngine;
 
 namespace MMOJam
@@ -12,6 +13,33 @@ namespace MMOJam
         long _mine_amount = 1;
         [SerializeField]
         long _res_amount = 10;
+        [SerializeField]
+        string _name = "PLACEHOLDER";
+        [SerializeField] 
+        private GameObject _uiRoot;
+        private TextMeshPro _ui_text =  null;
+        
+        private void Awake()
+        {
+            if (IsClient)
+                return;
+
+            if (_uiRoot == null)
+            {
+                Debug.LogError($"{name}: UI Root is not assigned!");
+                return;
+            }
+
+            _ui_text = _uiRoot.GetComponent<TextMeshPro>();
+
+            if (_ui_text == null)
+            {
+                Debug.LogError($"{name}: No TextMeshProUGUI found in UI Root!");
+                return;
+            }
+
+            UpdateUI();
+        }
         public override void InteractClient(PlayerController player)
         {
             return;
@@ -24,11 +52,17 @@ namespace MMOJam
             long mined = System.Math.Min(_mine_amount, _res_amount);
             temp.ChangeRessources(_res_id, mined);
             _res_amount -= mined;
+            UpdateUI();
             if (_res_amount < 1) 
             {
                 ServerManager.Instance.UnregisterInteractible(this);
                 Destroy(gameObject);
             }
+        }
+
+        private void UpdateUI()
+        {
+            _ui_text.text = _name + "\n" + _res_amount;
         }
     }
 }
