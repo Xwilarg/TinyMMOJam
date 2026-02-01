@@ -113,6 +113,7 @@ namespace MMOJam.Player
                 var tArea = GetComponentInChildren<TriggerArea>();
                 tArea.OnTriggerEnterEvent.AddListener((c) =>
                 {
+                    UnregisterInteractible();
                     if (c.TryGetComponent<AInteractible>(out var cComp) && !_interactibles.Any(x => x.gameObject.GetEntityId() == c.gameObject.GetEntityId()))
                     {
                         _interactibles.Add(cComp);
@@ -147,6 +148,11 @@ namespace MMOJam.Player
             ServerManager.Instance.UnregisterPlayer(this);
         }
 
+        public void UnregisterInteractible()
+        {
+            _interactibles.RemoveAll(x => x == null);
+        }
+
         public void SetVehicle(RuntimeVehicle vehicle, SeatType seat)
         {
             CurrentVehicle.Value = vehicle == null ? 0 : vehicle.Key;
@@ -167,6 +173,7 @@ namespace MMOJam.Player
         [Rpc(SendTo.Server)]
         public void InteractPlayerRpc()
         {
+            UnregisterInteractible();
             if (_interactibles.Count > 0)
             {
                 _interactibles[0].InteractServer(this);
@@ -178,6 +185,7 @@ namespace MMOJam.Player
         public void InteractWithRpc(ulong key)
         {
             ServerManager.Instance.InteractWith(key, this);
+            UnregisterInteractible();
         }
 
         [Rpc(SendTo.Server)]

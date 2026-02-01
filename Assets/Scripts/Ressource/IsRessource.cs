@@ -1,4 +1,5 @@
 using MMOJam.Player;
+using MMOJam.Manager;
 using UnityEngine;
 
 namespace MMOJam
@@ -8,7 +9,9 @@ namespace MMOJam
         [SerializeField]
         short _res_id = 0;
         [SerializeField]
-        long _amount = 1;
+        long _mine_amount = 1;
+        [SerializeField]
+        long _res_amount = 10;
         public override void InteractClient(PlayerController player)
         {
             return;
@@ -18,7 +21,14 @@ namespace MMOJam
         {
             var temp = player.GetComponent<RessourcesHolder>();
 
-            temp.ChangeRessources(_res_id, _amount);
+            long mined = System.Math.Min(_mine_amount, _res_amount);
+            temp.ChangeRessources(_res_id, mined);
+            _res_amount -= mined;
+            if (_res_amount < 1) 
+            {
+                ServerManager.Instance.UnregisterInteractible(this);
+                Destroy(gameObject);
+            }
         }
     }
 }

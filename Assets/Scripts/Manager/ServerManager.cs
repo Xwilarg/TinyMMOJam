@@ -54,6 +54,16 @@ namespace MMOJam.Manager
         public void RegisterInteractible(AInteractible elem)
         {
             _interactibles.Add(elem.Key, elem);
+            Debug.Log($"[SMI] added {elem.Key} total [{string.Join(", ", _interactibles.Keys)}]");
+        }
+
+        public void UnregisterInteractible(AInteractible elem)
+        {
+            if (elem == null)
+                return;
+
+            _interactibles.Remove(elem.Key);
+            Debug.Log($"[SMI] removed {elem.Key} total [{string.Join(", ", _interactibles.Keys)}]");
         }
 
         public void InteractWith(ulong key, PlayerController player)
