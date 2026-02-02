@@ -265,12 +265,11 @@ namespace MMOJam.Player
         }
 
         [Rpc(SendTo.Server)]
-        public void ShootServerRpc()
+        public void ShootServerRpc(Vector2 mousePos)
         {
             if (CurrentVehicle.Value == 0)
             {
-                var mousePos = CursorUtils.GetPosition(_pInput);
-                var ray = _cam.ScreenPointToRay(mousePos.Value);
+                var ray = _cam.ScreenPointToRay(mousePos);
                 if (Physics.Raycast(ray, out var hitInfo, float.MaxValue, LayerMask.GetMask("World")))
                 {
                     var startPos = transform.position + Vector3.up * 1f;
@@ -278,7 +277,7 @@ namespace MMOJam.Player
                     dir.y = 0f;
                     Debug.DrawLine(startPos, startPos + (dir * 10f), Color.red, 2f);
 
-                    Physics.Raycast(startPos, dir, out var hit, float.MaxValue, LayerMask.GetMask("World", "Prop", "MovingProp"));
+                    Physics.Raycast(startPos, dir, out var hit, float.MaxValue, LayerMask.GetMask("World", "Prop", "MovingProp", "Player"));
                     if (hit.collider != null)
                     {
                         Debug.Log($"[HIT] {name} raycast hit {hit.collider.name}");
@@ -302,7 +301,8 @@ namespace MMOJam.Player
         {
             if (IsOwner && !IsAi && value.phase == InputActionPhase.Started)
             {
-                ShootServerRpc();
+                var mousePos = CursorUtils.GetPosition(_pInput);
+                ShootServerRpc(mousePos.Value);
             }
         }
 
