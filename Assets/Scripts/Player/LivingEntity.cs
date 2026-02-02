@@ -1,10 +1,16 @@
 ﻿using Unity.Netcode;
-using UnityEngine;
 
 namespace MMOJam.Player
 {
     public class LivingEntity : NetworkBehaviour, IShootable
     {
+        private PlayerController _player;
+
+        private void Awake()
+        {
+            _player = GetComponent<PlayerController>();
+        }
+
         private int _health = 10;
 
         public void TakeDamage(int amount)
@@ -13,7 +19,14 @@ namespace MMOJam.Player
 
             if (_health <= 0)
             {
-                Destroy(gameObject);
+                if (_player.IsAi)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    _player.MoveToSpawnpoint();
+                }
             }
         }
     }

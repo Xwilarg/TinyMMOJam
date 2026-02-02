@@ -46,6 +46,8 @@ namespace MMOJam.Player
 
         private readonly List<AInteractible> _interactibles = new();
 
+        private FactionInfo _currFaction;
+
         // Server only
 
         private void Awake()
@@ -92,10 +94,15 @@ namespace MMOJam.Player
         {
             var faction = ServerManager.Instance.GetNextFaction();
 
-            CurrentFaction.Value = faction.Id;
+            CurrentFaction.Value = faction;
 
+            MoveToSpawnpoint();
+        }
+
+        public void MoveToSpawnpoint()
+        {
             _controller.enabled = false;
-            ZoneManager.Instance.SpawnAtFaction(faction, this);
+            ZoneManager.Instance.SpawnAtFaction(CurrentFaction.Value, this);
             _controller.enabled = true;
         }
 

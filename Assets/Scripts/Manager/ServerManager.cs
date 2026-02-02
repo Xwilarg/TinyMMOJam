@@ -81,7 +81,7 @@ namespace MMOJam.Manager
             return _factions.FirstOrDefault(f => f.Id == factionId);
         }
 
-        public FactionInfo GetNextFaction()
+        public int GetNextFaction()
         {
 #if UNITY_EDITOR
             if (_factions.Any(f => f.Id == 0) || _factions.GroupBy(f => f.Id).Any(x => x.Count() > 1))
@@ -91,7 +91,7 @@ namespace MMOJam.Manager
 #endif
 
             // Get next faction with least players
-            return _factions.OrderBy(f => _players.Count(p => p.CurrentFaction.Value == f.Id)).First();
+            return _factions.OrderBy(f => _players.Count(p => p.CurrentFaction.Value == f.Id)).First().Id;
         }
 
         public override void OnNetworkSpawn()

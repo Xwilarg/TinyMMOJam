@@ -1,5 +1,4 @@
 using MMOJam.Player;
-using MMOJam.SO;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Netcode;
@@ -23,10 +22,10 @@ namespace MMOJam.Zone
             _zones.Add(zone);
         }
 
-        public void SpawnAtFaction(FactionInfo faction, PlayerController player)
+        public void SpawnAtFaction(int factionId, PlayerController player)
         {
             // This should work because SO are global instances? Unity docs better not have lied
-            _zones.First(z => z.Faction == faction).SpawnPlayer(player);
+            _zones.First(z => z.Faction.Id == factionId).SpawnPlayer(player);
         }
 
         public ZoneController GetZoneFromTransform(Transform transform)
