@@ -2,6 +2,7 @@ using MMOJam.Player;
 using MMOJam.Manager;
 using TMPro;
 using UnityEngine;
+using Unity.Netcode;
 
 namespace MMOJam
 {
@@ -52,12 +53,19 @@ namespace MMOJam
             long mined = System.Math.Min(_mine_amount, _res_amount);
             temp.ChangeRessources(_res_id, mined);
             _res_amount -= mined;
-            UpdateUI();
+            updateOnNetworkRpc(_res_amount);
             if (_res_amount < 1) 
             {
                 ServerManager.Instance.UnregisterInteractible(this);
                 Destroy(gameObject);
             }
+        }
+
+        [Rpc(SendTo.ClientsAndHost)]
+        public void updateOnNetworkRpc(long amount)
+        {
+            _res_amount = amount;
+            UpdateUI();
         }
 
         private void UpdateUI()
