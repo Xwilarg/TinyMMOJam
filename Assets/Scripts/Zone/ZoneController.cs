@@ -37,6 +37,8 @@ namespace MMOJam.Zone
 
         private void OnEnterExit(Collider other, ZoneController newZone)
         {
+            if (!IsHost && !IsServer) return;
+
             if (other.CompareTag("Player"))
             {
                 other.GetComponent<PlayerController>().SetZone(newZone);
