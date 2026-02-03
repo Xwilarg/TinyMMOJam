@@ -89,9 +89,10 @@ namespace MMOJam.Player
             };
         }
 
-        [Rpc(SendTo.Server)]
-        public void SetupServerRpc()
+        public void SetupServer()
         {
+            Debug.Log($"[PLY] SetupServer called for {NetworkObjectId}");
+
             var faction = ServerManager.Instance.GetNextFaction();
 
             CurrentFaction.Value = faction;
@@ -143,9 +144,15 @@ namespace MMOJam.Player
                 });
             }
 
-            ServerManager.Instance.RegisterPlayer(this);
+            if (!IsAi)
+            {
+                ServerManager.Instance.RegisterPlayer(this);
 
-            SetupServerRpc();
+                if (IsServer)
+                {
+                    SetupServer();
+                }
+            }
         }
 
         public override void OnNetworkDespawn()
