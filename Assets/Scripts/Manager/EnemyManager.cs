@@ -26,7 +26,7 @@ namespace MMOJam.Manager
 
             for (int i = 0; i < _spawnsCount; i++)
             {
-                var sp = spawns[Random.Range(0, _spawnsCount - 1)];
+                var sp = spawns[Random.Range(0, spawns.Length)];
                 var go = Instantiate(_playerPrefab);
                 go.layer = LayerMask.NameToLayer("MovingProp");
                 go.GetComponent<PlayerController>().IsAi = true;
