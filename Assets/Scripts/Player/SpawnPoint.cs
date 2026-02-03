@@ -2,14 +2,29 @@
 
 namespace MMOJam.Player
 {
+    public enum SpawnType
+    {
+        Resource,
+        Enemy
+    }
+
     public class SpawnPoint : MonoBehaviour
     {
         [SerializeField]
         private float _radius;
 
+        [SerializeField]
+        private SpawnType _spawnType;
+        public SpawnType SpawnType => _spawnType;
+
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.blue;
+            Gizmos.color = _spawnType switch
+            {
+                SpawnType.Resource => Color.blue,
+                SpawnType.Enemy => Color.red,
+                _ => Color.white
+            };
             Gizmos.DrawWireSphere(transform.position, _radius);
         }
 

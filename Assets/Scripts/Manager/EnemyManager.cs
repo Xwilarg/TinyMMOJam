@@ -1,4 +1,5 @@
 ﻿using MMOJam.Player;
+using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -6,9 +7,6 @@ namespace MMOJam.Manager
 {
     public class EnemyManager : NetworkBehaviour
     {
-        [SerializeField]
-        private SpawnPoint[] _spawns;
-
         [SerializeField]
         private int _spawnsCount;
 
@@ -24,9 +22,11 @@ namespace MMOJam.Manager
                 return;
             }
 
+            var spawns = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None).Where(x => x.SpawnType == SpawnType.Enemy).ToArray();
+
             for (int i = 0; i < _spawnsCount; i++)
             {
-                var sp = _spawns[Random.Range(0, _spawnsCount - 1)];
+                var sp = spawns[Random.Range(0, _spawnsCount - 1)];
                 var go = Instantiate(_playerPrefab);
                 go.layer = LayerMask.NameToLayer("MovingProp");
                 go.GetComponent<PlayerController>().IsAi = true;
