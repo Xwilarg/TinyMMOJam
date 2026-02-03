@@ -1429,8 +1429,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.Manager.EnemyManager
   ShowTopMostFoldoutHeaderGroup: 1
-  _spawns:
-  - {fileID: 1847050461}
   _spawnsCount: 1
   _playerPrefab: {fileID: 391345014138801944, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
 --- !u!1 &1193665324
@@ -2132,6 +2130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.Player.SpawnPoint
   _radius: 2.5
+  _spawnType: 1
 --- !u!1 &1891154062
 GameObject:
   m_ObjectHideFlags: 0
