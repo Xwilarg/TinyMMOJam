@@ -1352,6 +1352,7 @@ GameObject:
   - component: {fileID: 1157404659}
   - component: {fileID: 1157404660}
   - component: {fileID: 1157404661}
+  - component: {fileID: 1157404662}
   m_Layer: 0
   m_Name: ServerManager
   m_TagString: Untagged
@@ -1412,13 +1413,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.Manager.ServerManager
   ShowTopMostFoldoutHeaderGroup: 1
-  _playerPrefab: {fileID: 391345014138801944, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
-  _spawns:
-  - {fileID: 1847050461}
-  _spawnsCount: 1
   _factions:
   - {fileID: 11400000, guid: 870a85175cbc35f49bd70a9f4118943a, type: 2}
   - {fileID: 11400000, guid: a8f606ab604766847b3ad3b79a553bd6, type: 2}
+--- !u!114 &1157404662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157404658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3dafb53d58cdd46a11e4f62fc28ac6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MMOJam.Manager.EnemyManager
+  ShowTopMostFoldoutHeaderGroup: 1
+  _spawns:
+  - {fileID: 1847050461}
+  _spawnsCount: 1
+  _playerPrefab: {fileID: 391345014138801944, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
 --- !u!1 &1193665324
 GameObject:
   m_ObjectHideFlags: 0

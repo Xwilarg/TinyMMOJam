@@ -13,15 +13,6 @@ namespace MMOJam.Manager
         public static ServerManager Instance { private set; get; }
 
         [SerializeField]
-        private GameObject _playerPrefab;
-
-        [SerializeField]
-        private SpawnPoint[] _spawns;
-
-        [SerializeField]
-        private int _spawnsCount;
-
-        [SerializeField]
         private FactionInfo[] _factions;
 
         private Dictionary<ulong, AInteractible> _interactibles = new();
@@ -92,27 +83,6 @@ namespace MMOJam.Manager
 
             // Get next faction with least players
             return _factions.OrderBy(f => _players.Count(p => p.CurrentFaction.Value == f.Id)).First().Id;
-        }
-
-        public override void OnNetworkSpawn()
-        {
-            base.OnNetworkSpawn();
-
-            if (!IsAuthority)
-            {
-                return;
-            }
-
-            for (int i = 0; i < _spawnsCount; i++)
-            {
-                var sp = _spawns[Random.Range(0, _spawnsCount - 1)];
-                var go = Instantiate(_playerPrefab);
-                go.layer = LayerMask.NameToLayer("MovingProp");
-                go.GetComponent<PlayerController>().IsAi = true;
-                var no = go.GetComponent<NetworkObject>();
-                no.Spawn();
-                go.transform.position = sp.GetRandomPos();
-            }
         }
     }
 }
