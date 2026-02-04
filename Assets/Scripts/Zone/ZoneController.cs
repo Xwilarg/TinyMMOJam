@@ -57,7 +57,7 @@ namespace MMOJam.Zone
 
         public void SpawnPlayer(PlayerController player)
         {
-            player.transform.position = transform.position;
+            GetComponentInChildren<SpawnBuilding>().SpawnPlayer(player);
         }
 
         public bool Contains(Transform transform)
