@@ -22,6 +22,15 @@ namespace MMOJam.Manager
 
             _spawnPoints = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None).Where(x => x.SpawnType == SpawnType.Resource).ToArray();
         }
+
+        public void SpawnResources()
+        {
+            var sp = _spawnPoints[Random.Range(0, _spawnPoints.Length)];
+
+            var go = Instantiate(_prefab);
+            go.transform.position = sp.GetRandomPos();
+        }
+
         public void RegisterHolder(RessourcesHolder elem)
         {
             _ressources_holders.Add(elem.GetComponent<NetworkObject>().NetworkObjectId, elem);

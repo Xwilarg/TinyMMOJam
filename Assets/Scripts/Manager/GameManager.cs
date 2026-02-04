@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Resources;
+using UnityEngine;
 
 namespace MMOJam.Manager
 {
@@ -6,9 +7,15 @@ namespace MMOJam.Manager
     {
         public static GameManager Instance { private set; get; }
 
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         public void InitNetwork()
         {
             EnemyManager.Instance.SpawnWave(2);
+            RessourcesManager.Instance.SpawnResources();
         }
     }
 }

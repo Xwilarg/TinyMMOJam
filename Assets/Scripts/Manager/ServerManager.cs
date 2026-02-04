@@ -28,6 +28,13 @@ namespace MMOJam.Manager
             _manager = GetComponent<NetworkManager>();
         }
 
+        public override void OnNetworkSpawn()
+        {
+            base.OnNetworkSpawn();
+
+            GameManager.Instance.InitNetwork();
+        }
+
         public void RegisterPlayer(PlayerController player) => _players.Add(player);
         public void UnregisterPlayer(PlayerController player) => _players.Remove(player);
 

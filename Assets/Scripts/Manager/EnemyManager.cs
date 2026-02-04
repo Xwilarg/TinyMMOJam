@@ -16,6 +16,7 @@ namespace MMOJam.Manager
 
         private void Awake()
         {
+            Instance = this;
             _spawnPoints = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None).Where(x => x.SpawnType == SpawnType.Enemy).ToArray();
         }
 
