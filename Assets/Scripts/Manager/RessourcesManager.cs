@@ -1,17 +1,26 @@
+using MMOJam.Player;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
-using System.Collections.Generic;
 
 namespace MMOJam.Manager
 {
-    public class RessourcesManager : NetworkBehaviour
+    public class RessourcesManager : MonoBehaviour
     {
+        [SerializeField]
+        private GameObject _prefab;
+
+        private SpawnPoint[] _spawnPoints;
+
         public static RessourcesManager Instance { private set; get; }
         private Dictionary<ulong, RessourcesHolder> _ressources_holders = new();
 
         private void Awake()
         {
             Instance = this;
+
+            _spawnPoints = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None).Where(x => x.SpawnType == SpawnType.Resource).ToArray();
         }
         public void RegisterHolder(RessourcesHolder elem)
         {

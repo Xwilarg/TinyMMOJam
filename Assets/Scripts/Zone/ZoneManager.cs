@@ -1,12 +1,11 @@
 using MMOJam.Player;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Netcode;
 using UnityEngine;
 
 namespace MMOJam.Zone
 {
-    public class ZoneManager : NetworkBehaviour
+    public class ZoneManager : MonoBehaviour
     {
         public static ZoneManager Instance { private set; get; }
 

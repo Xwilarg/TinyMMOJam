@@ -5,28 +5,25 @@ using UnityEngine;
 
 namespace MMOJam.Manager
 {
-    public class EnemyManager : NetworkBehaviour
+    public class EnemyManager : MonoBehaviour   
     {
-        [SerializeField]
-        private int _spawnsCount;
+        public static EnemyManager Instance { private set; get; }
 
         [SerializeField]
         private GameObject _playerPrefab;
 
-        public override void OnNetworkSpawn()
+        private SpawnPoint[] _spawnPoints;
+
+        private void Awake()
         {
-            base.OnNetworkSpawn();
+            _spawnPoints = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None).Where(x => x.SpawnType == SpawnType.Enemy).ToArray();
+        }
 
-            if (!ServerManager.Instance.IsAuthority)
+        public void SpawnWave(int count)
+        {
+            for (int i = 0; i < count; i++)
             {
-                return;
-            }
-
-            var spawns = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None).Where(x => x.SpawnType == SpawnType.Enemy).ToArray();
-
-            for (int i = 0; i < _spawnsCount; i++)
-            {
-                var sp = spawns[Random.Range(0, spawns.Length)];
+                var sp = _spawnPoints[Random.Range(0, _spawnPoints.Length)];
                 var go = Instantiate(_playerPrefab);
                 go.layer = LayerMask.NameToLayer("MovingProp");
                 go.GetComponent<PlayerController>().IsAi = true;
