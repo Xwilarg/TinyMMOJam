@@ -25,12 +25,17 @@ namespace MMOJam.Manager
 
         public void SpawnResources()
         {
+            if (!NetworkManager.Singleton.IsServer)
+                return;
+
             var sp = _spawnPoints[Random.Range(0, _spawnPoints.Length)];
 
             var go = Instantiate(_prefab);
             go.transform.position = sp.GetRandomPos();
-        }
 
+            var netObj = go.GetComponent<NetworkObject>();
+            netObj.Spawn();
+        }
         public void RegisterHolder(RessourcesHolder elem)
         {
             _ressources_holders.Add(elem.GetComponent<NetworkObject>().NetworkObjectId, elem);

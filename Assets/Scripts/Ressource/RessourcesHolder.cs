@@ -43,5 +43,36 @@ namespace MMOJam
 
             RessourcesManager.Instance.RegisterHolder(this);
         }
+
+        [ServerRpc]
+        public void RequestRessourceServerRpc(short id, ServerRpcParams rpcParams = default)
+        {
+            // Runs only on the server
+            _ressources.TryGetValue(id, out long value);
+
+            ClientRpcParams clientRpcParams = new ClientRpcParams
+            {
+                Send = new ClientRpcSendParams
+                {
+                    TargetClientIds = new[] { rpcParams.Receive.SenderClientId }
+                }
+            };
+
+            // Send back ONLY to the requesting client
+            SendRessourceClientRpc(id, value, clientRpcParams);
+        }
+
+        [ClientRpc]
+        private void SendRessourceClientRpc(
+            short id,
+            long value,
+            ClientRpcParams clientRpcParams = default)
+        {
+            _ressources[id] = value;
+            // Runs on the client that requested it
+            Debug.Log($"[RCN] Received resource {id}: {value}");
+
+            // You can cache it locally, update UI, etc.
+        }
     }
 }
