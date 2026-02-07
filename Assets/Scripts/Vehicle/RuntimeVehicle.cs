@@ -1,3 +1,4 @@
+using Assets.Scripts.Player;
 using MMOJam.Manager;
 using MMOJam.Player;
 using MMOJam.SO;
@@ -18,6 +19,12 @@ namespace MMOJam.Vehicle
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
+
+            GetComponent<HealthController>().OnDestroyed.AddListener(() =>
+            {
+                EjectPlayers();
+                Destroy(gameObject);
+            });
         }
 
         public override void InteractClient(PlayerController player)
@@ -47,6 +54,14 @@ namespace MMOJam.Vehicle
         public IEnumerable<PlayerController> GetPlayersInVehicle()
         {
             return ServerManager.Instance.GetPlayersInVehicle(Key);
+        }
+
+        public void EjectPlayers()
+        {
+            foreach (var player in GetPlayersInVehicle())
+            {
+                player.SetVehicle(null, (SeatType)(-1));
+            }
         }
 
         public void Move(Vector2 mov)
