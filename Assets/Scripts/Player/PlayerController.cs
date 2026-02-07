@@ -301,7 +301,7 @@ namespace MMOJam.Player
                         if (hit.collider.TryGetComponent<IShootable>(out var living))
                         {
                             Debug.Log($"[HIT] {name} shot {hit.collider.name}");
-                            living.TakeDamage(5);
+                            living.TakeDamage(_currFaction, 5);
                         }
                         ShootClientVfxRpc(hit.point);
                     }

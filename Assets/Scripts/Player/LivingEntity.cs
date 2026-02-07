@@ -1,6 +1,5 @@
-﻿using MMOJam.Manager;
+﻿using MMOJam.SO;
 using Unity.Netcode;
-using UnityEngine;
 
 namespace MMOJam.Player
 {
@@ -15,7 +14,7 @@ namespace MMOJam.Player
             _player = GetComponent<PlayerController>();
         }
 
-        public void TakeDamage(int amount)
+        public void TakeDamage(FactionInfo info, int amount)
         {
             _health -= amount;
 

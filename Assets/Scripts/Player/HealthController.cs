@@ -1,4 +1,5 @@
 ﻿using MMOJam;
+using MMOJam.SO;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
@@ -25,7 +26,7 @@ namespace Assets.Scripts.Player
         /// </summary>
         public int Health => _health;
 
-        public void TakeDamage(int amount)
+        public void TakeDamage(FactionInfo faction, int amount)
         {
             // Don't take damage if we're already dead
             if (_health <= 0)

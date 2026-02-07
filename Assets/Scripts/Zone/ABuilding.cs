@@ -1,4 +1,5 @@
-﻿using Unity.Netcode;
+﻿using MMOJam.SO;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace MMOJam.Zone
@@ -10,16 +11,16 @@ namespace MMOJam.Zone
 
         public ZoneController AttachedZone { set; get; }
 
-        public void TakeDamage(int amount)
+        public void TakeDamage(FactionInfo faction, int amount)
         {
             _health -= amount;
 
             if (_health <= 0)
             {
-                BuildingDestroyed();
+                BuildingDestroyed(faction);
             }
         }
 
-        public abstract void BuildingDestroyed();
+        public abstract void BuildingDestroyed(FactionInfo faction);
     }
 }
