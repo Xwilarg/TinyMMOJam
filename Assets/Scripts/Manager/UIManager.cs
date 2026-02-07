@@ -56,7 +56,7 @@ namespace MMOJam.Manager
                 {
                     Debug.Log($"Craft recipe {recipeId}");
                     var player = ServerManager.Instance.GetLocalPlayer();
-                    CraftingManager.Instance.RequestCraftServerRpc(player.NetworkObjectId, recipeId);
+                    ServerManager.Instance.RequestCraftServerRpc(player.NetworkObjectId, recipeId);
                 };
             };
         }

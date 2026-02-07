@@ -93,6 +93,12 @@ namespace MMOJam.Manager
             if (_interactibles.TryGetValue(key, out var i)) i.InteractClient(player);
         }
 
+        [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
+        public void RequestCraftServerRpc(ulong PlayerNetworkId, short recipeId)
+        {
+            CraftingManager.Instance.CraftRecipe(PlayerNetworkId, recipeId);
+        }
+
         public RuntimeVehicle GetVehicle(ulong key)
         {
             return _interactibles[key] as RuntimeVehicle;

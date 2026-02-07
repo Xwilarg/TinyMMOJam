@@ -76,23 +76,26 @@ namespace MMOJam.Manager
             var netObj = go.GetComponent<NetworkObject>();
             netObj.Spawn();
         }
-        [ServerRpc]
-        public void RequestCraftServerRpc(ulong PlayerNetworkId, short recipeId)
+
+        public void CraftRecipe(ulong PlayerNetworkId, short recipeId)
         {
             var player = ServerManager.Instance.GetNetworkPlayer(PlayerNetworkId);
-            if (player == null) return;
+            if (player == null)
+            {
+                Debug.Log($"[CMC] Player is null");
+                return;
+            }
 
             var holder = player._ressource_controller;
-            if (holder == null) return;
+            if (holder == null)
+            {
+                Debug.Log($"[CMC] Holder is null");
+                return;
+            }
 
             bool success = CraftingManager.Instance.TryCraft(player, recipeId);
-
-            SendCraftResultClientRpc(PlayerNetworkId, recipeId, success);
-        }
-        [ClientRpc]
-        private void SendCraftResultClientRpc(ulong PlayerNetworkId,short recipeId,bool success)
-        {
-            // Update UI, play sound, etc.
+            
+            Debug.Log($"[CMC] craft is {success}");
         }
 
     }
