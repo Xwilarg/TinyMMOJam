@@ -71,7 +71,7 @@ namespace MMOJam
             _ressources[id] = value;
             // Runs on the client that requested it
             Debug.Log($"[RCN] Received resource {id}: {value}");
-
+            UIManager.Instance.UpdateRessources(value);
             // You can cache it locally, update UI, etc.
         }
     }

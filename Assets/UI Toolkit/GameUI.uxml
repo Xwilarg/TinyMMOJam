@@ -1,9 +1,16 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:GroupBox name="network-container" style="width: 200px; height: 100px;">
+    <ui:GroupBox name="network-container" style="width: 200px; height: 100px; justify-content: space-around; align-self: center; align-items: stretch;">
         <ui:Button text="Start Host" name="btn-start_host"/>
         <ui:Button text="Start Client" name="btn-start_client"/>
     </ui:GroupBox>
     <ui:Label text="Press &apos;E&apos; to interact" name="interact_text" style="position: absolute; top: 0; right: 0;"/>
     <ui:Label text="You are in faction name" name="faction_text" style="align-self: center; font-size: 25px;"/>
     <ui:Label text="You are in faction name" name="subfaction_text" style="align-self: center;"/>
+    <ui:VisualElement name="ressource_count" style="flex-grow: 0; align-items: flex-start; justify-content: flex-end; align-self: flex-end; flex-direction: column; bottom: 0; right: 0; position: absolute;">
+        <ui:VisualElement name="ressource-1" style="flex-grow: 1; justify-content: flex-end; flex-direction: row; align-items: center;">
+            <ui:Image source="project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-4521532143779581420&amp;guid=4300465fba3070a418b125727f0b2eee&amp;type=3#arrow-right" name=""/>
+            <ui:Label text="0" name="ressource_1_amount"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:TabView/>
 </ui:UXML>

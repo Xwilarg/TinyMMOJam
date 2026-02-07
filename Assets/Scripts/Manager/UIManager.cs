@@ -13,6 +13,7 @@ namespace MMOJam.Manager
 
         private Label _label;
         private Label _factionName, _factionSubtitle;
+        private Label _ressource_amount;
 
         private void Awake()
         {
@@ -25,6 +26,8 @@ namespace MMOJam.Manager
             _factionSubtitle = _ui.rootVisualElement.Q<Label>("subfaction_text");
             _factionName.visible = false;
             _factionSubtitle.visible = false;
+
+            _ressource_amount = _ui.rootVisualElement.Q<Label>("ressource_1_amount");
         }
 
         public void ShowFactionName(int factionId)
@@ -50,6 +53,11 @@ namespace MMOJam.Manager
         public void ShowInteractionText(bool value)
         {
             _label.visible = value;
+        }
+
+        public void UpdateRessources(long value)
+        {
+            _ressource_amount.text = "" + value;
         }
     }
 }
