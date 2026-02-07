@@ -13,6 +13,8 @@ namespace MMOJam.Zone
 
         public void TakeDamage(FactionInfo faction, int amount)
         {
+            if (faction.Id == AttachedZone.Faction.Id) return;
+
             _health -= amount;
 
             if (_health <= 0)
