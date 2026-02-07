@@ -43,7 +43,7 @@ namespace MMOJam
         }
         public override void InteractClient(PlayerController player)
         {
-            var temp = player.GetComponent<RessourcesHolder>();
+            var temp = player._ressource_controller;
 
             temp.RequestRessourceServerRpc(_res_id);
             return;
@@ -51,7 +51,7 @@ namespace MMOJam
 
         public override void InteractServer(PlayerController player)
         {
-            var temp = player.GetComponent<RessourcesHolder>();
+            var temp = player._ressource_controller;
 
             long mined = System.Math.Min(_mine_amount, _res_amount);
             temp.ChangeRessources(_res_id, mined);

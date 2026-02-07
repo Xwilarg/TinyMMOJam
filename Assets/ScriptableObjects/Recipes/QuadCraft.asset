@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b307cfa7d7eef49bf26cc90b1ef67d, type: 3}
+  m_Name: QuadCraft
+  m_EditorClassIdentifier: Assembly-CSharp::MMOJam.CraftingRecipe
+  recipeId: 0
+  inputs:
+  - resourceId: 0
+    amount: 5
+  outputs: []
+  crafted: {fileID: 2689763298613642997, guid: 2568f0d51fd62784eb067000f7944363, type: 3}

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8367997122452185363}
   - component: {fileID: 9207647241103673248}
   - component: {fileID: 5981486429066279229}
+  - component: {fileID: 8753431127548136013}
   - component: {fileID: 8589843731430535709}
   - component: {fileID: 1949060560518787426}
   - component: {fileID: 2032466652937257116}
@@ -126,6 +127,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.Vehicle.RuntimeVehicle
   ShowTopMostFoldoutHeaderGroup: 1
   _info: {fileID: 11400000, guid: 1aa4310894a35e34c969d79720a40cab, type: 2}
+--- !u!114 &8753431127548136013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2689763298613642997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae0a963bad3962428cd82fcd8114af3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Player.HealthController
+  ShowTopMostFoldoutHeaderGroup: 1
+  _health: 20
 --- !u!114 &8589843731430535709
 MonoBehaviour:
   m_ObjectHideFlags: 0

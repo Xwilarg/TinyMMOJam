@@ -23,18 +23,13 @@ namespace MMOJam
             Debug.Log($"[RGT] [{string.Join(", ", _ressources.Values)}]");
         }
 
-        public void CheckRessources(short id, long amount)
+        public bool CheckRessources(short id, long amount)
         {
-            if (!ServerManager.Instance.IsAuthority) return;
+            if (!ServerManager.Instance.IsAuthority) return false;
 
             _ressources.TryGetValue(id, out long current);
-
-            long total = current + amount;
-            if (total < 0)
-                total = 0;
-
-            _ressources[id] = total;
-            Debug.Log($"[RGT] [{string.Join(", ", _ressources.Values)}]");
+            if (current < amount) return false;
+            return true;
         }
 
         public override void OnNetworkSpawn()
@@ -44,35 +39,24 @@ namespace MMOJam
             RessourcesManager.Instance.RegisterHolder(this);
         }
 
-        [ServerRpc]
-        public void RequestRessourceServerRpc(short id, ServerRpcParams rpcParams = default)
+        [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
+        public void RequestRessourceServerRpc(short id)
         {
-            // Runs only on the server
+            // Server-only
             _ressources.TryGetValue(id, out long value);
 
-            ClientRpcParams clientRpcParams = new ClientRpcParams
-            {
-                Send = new ClientRpcSendParams
-                {
-                    TargetClientIds = new[] { rpcParams.Receive.SenderClientId }
-                }
-            };
-
-            // Send back ONLY to the requesting client
-            SendRessourceClientRpc(id, value, clientRpcParams);
+            // Send ONLY to the owning client
+            SendRessourceClientRpc(id, value);
         }
 
-        [ClientRpc]
-        private void SendRessourceClientRpc(
-            short id,
-            long value,
-            ClientRpcParams clientRpcParams = default)
+
+
+        [Rpc(SendTo.Owner)]
+        private void SendRessourceClientRpc(short id, long value)
         {
             _ressources[id] = value;
-            // Runs on the client that requested it
             Debug.Log($"[RCN] Received resource {id}: {value}");
             UIManager.Instance.UpdateRessources(value);
-            // You can cache it locally, update UI, etc.
         }
     }
 }
