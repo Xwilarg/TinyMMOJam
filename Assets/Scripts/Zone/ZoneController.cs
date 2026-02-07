@@ -18,6 +18,11 @@ namespace MMOJam.Zone
         private void Awake()
         {
             _collider = GetComponent<Collider>();
+
+            foreach (var building in GetComponentsInChildren<ABuilding>())
+            {
+                building.AttachedZone = this;
+            }
         }
 
         private void Start()
