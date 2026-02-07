@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MMOJam
+namespace MMOJam.Manager
 {
     public class CraftingManager
     {

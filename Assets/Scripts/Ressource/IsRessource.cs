@@ -43,6 +43,9 @@ namespace MMOJam
         }
         public override void InteractClient(PlayerController player)
         {
+            var temp = player.GetComponent<RessourcesHolder>();
+
+            temp.RequestRessourceServerRpc(_res_id);
             return;
         }
 
