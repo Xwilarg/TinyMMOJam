@@ -1,4 +1,5 @@
-﻿using Unity.Netcode;
+﻿using MMOJam.Manager;
+using Unity.Netcode;
 
 namespace MMOJam.Player
 {
@@ -9,25 +10,29 @@ namespace MMOJam.Player
         private void Awake()
         {
             _player = GetComponent<PlayerController>();
+
+            _health.OnValueChanged += (oldValue, newValue) =>
+            {
+                if (_health.Value <= 0)
+                {
+                    if (_player.IsAi)
+                    {
+                        Destroy(gameObject);
+                    }
+                    else
+                    {
+                        if (IsOwner) _player.MoveToSpawnpoint();
+                        if (ServerManager.Instance.IsAuthority) _health.Value = 10;
+                    }
+                }
+            };
         }
 
-        private int _health = 10;
+        private NetworkVariable<int> _health = new(10);
 
         public void TakeDamage(int amount)
         {
-            _health -= amount;
-
-            if (_health <= 0)
-            {
-                if (_player.IsAi)
-                {
-                    Destroy(gameObject);
-                }
-                else
-                {
-                    _player.MoveToSpawnpoint();
-                }
-            }
+            _health.Value -= amount;
         }
     }
 }
