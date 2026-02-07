@@ -102,9 +102,17 @@ namespace MMOJam.Player
 
         public void MoveToSpawnpoint()
         {
+            Debug.Log($"[PLY] Moving to spawn point");
+
             _controller.enabled = false;
             ZoneManager.Instance.SpawnAtFaction(CurrentFaction.Value, this);
             _controller.enabled = true;
+        }
+
+        [Rpc(SendTo.Owner)]
+        public void MoveToSpawnPointRpc()
+        {
+            MoveToSpawnpoint();
         }
 
         public override void OnNetworkSpawn()
