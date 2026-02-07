@@ -309,6 +309,11 @@ namespace MMOJam.Player
             if (IsOwner && !IsAi && value.phase == InputActionPhase.Started)
             {
                 var mousePos = CursorUtils.GetPosition(_pInput);
+                if (mousePos == null)
+                {
+                    mousePos = Input.mousePosition; // Fallback, mainly for debug ig
+                    Debug.LogWarning("Mouse position not found, falling back on old input system");
+                }
                 ShootServerRpc(mousePos.Value);
             }
         }

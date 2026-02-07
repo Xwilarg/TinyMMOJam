@@ -32,7 +32,7 @@ namespace MMOJam.Manager
         {
             base.OnNetworkSpawn();
 
-            GameManager.Instance.InitNetwork();
+            if (IsAuthority) GameManager.Instance.InitNetwork();
         }
 
         public void RegisterPlayer(PlayerController player) => _players.Add(player);
