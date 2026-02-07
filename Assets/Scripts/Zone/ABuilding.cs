@@ -8,7 +8,7 @@ namespace MMOJam.Zone
         [SerializeField]
         private int _health;
 
-        public ZoneController AttachedZone { set; get; };
+        public ZoneController AttachedZone { set; get; }
 
         public void TakeDamage(int amount)
         {
