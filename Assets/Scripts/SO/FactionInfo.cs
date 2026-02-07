@@ -11,5 +11,7 @@ namespace MMOJam.SO
         public string Name;
         public string Description;
         public Color Color;
+
+        public Material Material;
     }
 }

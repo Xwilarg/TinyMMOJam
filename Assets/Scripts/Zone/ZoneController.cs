@@ -15,13 +15,28 @@ namespace MMOJam.Zone
 
         public FactionInfo Faction => _faction;
 
+        private ABuilding[] _buildings;
+
         private void Awake()
         {
             _collider = GetComponent<Collider>();
 
-            foreach (var building in GetComponentsInChildren<ABuilding>())
+            _buildings = GetComponentsInChildren<ABuilding>();
+            foreach (var building in _buildings)
             {
                 building.AttachedZone = this;
+                building.UpdateFactionData();
+            }
+        }
+
+        public void ConvertZoneTo(FactionInfo faction)
+        {
+            _faction = faction;
+
+            foreach (var building in _buildings)
+            {
+                building.Restore();
+                building.UpdateFactionData();
             }
         }
 
