@@ -23,18 +23,13 @@ namespace MMOJam
             Debug.Log($"[RGT] [{string.Join(", ", _ressources.Values)}]");
         }
 
-        public void CheckRessources(short id, long amount)
+        public bool CheckRessources(short id, long amount)
         {
-            if (!ServerManager.Instance.IsAuthority) return;
+            if (!ServerManager.Instance.IsAuthority) return false;
 
             _ressources.TryGetValue(id, out long current);
-
-            long total = current + amount;
-            if (total < 0)
-                total = 0;
-
-            _ressources[id] = total;
-            Debug.Log($"[RGT] [{string.Join(", ", _ressources.Values)}]");
+            if (current < amount) return false;
+            return true;
         }
 
         public override void OnNetworkSpawn()

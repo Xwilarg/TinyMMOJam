@@ -17,6 +17,7 @@ namespace MMOJam.Manager
 
         private Dictionary<ulong, AInteractible> _interactibles = new();
         private readonly List<PlayerController> _players = new();
+        private PlayerController _me = null;
 
         private NetworkManager _manager;
 
@@ -33,6 +34,11 @@ namespace MMOJam.Manager
             base.OnNetworkSpawn();
 
             if (IsAuthority) GameManager.Instance.InitNetwork();
+
+            foreach (var player in _players)
+            {
+                if (player.IsOwner) _me = player;
+            }
         }
 
         public void RegisterPlayer(PlayerController player) => _players.Add(player);
@@ -47,6 +53,24 @@ namespace MMOJam.Manager
                     if (player.CurrentVehicle.Value == vehicleId) yield return player;
                 }
             }
+        }
+
+        public PlayerController GetNetworkPlayer(ulong PlayerNetworkId)
+        {
+            foreach (var player in _players)
+            {
+                if (player.NetworkObjectId == PlayerNetworkId) return player;
+            }
+            return null;
+        }
+
+        public PlayerController GetLocalPlayer()
+        {
+            foreach (var player in _players)
+            {
+                if (player.IsOwner) return player;
+            }
+            return null;
         }
 
         public void RegisterInteractible(AInteractible elem)

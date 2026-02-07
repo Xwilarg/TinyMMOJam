@@ -12,5 +12,7 @@
             <ui:Label text="0" name="ressource_1_amount"/>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:TabView/>
+    <ui:VisualElement style="flex-grow: 1; position: absolute; left: 0; bottom: 0; justify-content: flex-end; align-self: flex-start; align-items: stretch;">
+        <ui:ListView name="crafting_list_ui"/>
+    </ui:VisualElement>
 </ui:UXML>

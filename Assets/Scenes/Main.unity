@@ -376,6 +376,7 @@ GameObject:
   - component: {fileID: 440216070}
   - component: {fileID: 440216065}
   - component: {fileID: 440216064}
+  - component: {fileID: 440216071}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -548,6 +549,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51edd7f1d35fc1445a69b82e9fb96f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.Manager.GameManager
+--- !u!114 &440216071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440216061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c93088b449f8c24c931a5e76a675c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MMOJam.Manager.CraftingManager
+  _existing:
+  - {fileID: 11400000, guid: bf05b89e7f1620248bb6309d61202c94, type: 2}
 --- !u!1001 &596254944
 PrefabInstance:
   m_ObjectHideFlags: 0

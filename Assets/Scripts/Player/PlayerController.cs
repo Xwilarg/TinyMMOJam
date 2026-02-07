@@ -36,6 +36,7 @@ namespace MMOJam.Player
 
         protected CharacterController _controller;
         private PlayerInput _pInput;
+        public RessourcesHolder _ressource_controller;
         private Camera _cam;
         private Collider _coll;
 
@@ -53,6 +54,7 @@ namespace MMOJam.Player
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
+            _ressource_controller = GetComponent<RessourcesHolder>();
             _pInput = GetComponentInChildren<PlayerInput>();
             _cam = Camera.main;
             _coll = GetComponent<Collider>();
