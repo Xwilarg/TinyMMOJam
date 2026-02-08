@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 namespace MMOJam.Manager
 {
@@ -14,6 +16,9 @@ namespace MMOJam.Manager
 
         [SerializeField]
         private FactionInfo[] _factions;
+
+        [SerializeField]
+        private UIDocument _ui;
 
         private Dictionary<ulong, AInteractible> _interactibles = new();
         private readonly List<PlayerController> _players = new();
@@ -27,6 +32,12 @@ namespace MMOJam.Manager
         {
             Instance = this;
             _manager = GetComponent<NetworkManager>();
+
+            _ui.rootVisualElement.Q<VisualElement>("disconnected").visible = false;
+            _ui.rootVisualElement.Q<Button>("disconnected-menu").clicked += () =>
+            {
+                SceneManager.LoadScene("Menu");
+            };
         }
 
         public override void OnNetworkSpawn()
@@ -39,6 +50,13 @@ namespace MMOJam.Manager
             {
                 if (player.IsOwner) _me = player;
             }
+        }
+
+        public override void OnNetworkDespawn()
+        {
+            base.OnNetworkDespawn();
+
+            SceneManager.LoadScene("Menu");
         }
 
         public void RegisterPlayer(PlayerController player) => _players.Add(player);

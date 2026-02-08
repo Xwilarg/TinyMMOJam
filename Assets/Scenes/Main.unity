@@ -1058,6 +1058,7 @@ MonoBehaviour:
   _factions:
   - {fileID: 11400000, guid: 870a85175cbc35f49bd70a9f4118943a, type: 2}
   - {fileID: 11400000, guid: a8f606ab604766847b3ad3b79a553bd6, type: 2}
+  _ui: {fileID: 822625186}
 --- !u!1 &1228266493
 GameObject:
   m_ObjectHideFlags: 0

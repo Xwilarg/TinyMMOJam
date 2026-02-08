@@ -15,4 +15,10 @@
     <ui:VisualElement style="flex-grow: 1; position: absolute; left: 0; bottom: 0; justify-content: flex-end; align-self: flex-start; align-items: stretch;">
         <ui:ListView name="crafting_list_ui"/>
     </ui:VisualElement>
+    <ui:VisualElement name="disconnected" style="flex-grow: 1; position: absolute; top: 0; right: 0; bottom: 0; left: 0; justify-content: center; align-items: center; align-self: center; display: flex;">
+        <ui:Image source="project://database/Resources/unity_builtin_extra?fileID=10305&amp;guid=0000000000000000f000000000000000&amp;type=0#Default-Checker" style="width: 200px; height: 200px; align-items: center; justify-content: center;">
+            <ui:Label text="You got disconnected"/>
+            <ui:Button text="Back to main menu&#10;" name="disconnected-menu" style="top: 20px;"/>
+        </ui:Image>
+    </ui:VisualElement>
 </ui:UXML>
