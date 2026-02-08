@@ -1,0 +1,8 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; position: absolute; bottom: 0; right: 0; top: 0; left: 0; align-items: center; justify-content: center; align-self: center; align-content: center;">
+        <ui:VisualElement style="flex-grow: 1; width: 100%; align-content: center;">
+            <ui:Button text="Join Dedicated Server" name="dedicated-server" style="justify-content: center; align-self: auto; align-items: center; align-content: center; top: 45%;"/>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; width: 100%;"/>
+    </ui:VisualElement>
+</ui:UXML>
