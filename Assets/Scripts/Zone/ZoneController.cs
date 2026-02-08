@@ -38,6 +38,8 @@ namespace MMOJam.Zone
                 building.Restore();
                 building.UpdateFactionData();
             }
+
+            ZoneManager.Instance.CheckGameVictory();
         }
 
         private void Start()

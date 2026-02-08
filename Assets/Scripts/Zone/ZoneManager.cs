@@ -30,6 +30,14 @@ namespace MMOJam.Zone
             return true;
         }
 
+        public void CheckGameVictory()
+        {
+            if (_zones.GroupBy(x => x.Faction.Id).Count() == 1)
+            {
+                // We destroyed all buildings, now we just need to kill all remainding players
+            }
+        }
+
         public ZoneController GetZoneFromTransform(Transform transform)
         {
             return _zones.FirstOrDefault(zone => zone.Contains(transform));
