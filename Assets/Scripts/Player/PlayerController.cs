@@ -47,8 +47,6 @@ namespace MMOJam.Player
 
         private readonly List<AInteractible> _interactibles = new();
 
-        private FactionInfo _currFaction;
-
         private bool _canPlay = true;
 
         // Server only
@@ -308,7 +306,7 @@ namespace MMOJam.Player
                         if (hit.collider.TryGetComponent<IShootable>(out var living))
                         {
                             Debug.Log($"[HIT] {name} shot {hit.collider.name}");
-                            living.TakeDamage(_currFaction, 5);
+                            living.TakeDamage(ServerManager.Instance.GetFaction(CurrentFaction.Value), 5);
                         }
                         ShootClientVfxRpc(hit.point);
                     }

@@ -601,6 +601,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1348364575}
     m_Modifications:
+    - target: {fileID: 73730317618160021, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
+      propertyPath: _health
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 101907348557930730, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1491982163
@@ -608,6 +612,10 @@ PrefabInstance:
     - target: {fileID: 101907348557930730, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 228346760
+      objectReference: {fileID: 0}
+    - target: {fileID: 487310855391956315, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
+      propertyPath: _health
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1000086534014459376, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: m_Name
@@ -664,6 +672,10 @@ PrefabInstance:
     - target: {fileID: 1975669230628256487, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135090933980604215, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
+      propertyPath: _health
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2341053129316504873, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: m_LocalScale.y
@@ -1377,6 +1389,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1348364575}
     m_Modifications:
+    - target: {fileID: 73730317618160021, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
+      propertyPath: _health
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 101907348557930730, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 2674975334
@@ -1384,6 +1400,10 @@ PrefabInstance:
     - target: {fileID: 101907348557930730, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 228346760
+      objectReference: {fileID: 0}
+    - target: {fileID: 487310855391956315, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
+      propertyPath: _health
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1000086534014459376, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: m_Name
@@ -1436,6 +1456,10 @@ PrefabInstance:
     - target: {fileID: 1975669230628256487, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135090933980604215, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
+      propertyPath: _health
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2341053129316504873, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: m_LocalScale.y
