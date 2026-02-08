@@ -34,6 +34,7 @@ namespace MMOJam.Player
                 }
                 else
                 {
+                    _player.Die();
                     _player.MoveToSpawnPointRpc();
 
                     GameManager.Instance.CheckVictoryCondition();

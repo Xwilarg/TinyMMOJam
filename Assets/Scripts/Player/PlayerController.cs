@@ -41,6 +41,7 @@ namespace MMOJam.Player
         private Collider _coll;
         private LivingEntity _livingEntity;
         private MeshRenderer _mr;
+        private Rigidbody _rb;
 
         private Vector2 _mov;
         private float _verticalSpeed;
@@ -62,6 +63,7 @@ namespace MMOJam.Player
             _cam = Camera.main;
             _coll = GetComponent<Collider>();
             _mr = GetComponentInChildren<MeshRenderer>();
+            _rb = GetComponent<Rigidbody>();
 
             _lr.gameObject.SetActive(false);
 
@@ -112,23 +114,37 @@ namespace MMOJam.Player
             Debug.Log($"[PLY] Moving to spawn point");
 
             _controller.enabled = false;
-            if (!ZoneManager.Instance.SpawnAtFaction(CurrentFaction.Value, this))
+            if (ZoneManager.Instance.SpawnAtFaction(CurrentFaction.Value, this))
             {
+                Debug.Log("[PLY] Succesfully respawned");
+                _rb.isKinematic = true;
+                transform.rotation = Quaternion.identity;
                 _livingEntity.RestoreHealth();
-                // Also need to recheck spawn once a new zone is capture
             }
             _controller.enabled = true;
         }
 
         public void TryRespawn()
         {
-            MoveToSpawnpoint();
+            StartCoroutine(WaitAndRespawn());
+        }
+
+        private IEnumerator WaitAndRespawn()
+        {
+            yield return new WaitForSeconds(3f);
+            if (!IsAlive) MoveToSpawnpoint();
         }
 
         [Rpc(SendTo.Owner)]
         public void MoveToSpawnPointRpc()
         {
             TryRespawn();
+        }
+
+        public void Die()
+        {
+            _rb.isKinematic = false;
+            _rb.AddTorque(new Vector3(Random.value, Random.value, Random.value).normalized * 10f);
         }
 
         public override void OnNetworkSpawn()
@@ -253,7 +269,7 @@ namespace MMOJam.Player
             else
             {
                 var pos = _mov;
-                Vector3 desiredMove = transform.forward * pos.y + transform.right * pos.x;
+                Vector3 desiredMove = IsAlive ? transform.forward * pos.y + transform.right * pos.x : Vector3.zero;
 
                 // Get a normal for the surface that is being touched to move along it
                 Physics.SphereCast(transform.position, _controller.radius, Vector3.down, out RaycastHit hitInfo,
@@ -307,6 +323,8 @@ namespace MMOJam.Player
         [Rpc(SendTo.Server)]
         public void ShootServerRpc(Vector2 mousePos)
         {
+            if (!IsAlive) return;
+
             if (CurrentVehicle.Value == 0)
             {
                 var ray = _cam.ScreenPointToRay(mousePos);
@@ -339,7 +357,7 @@ namespace MMOJam.Player
 
         public void OnShoot(InputAction.CallbackContext value)
         {
-            if (IsOwner && !IsAi && value.phase == InputActionPhase.Started)
+            if (IsOwner && !IsAi && IsAlive && value.phase == InputActionPhase.Started)
             {
                 var mousePos = CursorUtils.GetPosition(_pInput);
                 if (mousePos != null)
@@ -352,7 +370,7 @@ namespace MMOJam.Player
 
         public void OnInteract(InputAction.CallbackContext value)
         {
-            if (IsOwner && !IsAi && _interactibles.Count > 0 && value.phase == InputActionPhase.Started)
+            if (IsOwner && !IsAi && IsAlive && _interactibles.Count > 0 && value.phase == InputActionPhase.Started)
             {
                 if (CurrentVehicle.Value != 0)
                 {
