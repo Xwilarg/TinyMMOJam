@@ -160,6 +160,7 @@ MonoBehaviour:
   _gravityMultiplier: 0.75
   _renderer: {fileID: 5674750210678366613}
   _lr: {fileID: 8671688564745002720}
+  _ressource_controller: {fileID: 0}
 --- !u!114 &1411841755755137457
 MonoBehaviour:
   m_ObjectHideFlags: 0

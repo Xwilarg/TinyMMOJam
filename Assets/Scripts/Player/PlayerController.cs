@@ -40,6 +40,7 @@ namespace MMOJam.Player
         private Camera _cam;
         private Collider _coll;
         private LivingEntity _livingEntity;
+        private MeshRenderer _mr;
 
         private Vector2 _mov;
         private float _verticalSpeed;
@@ -62,6 +63,7 @@ namespace MMOJam.Player
             _pInput = GetComponentInChildren<PlayerInput>();
             _cam = Camera.main;
             _coll = GetComponent<Collider>();
+            _mr = GetComponentInChildren<MeshRenderer>();
 
             _lr.gameObject.SetActive(false);
 
@@ -102,6 +104,7 @@ namespace MMOJam.Player
             var faction = ServerManager.Instance.GetNextFaction();
 
             CurrentFaction.Value = faction;
+            _mr.material = ServerManager.Instance.GetFaction(faction).Material;
 
             MoveToSpawnpoint();
         }
