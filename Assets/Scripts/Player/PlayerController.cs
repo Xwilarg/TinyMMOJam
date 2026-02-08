@@ -230,6 +230,14 @@ namespace MMOJam.Player
             CurrentSeat.Value = (SeatType)(-1);
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (ServerManager.Instance.IsAuthority && other.CompareTag("Trap"))
+            {
+                _livingEntity.TakeDamage(ServerManager.Instance.GetFaction(CurrentFaction.Value), 999);
+            }
+        }
+
         protected virtual void Update()
         {
             if (!IsOwner)
