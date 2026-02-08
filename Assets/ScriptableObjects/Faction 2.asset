@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Faction 2
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.SO.FactionInfo
   Id: 2
-  Name: "\xDCberwurst faction"
-  Description: Zirk told me to replace this but I don't know either
+  Name: Dutch faction
+  Description: Flooding others nations since 1927
   Color: {r: 0, g: 0, b: 1, a: 1}
   Material: {fileID: 2100000, guid: cd554829b95367141a75247c6a02cc8e, type: 2}
