@@ -49,6 +49,8 @@ namespace MMOJam.Player
 
         private FactionInfo _currFaction;
 
+        private bool _canPlay = true;
+
         // Server only
 
         private void Awake()
@@ -107,7 +109,11 @@ namespace MMOJam.Player
             Debug.Log($"[PLY] Moving to spawn point");
 
             _controller.enabled = false;
-            ZoneManager.Instance.SpawnAtFaction(CurrentFaction.Value, this);
+            if (!ZoneManager.Instance.SpawnAtFaction(CurrentFaction.Value, this))
+            {
+                _canPlay = false; // Need to do something with that!
+                // Also need to recheck spawn once a new zone is capture
+            }
             _controller.enabled = true;
         }
 

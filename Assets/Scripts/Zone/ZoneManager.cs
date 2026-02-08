@@ -21,10 +21,13 @@ namespace MMOJam.Zone
             _zones.Add(zone);
         }
 
-        public void SpawnAtFaction(int factionId, PlayerController player)
+        public bool SpawnAtFaction(int factionId, PlayerController player)
         {
             // This should work because SO are global instances? Unity docs better not have lied
-            _zones.First(z => z.Faction.Id == factionId).SpawnPlayer(player);
+            var zone = _zones.FirstOrDefault(z => z.Faction.Id == factionId);
+            if (zone == null) return false;
+            zone.SpawnPlayer(player);
+            return true;
         }
 
         public ZoneController GetZoneFromTransform(Transform transform)
