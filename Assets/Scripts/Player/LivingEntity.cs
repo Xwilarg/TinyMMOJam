@@ -8,9 +8,14 @@ namespace MMOJam.Player
     {
         private PlayerController _player;
 
-        private int _health = 10;
+        private NetworkVariable<int> _health = new(10);
 
-        public bool IsAlive => _health > 0;
+        public bool IsAlive => _health.Value > 0;
+
+        public void RestoreHealth()
+        {
+            _health.Value = 10;
+        }
 
         private void Awake()
         {
@@ -19,9 +24,9 @@ namespace MMOJam.Player
 
         public void TakeDamage(FactionInfo info, int amount)
         {
-            _health -= amount;
+            _health.Value -= amount;
 
-            if (_health <= 0)
+            if (_health.Value <= 0)
             {
                 if (_player.IsAi)
                 {
@@ -30,7 +35,6 @@ namespace MMOJam.Player
                 else
                 {
                     _player.MoveToSpawnPointRpc();
-                    _health = 10;
 
                     GameManager.Instance.CheckVictoryCondition();
                 }

@@ -132,5 +132,13 @@ namespace MMOJam.Manager
                 if (!player.IsAi && player.CurrentFaction.Value != faction.Id) yield return player;
             }
         }
+
+        public IEnumerable<PlayerController> GetDeadFactionPlayer(FactionInfo faction)
+        {
+            foreach (var player in _players)
+            {
+                if (player.CurrentFaction.Value == faction.Id && !player.IsAlive) yield return player;
+            }
+        }
     }
 }

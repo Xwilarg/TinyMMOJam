@@ -41,6 +41,11 @@ namespace MMOJam.Zone
             }
 
             GameManager.Instance.CheckVictoryCondition();
+
+            foreach (var p in ServerManager.Instance.GetDeadFactionPlayer(Faction))
+            {
+                p.TryRespawn();
+            }
         }
 
         private void Start()

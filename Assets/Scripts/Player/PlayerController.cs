@@ -49,8 +49,6 @@ namespace MMOJam.Player
 
         private readonly List<AInteractible> _interactibles = new();
 
-        private bool _canPlay = true;
-
         public bool IsAlive => _livingEntity.IsAlive;
 
         // Server only
@@ -116,16 +114,21 @@ namespace MMOJam.Player
             _controller.enabled = false;
             if (!ZoneManager.Instance.SpawnAtFaction(CurrentFaction.Value, this))
             {
-                _canPlay = false; // Need to do something with that!
+                _livingEntity.RestoreHealth();
                 // Also need to recheck spawn once a new zone is capture
             }
             _controller.enabled = true;
         }
 
+        public void TryRespawn()
+        {
+            MoveToSpawnpoint();
+        }
+
         [Rpc(SendTo.Owner)]
         public void MoveToSpawnPointRpc()
         {
-            MoveToSpawnpoint();
+            TryRespawn();
         }
 
         public override void OnNetworkSpawn()
