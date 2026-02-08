@@ -1,4 +1,5 @@
 using MMOJam.Player;
+using MMOJam.SO;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -30,12 +31,13 @@ namespace MMOJam.Zone
             return true;
         }
 
-        public void CheckGameVictory()
+        public FactionInfo GetWinningFaction()
         {
-            if (_zones.GroupBy(x => x.Faction.Id).Count() == 1)
-            {
-                // We destroyed all buildings, now we just need to kill all remainding players
-            }
+            var alives = _zones.GroupBy(x => x.Faction.Id);
+
+            if (alives.Count() == 1) return alives.First().First().Faction;
+
+            return null;
         }
 
         public ZoneController GetZoneFromTransform(Transform transform)

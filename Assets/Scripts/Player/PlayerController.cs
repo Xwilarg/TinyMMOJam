@@ -39,6 +39,7 @@ namespace MMOJam.Player
         public RessourcesHolder _ressource_controller;
         private Camera _cam;
         private Collider _coll;
+        private LivingEntity _livingEntity;
 
         private Vector2 _mov;
         private float _verticalSpeed;
@@ -49,10 +50,13 @@ namespace MMOJam.Player
 
         private bool _canPlay = true;
 
+        public bool IsAlive => _livingEntity.IsAlive;
+
         // Server only
 
         private void Awake()
         {
+            _livingEntity = GetComponent<LivingEntity>();
             _controller = GetComponent<CharacterController>();
             _ressource_controller = GetComponent<RessourcesHolder>();
             _pInput = GetComponentInChildren<PlayerInput>();

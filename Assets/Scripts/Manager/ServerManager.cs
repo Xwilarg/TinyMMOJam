@@ -44,6 +44,9 @@ namespace MMOJam.Manager
         public void RegisterPlayer(PlayerController player) => _players.Add(player);
         public void UnregisterPlayer(PlayerController player) => _players.Remove(player);
 
+        public bool AreOthersFactionDead(FactionInfo faction)
+            => GetAllOtherFactionPlayer(faction).All(x => !x.IsAlive);
+
         public IEnumerable<PlayerController> GetPlayersInVehicle(ulong vehicleId)
         {
             lock (_players)
@@ -120,6 +123,14 @@ namespace MMOJam.Manager
 
             // Get next faction with least players
             return _factions.OrderBy(f => _players.Count(p => p.CurrentFaction.Value == f.Id)).First().Id;
+        }
+
+        public IEnumerable<PlayerController> GetAllOtherFactionPlayer(FactionInfo faction)
+        {
+            foreach (var player in _players)
+            {
+                if (!player.IsAi && player.CurrentFaction.Value != faction.Id) yield return player;
+            }
         }
     }
 }

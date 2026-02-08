@@ -1,4 +1,5 @@
-﻿using MMOJam.SO;
+﻿using MMOJam.Manager;
+using MMOJam.SO;
 using Unity.Netcode;
 
 namespace MMOJam.Player
@@ -8,6 +9,8 @@ namespace MMOJam.Player
         private PlayerController _player;
 
         private int _health = 10;
+
+        public bool IsAlive => _health > 0;
 
         private void Awake()
         {
@@ -28,6 +31,8 @@ namespace MMOJam.Player
                 {
                     _player.MoveToSpawnPointRpc();
                     _health = 10;
+
+                    GameManager.Instance.CheckVictoryCondition();
                 }
             }
         }

@@ -1,4 +1,5 @@
-﻿using System.Resources;
+﻿using MMOJam.Zone;
+using System.Resources;
 using UnityEngine;
 
 namespace MMOJam.Manager
@@ -16,6 +17,19 @@ namespace MMOJam.Manager
         {
             EnemyManager.Instance.SpawnWave(2);
             RessourcesManager.Instance.SpawnResources();
+        }
+
+        public void CheckVictoryCondition()
+        {
+            var winner = ZoneManager.Instance.GetWinningFaction();
+            if (winner != null) // All buildings belong to a single faction
+            {
+                if (ServerManager.Instance.AreOthersFactionDead(winner))
+                {
+                    // We win yay
+                    Debug.Log($"{winner.Name} won!");
+                }
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MMOJam.Player;
+﻿using MMOJam.Manager;
+using MMOJam.Player;
 using MMOJam.SO;
 using MMOJam.Vehicle;
 using Unity.Netcode;
@@ -39,7 +40,7 @@ namespace MMOJam.Zone
                 building.UpdateFactionData();
             }
 
-            ZoneManager.Instance.CheckGameVictory();
+            GameManager.Instance.CheckVictoryCondition();
         }
 
         private void Start()
