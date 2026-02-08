@@ -272,10 +272,11 @@ namespace MMOJam.Player
         [Rpc(SendTo.ClientsAndHost)]
         public void ShootClientVfxRpc(Vector3 dest)
         {
+            var source = new Vector3(transform.position.x, 1f, transform.position.z);
             _lr.gameObject.SetActive(true);
             _lr.SetPositions(new Vector3[]
             {
-                transform.position,
+                source,
                 dest
             });
             StartCoroutine(ShootVfx());
