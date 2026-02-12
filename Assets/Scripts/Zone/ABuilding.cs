@@ -9,17 +9,17 @@ namespace MMOJam.Zone
         [SerializeField]
         private int _health;
 
+        [SerializeField]
+        private MeshRenderer _flag;
+
         private int _maxHealth;
 
         public ZoneController AttachedZone { set; get; }
-
-        private MeshRenderer _renderer;
 
         public bool IsAlive => _health > 0;
 
         private void Awake()
         {
-            _renderer = GetComponent<MeshRenderer>();
             _maxHealth = _health;
         }
 
@@ -30,7 +30,7 @@ namespace MMOJam.Zone
 
         public void UpdateFactionData()
         {
-            _renderer.material = AttachedZone.Faction.Material;
+            _flag.material = AttachedZone.Faction.Material;
         }
 
         public void TakeDamage(FactionInfo faction, int amount)
