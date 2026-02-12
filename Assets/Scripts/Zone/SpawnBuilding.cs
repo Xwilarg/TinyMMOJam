@@ -8,10 +8,14 @@ namespace MMOJam.Zone
     {
         public override void BuildingDestroyed(FactionInfo faction)
         {
+            base.BuildingDestroyed(faction);
             Debug.Log("[BLD] Spawn destroyed");
 
             AttachedZone.ConvertZoneTo(faction);
         }
+
+        public override void BuildingRestored(FactionInfo _)
+        { }
 
         public void SpawnPlayer(PlayerController player)
         {

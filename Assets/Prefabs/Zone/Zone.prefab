@@ -226,6 +226,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   _health: 100
   _flag: {fileID: 1336810703304584872}
+  _factionNeutral: {fileID: 2100000, guid: 9a9dd635ccc24e149af8e0a49ee0e152, type: 2}
 --- !u!1 &4000383234085003588
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +356,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   _health: 100
   _flag: {fileID: 3425773247856292515}
+  _factionNeutral: {fileID: 2100000, guid: 9a9dd635ccc24e149af8e0a49ee0e152, type: 2}
 --- !u!1 &8354886401602321372
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +486,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   _health: 100
   _flag: {fileID: 7070089514435755340}
+  _factionNeutral: {fileID: 2100000, guid: 9a9dd635ccc24e149af8e0a49ee0e152, type: 2}
 --- !u!1001 &1980464380559683173
 PrefabInstance:
   m_ObjectHideFlags: 0

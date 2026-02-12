@@ -46,6 +46,11 @@ namespace MMOJam.Zone
             {
                 p.TryRespawn();
             }
+
+            foreach (var building in _buildings)
+            {
+                building.BuildingRestored(faction);
+            }
         }
 
         private void Start()

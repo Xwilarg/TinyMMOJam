@@ -12,11 +12,15 @@ namespace MMOJam.Zone
         [SerializeField]
         private MeshRenderer _flag;
 
+        [SerializeField]
+        private Material _factionNeutral;
+
         private int _maxHealth;
 
         public ZoneController AttachedZone { set; get; }
 
         public bool IsAlive => _health > 0;
+        private int _brokenCounter = 0;
 
         private void Awake()
         {
@@ -35,16 +39,33 @@ namespace MMOJam.Zone
 
         public void TakeDamage(FactionInfo faction, int amount)
         {
-            if (faction.Id == AttachedZone.Faction.Id) return;
-
-            _health -= amount;
-
-            if (_health <= 0)
+            if (faction.Id == AttachedZone.Faction.Id)
             {
-                BuildingDestroyed(faction);
+                if (_brokenCounter > 0)
+                {
+                    _brokenCounter--;
+                    if (_brokenCounter == 0)
+                    {
+                        BuildingRestored(faction);
+                    }
+                }
+            }
+            else
+            {
+                _health -= amount;
+
+                if (_health <= 0)
+                {
+                    BuildingDestroyed(faction);
+                    _brokenCounter = 10;
+                }
             }
         }
 
-        public abstract void BuildingDestroyed(FactionInfo faction);
+        public virtual void BuildingDestroyed(FactionInfo faction)
+        {
+            _flag.material = _factionNeutral;
+        }
+        public abstract void BuildingRestored(FactionInfo faction);
     }
 }
