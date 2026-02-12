@@ -1863,14 +1863,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quad
       objectReference: {fileID: 0}
-    - target: {fileID: 2689763298613642997, guid: 2568f0d51fd62784eb067000f7944363, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 2836220005472377750, guid: 2568f0d51fd62784eb067000f7944363, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3114567279143280013, guid: 2568f0d51fd62784eb067000f7944363, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.25
@@ -1909,10 +1901,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3114567279143280013, guid: 2568f0d51fd62784eb067000f7944363, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8589843731430535709, guid: 2568f0d51fd62784eb067000f7944363, type: 3}
-      propertyPath: AuthorityMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9207647241103673248, guid: 2568f0d51fd62784eb067000f7944363, type: 3}
