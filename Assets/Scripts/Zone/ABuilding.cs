@@ -1,4 +1,5 @@
-﻿using MMOJam.SO;
+﻿using MMOJam.Player;
+using MMOJam.SO;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -67,5 +68,7 @@ namespace MMOJam.Zone
             _flag.material = _factionNeutral;
         }
         public abstract void BuildingRestored(FactionInfo faction);
+        public abstract void OnZoneEnter(PlayerController player);
+        public abstract void OnZoneExit(PlayerController player);
     }
 }

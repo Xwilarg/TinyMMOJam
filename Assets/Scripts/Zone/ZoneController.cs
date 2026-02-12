@@ -74,7 +74,13 @@ namespace MMOJam.Zone
 
             if (other.CompareTag("Player"))
             {
-                other.GetComponent<PlayerController>().SetZone(newZone);
+                var player = other.GetComponent<PlayerController>();
+                player.SetZone(newZone);
+                foreach (var bat in _buildings)
+                {
+                    if (newZone == null) bat.OnZoneExit(player);
+                    else bat.OnZoneEnter(player);
+                }
             }
 
             if (other.CompareTag("Vehicle"))

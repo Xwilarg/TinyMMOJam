@@ -18,6 +18,8 @@ namespace MMOJam.Manager
         private Label _ressource_amount;
         private List<short> _craftRecipeIds = new();
 
+        private Image _minimap;
+
 
         private void Awake()
         {
@@ -33,6 +35,8 @@ namespace MMOJam.Manager
 
             _craftingList = _ui.rootVisualElement.Q<ListView>("crafting_list_ui");
             _ressource_amount = _ui.rootVisualElement.Q<Label>("ressource_1_amount");
+
+            _minimap = _ui.rootVisualElement.Q<Image>("minimap");
         }
 
         private void Start()
@@ -61,6 +65,10 @@ namespace MMOJam.Manager
             };
         }
 
+        public void ToggleMinimap(bool value)
+        {
+            _minimap.visible = value;
+        }
 
         public void ShowFactionName(int factionId)
         {

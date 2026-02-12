@@ -1,4 +1,5 @@
-﻿using MMOJam.SO;
+﻿using MMOJam.Player;
+using MMOJam.SO;
 using UnityEngine;
 
 namespace MMOJam.Zone
@@ -12,6 +13,11 @@ namespace MMOJam.Zone
         }
 
         public override void BuildingRestored(FactionInfo _)
+        { }
+
+        public override void OnZoneEnter(PlayerController player)
+        { }
+        public override void OnZoneExit(PlayerController player)
         { }
     }
 }

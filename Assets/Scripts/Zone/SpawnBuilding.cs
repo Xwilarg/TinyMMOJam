@@ -21,5 +21,10 @@ namespace MMOJam.Zone
         {
             player.transform.position = transform.position;
         }
+
+        public override void OnZoneEnter(PlayerController player)
+        { }
+        public override void OnZoneExit(PlayerController player)
+        { }
     }
 }

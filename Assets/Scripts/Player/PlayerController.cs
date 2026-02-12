@@ -97,6 +97,8 @@ namespace MMOJam.Player
             };
         }
 
+        public bool IsLocalHuman => IsOwner && !IsAi;
+
         public void SetupServer()
         {
             Debug.Log($"[PLY] SetupServer called for {NetworkObjectId}");
@@ -151,12 +153,12 @@ namespace MMOJam.Player
         {
             base.OnNetworkSpawn();
 
-            if (IsOwner && !IsAi)
+            if (IsLocalHuman)
             {
                 FindFirstObjectByType<CinemachineCamera>().Target.TrackingTarget = transform;
             }
 
-            if (IsHost || IsServer || (IsOwner && !IsAi))
+            if (IsHost || IsServer || (IsLocalHuman))
             {
                 var tArea = GetComponentInChildren<TriggerArea>();
                 tArea.OnTriggerEnterEvent.AddListener((c) =>
@@ -165,7 +167,7 @@ namespace MMOJam.Player
                     if (c.TryGetComponent<AInteractible>(out var cComp) && !_interactibles.Any(x => x.gameObject.GetEntityId() == c.gameObject.GetEntityId()))
                     {
                         _interactibles.Add(cComp);
-                        if (IsOwner && !IsAi)
+                        if (IsLocalHuman)
                         {
                             UIManager.Instance.ShowInteractionText(true);
                         }
@@ -176,7 +178,7 @@ namespace MMOJam.Player
                     if (c.TryGetComponent<AInteractible>(out var cComp))
                     {
                         _interactibles.RemoveAll(x => x.gameObject.GetEntityId() == c.gameObject.GetEntityId());
-                        if (_interactibles.Count == 0 && IsOwner && !IsAi)
+                        if (_interactibles.Count == 0 && IsLocalHuman)
                         {
                             UIManager.Instance.ShowInteractionText(false);
                         }
@@ -298,7 +300,7 @@ namespace MMOJam.Player
 
         public void OnMovement(InputAction.CallbackContext value)
         {
-            if (IsOwner && !IsAi) _mov = value.ReadValue<Vector2>();
+            if (IsLocalHuman) _mov = value.ReadValue<Vector2>();
         }
 
         [Rpc(SendTo.ClientsAndHost)]
@@ -357,7 +359,7 @@ namespace MMOJam.Player
 
         public void OnShoot(InputAction.CallbackContext value)
         {
-            if (IsOwner && !IsAi && IsAlive && value.phase == InputActionPhase.Started)
+            if (IsLocalHuman && IsAlive && value.phase == InputActionPhase.Started)
             {
                 var mousePos = CursorUtils.GetPosition(_pInput);
                 if (mousePos != null)
@@ -370,7 +372,7 @@ namespace MMOJam.Player
 
         public void OnInteract(InputAction.CallbackContext value)
         {
-            if (IsOwner && !IsAi && IsAlive && _interactibles.Count > 0 && value.phase == InputActionPhase.Started)
+            if (IsLocalHuman && IsAlive && _interactibles.Count > 0 && value.phase == InputActionPhase.Started)
             {
                 if (CurrentVehicle.Value != 0)
                 {
