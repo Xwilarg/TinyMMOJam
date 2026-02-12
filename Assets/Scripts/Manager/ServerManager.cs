@@ -62,7 +62,7 @@ namespace MMOJam.Manager
         {
             base.OnNetworkDespawn();
 
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("Main");
         }
 
         public void RegisterPlayer(PlayerController player) => _players.Add(player);

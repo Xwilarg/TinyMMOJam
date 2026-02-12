@@ -1,5 +1,6 @@
 ﻿using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,38 +13,41 @@ namespace MMOJam.Manager
         [SerializeField]
         private UIDocument _uiDocument;
 
-        public static string IP { set; get; } = null;
-        public static ushort? Port { set; get; } = null;
-
         private void Awake()
         {
             Instance = this;
 
             var nm = GetComponent<NetworkManager>();
 
-#if UNITY_EDITOR
-            IP ??= "localhost";
-            Port ??= 7777;
+#if !UNITY_EDITOR
+            _uiDocument.rootVisualElement.Q<Button>("btn-start_host").visible = false;
+            _uiDocument.rootVisualElement.Q<Button>("btn-start_client").visible = false;
 #endif
 
             var transport = GetComponent<UnityTransport>();
-            transport.ConnectionData.Address = IP;
-            transport.ConnectionData.Port = Port.Value;
 
-#if UNITY_EDITOR
             _uiDocument.rootVisualElement.Q<Button>("btn-start_host").clicked += () =>
             {
+                transport.ConnectionData.Address = "localhost";
+                transport.ConnectionData.Port = 7777;
                 nm.StartHost();
                 _uiDocument.rootVisualElement.Q<GroupBox>("network-container").visible = false;
             };
             _uiDocument.rootVisualElement.Q<Button>("btn-start_client").clicked += () =>
             {
+                transport.ConnectionData.Address = "localhost";
+                transport.ConnectionData.Port = 7777;
                 nm.StartClient();
                 _uiDocument.rootVisualElement.Q<GroupBox>("network-container").visible = false;
             };
-#else
-             _uiDocument.rootVisualElement.Q<GroupBox>("network-container").visible = false;
-#endif
+
+            _uiDocument.rootVisualElement.Q<Button>("btn-join_dedicated").clicked += () =>
+            {
+                transport.ConnectionData.Address = "51.159.6.4";
+                transport.ConnectionData.Port = 9761;
+                nm.StartClient();
+                _uiDocument.rootVisualElement.Q<GroupBox>("network-container").visible = false;
+            };
         }
     }
 }
