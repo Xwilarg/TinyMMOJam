@@ -3,6 +3,7 @@ using MMOJam.SO;
 using MMOJam.Vehicle;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Cinemachine;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,9 @@ namespace MMOJam.Manager
 
         [SerializeField]
         private UIDocument _ui;
+
+        [SerializeField]
+        private CinemachineCamera _cam;
 
         private Dictionary<ulong, AInteractible> _interactibles = new();
         private readonly List<PlayerController> _players = new();
@@ -50,6 +54,8 @@ namespace MMOJam.Manager
             {
                 if (player.IsOwner) _me = player;
             }
+
+            _cam.Lens.OrthographicSize = 7.5f;
         }
 
         public override void OnNetworkDespawn()

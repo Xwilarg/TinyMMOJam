@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Image name="minimap" source="project://database/Assets/Minimap.renderTexture?fileID=8400000&amp;guid=942f8bf8a904c624a9e9a751a2a06015&amp;type=2#Minimap" style="top: 0; left: 0; position: absolute; width: 250px; height: 250px;"/>
+    <ui:Image name="minimap" source="project://database/Assets/Minimap.renderTexture?fileID=8400000&amp;guid=942f8bf8a904c624a9e9a751a2a06015&amp;type=2#Minimap" style="top: 0; left: 0; position: absolute; width: 250px; height: 250px; visibility: hidden;"/>
     <ui:GroupBox name="network-container" style="width: 200px; height: 100px; justify-content: space-around; align-self: center; align-items: stretch;">
         <ui:Button text="Start Host" name="btn-start_host"/>
         <ui:Button text="Start Client" name="btn-start_client"/>
