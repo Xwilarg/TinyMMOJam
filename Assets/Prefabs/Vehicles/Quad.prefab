@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3114567279143280013}
   - component: {fileID: 8626372186922711926}
-  - component: {fileID: 8367997122452185363}
+  - component: {fileID: 2108504129620967935}
   - component: {fileID: 9207647241103673248}
   - component: {fileID: 5981486429066279229}
   - component: {fileID: 8753431127548136013}
@@ -67,8 +67,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!65 &8367997122452185363
-BoxCollider:
+--- !u!136 &2108504129620967935
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -85,9 +85,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 2.3510797}
-  m_Center: {x: 0, y: 0.5, z: -0.044743698}
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Height: 2.37
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.37, z: -0.07}
 --- !u!114 &9207647241103673248
 MonoBehaviour:
   m_ObjectHideFlags: 0
