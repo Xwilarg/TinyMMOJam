@@ -24,6 +24,9 @@ namespace MMOJam.Manager
             _uiDocument.rootVisualElement.Q<Button>("btn-start_client").visible = false;
 #endif
 
+#if UNITY_SERVER
+            nm.StartServer();
+#else
             var transport = GetComponent<UnityTransport>();
 
             _uiDocument.rootVisualElement.Q<Button>("btn-start_host").clicked += () =>
@@ -48,6 +51,7 @@ namespace MMOJam.Manager
                 nm.StartClient();
                 _uiDocument.rootVisualElement.Q<GroupBox>("network-container").visible = false;
             };
+#endif
         }
     }
 }

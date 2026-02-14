@@ -1,5 +1,4 @@
 ﻿using MMOJam.Zone;
-using System.Resources;
 using UnityEngine;
 
 namespace MMOJam.Manager
