@@ -147,6 +147,12 @@ namespace MMOJam.Player
         {
             _rb.isKinematic = false;
             _rb.AddTorque(new Vector3(Random.value, Random.value, Random.value).normalized * 10f);
+
+            if (CurrentVehicle.Value != 0)
+            {
+                SetVehicle(null, (SeatType)(-1));
+                LeaveVehicleRpc();
+            }
         }
 
         public override void OnNetworkSpawn()
