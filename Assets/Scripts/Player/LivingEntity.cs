@@ -12,9 +12,15 @@ namespace MMOJam.Player
 
         public bool IsAlive => _health.Value > 0;
 
-        public void RestoreHealth()
+        [Rpc(SendTo.Server)]
+        public void RestoreHealthRpc()
         {
             _health.Value = 10;
+        }
+
+        public void RestoreHealth()
+        {
+            RestoreHealthRpc();
         }
 
         private void Awake()

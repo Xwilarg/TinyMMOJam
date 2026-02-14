@@ -18,10 +18,10 @@ namespace MMOJam.Manager
 
             var nm = GetComponent<NetworkManager>();
 
-#if !UNITY_EDITOR
+/*#if !UNITY_EDITOR
             _uiDocument.rootVisualElement.Q<Button>("btn-start_host").visible = false;
             _uiDocument.rootVisualElement.Q<Button>("btn-start_client").visible = false;
-#endif
+#endif*/
 
 #if UNITY_SERVER
             nm.StartServer();
@@ -30,14 +30,14 @@ namespace MMOJam.Manager
 
             _uiDocument.rootVisualElement.Q<Button>("btn-start_host").clicked += () =>
             {
-                transport.ConnectionData.Address = "localhost";
+                transport.ConnectionData.Address = "127.0.0.1";
                 transport.ConnectionData.Port = 7777;
                 nm.StartHost();
                 _uiDocument.rootVisualElement.Q<GroupBox>("network-container").visible = false;
             };
             _uiDocument.rootVisualElement.Q<Button>("btn-start_client").clicked += () =>
             {
-                transport.ConnectionData.Address = "localhost";
+                transport.ConnectionData.Address = "127.0.0.1";
                 transport.ConnectionData.Port = 7777;
                 nm.StartClient();
                 _uiDocument.rootVisualElement.Q<GroupBox>("network-container").visible = false;
