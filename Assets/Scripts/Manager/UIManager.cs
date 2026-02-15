@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using MMOJam.Player;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -24,6 +25,16 @@ namespace MMOJam.Manager
 
         private float _psaTimer;
 
+        private PlayerController _player;
+        public PlayerController Player
+        {
+            set
+            {
+                _player = value;
+                UpdateCraftingList();
+            }
+            private get => _player;
+        }
 
         private void Awake()
         {
@@ -61,6 +72,7 @@ namespace MMOJam.Manager
 
                 var recipe = CraftingManager.Instance.GetRecipe(recipeId);
                 button.text = $"Craft {recipe.resultName}";
+                button.SetEnabled(Player != null && CraftingManager.Instance.CanCraft(Player, recipeId, out var _));
                 button.clicked += () =>
                 {
                     Debug.Log($"Craft recipe {recipe.resultName}");
@@ -141,10 +153,12 @@ namespace MMOJam.Manager
                 return;
 
             _craftRecipeIds.Add(id);
-            _craftingList.RefreshItems();
+            UpdateCraftingList();
         }
 
-
-
+        public void UpdateCraftingList()
+        {
+            _craftingList.RefreshItems();
+        }
     }
 }

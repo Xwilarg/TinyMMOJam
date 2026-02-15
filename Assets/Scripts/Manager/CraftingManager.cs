@@ -36,11 +36,11 @@ namespace MMOJam.Manager
             return _recipes[recipeId];
         }
 
-        public bool TryCraft(PlayerController player, short recipeId)
+        public bool CanCraft(PlayerController player, short recipeId, out CraftingRecipe recipe)
         {
             RessourcesHolder holder = player.GetComponent<RessourcesHolder>();
 
-            if (!_recipes.TryGetValue(recipeId, out var recipe))
+            if (!_recipes.TryGetValue(recipeId, out recipe))
                 return false;
 
             foreach (var res in recipe.inputs)
@@ -48,18 +48,28 @@ namespace MMOJam.Manager
                 if (!holder.CheckRessources(res.resourceId, res.amount))
                     return false;
             }
-            
-            // Consume
-            foreach (var input in recipe.inputs)
-                holder.ChangeRessources(input.resourceId, -input.amount);
-
-            // Produce
-            foreach (var output in recipe.outputs)
-                holder.ChangeRessources(output.resourceId, output.amount);
-
-            SpawnCraft(recipe.crafted, player.transform.position);
 
             return true;
+        }
+
+        public bool TryCraft(PlayerController player, short recipeId)
+        {
+            if (CanCraft(player, recipeId, out var recipe))
+            {
+                RessourcesHolder holder = player.GetComponent<RessourcesHolder>();
+
+                // Consume
+                foreach (var input in recipe.inputs)
+                    holder.ChangeRessources(input.resourceId, -input.amount);
+
+                // Produce
+                foreach (var output in recipe.outputs)
+                    holder.ChangeRessources(output.resourceId, output.amount);
+
+                SpawnCraft(recipe.crafted, player.transform.position);
+                return true;
+            }
+            return false;
         }
         public void SpawnCraft(GameObject to_spawn, Vector3 pos)
         {

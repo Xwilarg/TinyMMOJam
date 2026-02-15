@@ -175,6 +175,7 @@ namespace MMOJam.Player
             if (IsLocalHuman)
             {
                 FindFirstObjectByType<CinemachineCamera>().Target.TrackingTarget = transform;
+                UIManager.Instance.Player = this;
             }
 
             if (IsHost || IsServer || (IsLocalHuman))

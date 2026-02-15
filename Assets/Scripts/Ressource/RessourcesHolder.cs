@@ -20,6 +20,7 @@ namespace MMOJam
                 total = 0;
 
             _ressources[id] = total;
+            UIManager.Instance.UpdateCraftingList();
             Debug.Log($"[RGT] [{string.Join(", ", _ressources.Values)}]");
         }
 
