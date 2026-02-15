@@ -263,7 +263,7 @@ namespace MMOJam.Player
             CurrentSeat.Value = (SeatType)(-1);
         }
 
-        private void OnTriggerEnter(Collider other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
             if (ServerManager.Instance.IsAuthority && other.CompareTag("Trap"))
             {

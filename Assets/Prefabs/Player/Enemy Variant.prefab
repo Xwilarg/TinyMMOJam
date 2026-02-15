@@ -12,6 +12,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 391345014138801944, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 391345014138801944, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 460733730439371314, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 460733730439371314, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 460733730439371314, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1944831495720818567, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
       propertyPath: _renderer
       value: 
@@ -56,24 +76,64 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6124765196832156757, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905069747964070830, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
+      propertyPath: m_Radius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8181979042263402989, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 277469906
+      value: 2365638004
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1944831495720818567, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
     m_RemovedGameObjects:
     - {fileID: 5674750210678366613, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2356668298189719441, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7512947312284160737}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 391345014138801944, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: -6198034572994200315}
   m_SourcePrefab: {fileID: 100100000, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
+--- !u!120 &1868458868021570316 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 8671688564745002720, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
+  m_PrefabInstance: {fileID: 7040849972533392876}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4684463699278049917 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2356668298189719441, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
   m_PrefabInstance: {fileID: 7040849972533392876}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7266638853433654004 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 391345014138801944, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
+  m_PrefabInstance: {fileID: 7040849972533392876}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-6198034572994200315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7266638853433654004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed184f51c1618fc408abb63bc3ccd618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MMOJam.Player.EnemyController
+  ShowTopMostFoldoutHeaderGroup: 1
+  _mouvementSpeed: 5
+  _gravityMultiplier: 0.75
+  _renderer: {fileID: 0}
+  _lr: {fileID: 1868458868021570316}
+  _ressource_controller: {fileID: 0}
 --- !u!1001 &8055216502465443082
 PrefabInstance:
   m_ObjectHideFlags: 0
