@@ -10,6 +10,8 @@ namespace MMOJam.Player
         private List<PlayerController> _targets = new();
         private float _timerRefreshPath = 0f;
 
+        private float _timerReloadAttack = 0f;
+
         private NavMeshPath _path;
         private int _pathIndex;
 
@@ -54,7 +56,7 @@ namespace MMOJam.Player
 
             if (_pathIndex < _path.corners.Length)
             {
-                if (Vector3.Distance(transform.position, _path.corners[_pathIndex]) < .2f)
+                if (Vector3.Distance(transform.position, _path.corners[_pathIndex]) < 1.1f)
                 {
                     _pathIndex++;
                 }
@@ -63,6 +65,16 @@ namespace MMOJam.Player
                     var dir = (_path.corners[_pathIndex] - transform.position).normalized;
                     _mov = new Vector2(dir.x, dir.z);
                 }
+            }
+            else if (_timerReloadAttack > 0f)
+            {
+                _timerReloadAttack -= Time.deltaTime;
+            }
+            else if (Vector3.Distance(transform.position, _targets[0].transform.position) < 1.2f)
+            {
+                Debug.Log("[ENN] Attacking player for 5 damage!");
+                _targets[0].TakeDamage(5);
+                _timerReloadAttack = 1f;
             }
 
             if (_timerRefreshPath > 0f)

@@ -346,6 +346,11 @@ namespace MMOJam.Player
             _lr.gameObject.SetActive(false);
         }
 
+        public void TakeDamage(int amount)
+        {
+            _livingEntity.TakeDamage(null, amount);
+        }
+
         [Rpc(SendTo.Server)]
         public void ShootServerRpc(Vector2 mousePos)
         {
