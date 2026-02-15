@@ -90,6 +90,11 @@ namespace MMOJam.Zone
                 foreach (var player in vehicle.GetPlayersInVehicle())
                 {
                     player.SetZone(newZone);
+                    foreach (var bat in _buildings)
+                    {
+                        if (newZone == null) bat.OnZoneExit(player);
+                        else bat.OnZoneEnter(player);
+                    }
                 }
             }
         }
