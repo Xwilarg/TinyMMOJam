@@ -40,7 +40,7 @@ namespace MMOJam.Player
         private Camera _cam;
         private Collider _coll;
         private LivingEntity _livingEntity;
-        private MeshRenderer _mr;
+        private SkinnedMeshRenderer _mr;
         private Rigidbody _rb;
 
         protected Vector2 _mov;
@@ -64,7 +64,7 @@ namespace MMOJam.Player
             _pInput = GetComponentInChildren<PlayerInput>();
             _cam = Camera.main;
             _coll = GetComponent<Collider>();
-            _mr = GetComponentInChildren<MeshRenderer>();
+            _mr = GetComponentInChildren<SkinnedMeshRenderer>();
             _rb = GetComponent<Rigidbody>();
 
             _lr.gameObject.SetActive(false);
@@ -96,7 +96,9 @@ namespace MMOJam.Player
             CurrentFaction.OnValueChanged += (oldValue, newValue) =>
             {
                 UIManager.Instance.ShowFactionName(CurrentFaction.Value);
-                _mr.material = ServerManager.Instance.GetFaction(newValue).Material; // not properly sync
+                var mats = _mr.materials;
+                mats[0] = ServerManager.Instance.GetFaction(newValue).Material; // not properly sync
+                _mr.materials = mats;
             };
         }
 
