@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UIElements;
 
 namespace MMOJam.Manager
@@ -68,6 +69,11 @@ namespace MMOJam.Manager
         public void ToggleMinimap(bool value)
         {
             _minimap.visible = value;
+        }
+
+        public void ToggleCraftingList(bool value)
+        {
+            _craftingList.visible = value;
         }
 
         public void ShowFactionName(int factionId)

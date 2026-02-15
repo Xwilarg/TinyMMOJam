@@ -1,4 +1,5 @@
-﻿using MMOJam.Player;
+﻿using MMOJam.Manager;
+using MMOJam.Player;
 using MMOJam.SO;
 using Unity.Netcode;
 using UnityEngine;
@@ -17,6 +18,8 @@ namespace MMOJam.Zone
         private Material _factionNeutral;
 
         private int _maxHealth;
+
+        protected PlayerController _isPlayerInside;
 
         public ZoneController AttachedZone { set; get; }
 
@@ -70,7 +73,19 @@ namespace MMOJam.Zone
             _flag.material = _factionNeutral;
         }
         public abstract void BuildingRestored(FactionInfo faction);
-        public abstract void OnZoneEnter(PlayerController player);
-        public abstract void OnZoneExit(PlayerController player);
+        public virtual void OnZoneEnter(PlayerController player)
+        {
+            if (player.IsLocalHuman)
+            {
+                _isPlayerInside = player;
+            }
+        }
+        public virtual void OnZoneExit(PlayerController player)
+        {
+            if (player.IsLocalHuman)
+            {
+                _isPlayerInside = null;
+            }
+        }
     }
 }

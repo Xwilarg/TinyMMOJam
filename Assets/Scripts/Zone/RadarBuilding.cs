@@ -10,8 +10,6 @@ namespace MMOJam.Zone
         [SerializeField]
         private GameObject _camera;
 
-        private PlayerController _isPlayerInside;
-
         private void Awake()
         {
             _camera.SetActive(false);
@@ -32,6 +30,7 @@ namespace MMOJam.Zone
 
         public override void OnZoneEnter(PlayerController player)
         {
+            base.OnZoneEnter(player);
             if (player.IsLocalHuman)
             {
                 if (player.CurrentFaction.Value == AttachedZone.Faction.Id)
@@ -39,22 +38,22 @@ namespace MMOJam.Zone
                     UIManager.Instance.ToggleMinimap(true);
                     _camera.SetActive(true);
                 }
-                _isPlayerInside = player;
             }
         }
         public override void OnZoneExit(PlayerController player)
         {
+            base.OnZoneExit(player);
             if (player.IsLocalHuman)
             {
                 UIManager.Instance.ToggleMinimap(false);
-                _isPlayerInside = null;
                 _camera.SetActive(false);
             }
         }
 
         public override void SpawnPlayer()
         {
-            _camera.SetActive(true);
+            _camera.SetActive(IsAlive);
+            UIManager.Instance.ToggleMinimap(IsAlive);
         }
     }
 }
