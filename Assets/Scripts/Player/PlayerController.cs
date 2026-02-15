@@ -130,6 +130,7 @@ namespace MMOJam.Player
             if (ZoneManager.Instance.SpawnAtFaction(CurrentFaction.Value, this))
             {
                 Debug.Log("[PLY] Succesfully respawned");
+                _anim.SetTrigger("Revive");
                 _rb.isKinematic = true;
                 transform.rotation = Quaternion.identity;
                 _livingEntity.RestoreHealth();
@@ -158,7 +159,7 @@ namespace MMOJam.Player
         {
             /*_rb.isKinematic = false;
             _rb.AddTorque(new Vector3(Random.value, Random.value, Random.value).normalized * 10f);*/
-            // TODO: Play and dispatch dead animations
+            _anim.SetTrigger("Die");
 
             if (CurrentVehicle.Value != 0) // TODO: Is this done on all clients?
             {

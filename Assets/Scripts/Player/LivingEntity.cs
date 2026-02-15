@@ -30,6 +30,8 @@ namespace MMOJam.Player
 
         public void TakeDamage(FactionInfo info, int amount)
         {
+            if (_health.Value < 0) return;
+
             _health.Value -= amount;
 
             if (_health.Value <= 0)

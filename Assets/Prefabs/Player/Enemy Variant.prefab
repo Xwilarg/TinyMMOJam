@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3195066392546243815, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
       propertyPath: AnimatorParameterEntries.ParameterEntries.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6124765196832156757, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
       propertyPath: m_Layer
@@ -98,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8181979042263402989, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 277469906
+      value: 2365638004
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1944831495720818567, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
