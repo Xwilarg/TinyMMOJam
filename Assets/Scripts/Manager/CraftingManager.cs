@@ -1,9 +1,7 @@
-using UnityEngine;
-using Unity.Netcode;
-using System.Collections.Generic;
-using Microsoft.VisualBasic;
 using MMOJam.Player;
-using System.Linq.Expressions;
+using System.Collections.Generic;
+using Unity.Netcode;
+using UnityEngine;
 
 namespace MMOJam.Manager
 {
@@ -71,7 +69,8 @@ namespace MMOJam.Manager
                 return;
 
             var go = Instantiate(to_spawn);
-            go.transform.position = pos;
+            var p = Random.insideUnitCircle.normalized * 3f;
+            go.transform.position = pos + new Vector3(p.x, 0f, p.y);
 
             var netObj = go.GetComponent<NetworkObject>();
             netObj.Spawn();
