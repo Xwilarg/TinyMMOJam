@@ -94,6 +94,7 @@ namespace MMOJam.Player
             CurrentFaction.OnValueChanged += (oldValue, newValue) =>
             {
                 UIManager.Instance.ShowFactionName(CurrentFaction.Value);
+                _mr.material = ServerManager.Instance.GetFaction(newValue).Material; // not properly sync
             };
         }
 
@@ -106,7 +107,6 @@ namespace MMOJam.Player
             var faction = ServerManager.Instance.GetNextFaction();
 
             CurrentFaction.Value = faction;
-            _mr.material = ServerManager.Instance.GetFaction(faction).Material;
 
             MoveToSpawnpoint();
         }
