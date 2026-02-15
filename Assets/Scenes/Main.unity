@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3dafb53d58cdd46a11e4f62fc28ac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.Manager.EnemyManager
-  _playerPrefab: {fileID: 391345014138801944, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
+  _playerPrefab: {fileID: 7266638853433654004, guid: bc18064c11c75934ea3cae59c97f7749, type: 3}
 --- !u!114 &440216068
 MonoBehaviour:
   m_ObjectHideFlags: 0
