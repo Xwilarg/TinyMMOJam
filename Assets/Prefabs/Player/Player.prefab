@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3189224563
+  GlobalObjectIdHash: 1453394681
   InScenePlacedSourceGlobalObjectIdHash: 1453394681
   DeferredDespawnTick: 0
   Ownership: 1
@@ -158,7 +158,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   _mouvementSpeed: 5
   _gravityMultiplier: 0.75
-  _renderer: {fileID: 0}
+  _renderer: {fileID: 6037228770112221399}
   _lr: {fileID: 8671688564745002720}
   _model: {fileID: 6037228770112221399}
   _ressource_controller: {fileID: 0}

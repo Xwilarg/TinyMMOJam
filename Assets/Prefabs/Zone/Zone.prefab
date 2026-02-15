@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3309994917
+  GlobalObjectIdHash: 228346760
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -97,8 +97,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 26.871368, y: 10, z: 27.543377}
-  m_Center: {x: 0.34565926, y: 5, z: -0.51446915}
+  m_Size: {x: 76, y: 10, z: 78}
+  m_Center: {x: 26.345657, y: 5, z: 0.48553085}
 --- !u!1 &1079994618605013094
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ Transform:
   m_GameObject: {fileID: 1079994618605013094}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 11.25, z: 0}
+  m_LocalPosition: {x: 25.75, y: 11.25, z: 0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -167,7 +167,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 13
+  orthographic size: 40
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

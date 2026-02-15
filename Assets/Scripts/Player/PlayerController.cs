@@ -302,7 +302,7 @@ namespace MMOJam.Player
                     (UseRelativeMov ? (transform.forward * pos.y + transform.right * pos.x) : new Vector3(pos.x, 0f, pos.y))
                     : Vector3.zero;
 
-                _model.transform.rotation = Quaternion.LookRotation(desiredMove, Vector3.up);
+                if (desiredMove.magnitude > 0f) _model.transform.rotation = Quaternion.LookRotation(desiredMove, Vector3.up);
 
                 // Get a normal for the surface that is being touched to move along it
                 Physics.SphereCast(transform.position, _controller.radius, Vector3.down, out RaycastHit hitInfo,
