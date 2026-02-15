@@ -97,6 +97,10 @@ namespace MMOJam.Zone
         public void SpawnPlayer(PlayerController player)
         {
             GetComponentInChildren<SpawnBuilding>().SpawnPlayer(player);
+            foreach (var building in _buildings)
+            {
+                building.SpawnPlayer();
+            }
         }
 
         public bool Contains(Transform transform)

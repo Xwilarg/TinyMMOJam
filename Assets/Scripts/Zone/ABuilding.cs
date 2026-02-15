@@ -63,6 +63,8 @@ namespace MMOJam.Zone
             }
         }
 
+        public abstract void SpawnPlayer();
+
         public virtual void BuildingDestroyed(FactionInfo faction)
         {
             _flag.material = _factionNeutral;

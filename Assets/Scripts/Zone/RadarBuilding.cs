@@ -12,6 +12,11 @@ namespace MMOJam.Zone
 
         private PlayerController _isPlayerInside;
 
+        private void Awake()
+        {
+            _camera.SetActive(false);
+        }
+
         public override void BuildingDestroyed(FactionInfo f)
         {
             base.BuildingDestroyed(f);
@@ -45,6 +50,11 @@ namespace MMOJam.Zone
                 _isPlayerInside = null;
                 _camera.SetActive(false);
             }
+        }
+
+        public override void SpawnPlayer()
+        {
+            _camera.SetActive(true);
         }
     }
 }

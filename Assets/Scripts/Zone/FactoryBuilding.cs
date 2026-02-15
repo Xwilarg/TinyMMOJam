@@ -19,5 +19,10 @@ namespace MMOJam.Zone
         { }
         public override void OnZoneExit(PlayerController player)
         { }
+
+        public override void SpawnPlayer()
+        {
+
+        }
     }
 }
