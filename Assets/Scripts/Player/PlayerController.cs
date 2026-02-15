@@ -43,7 +43,7 @@ namespace MMOJam.Player
         private MeshRenderer _mr;
         private Rigidbody _rb;
 
-        private Vector2 _mov;
+        protected Vector2 _mov;
         private float _verticalSpeed;
 
         public bool IsAi { set; get; }
@@ -52,9 +52,11 @@ namespace MMOJam.Player
 
         public bool IsAlive => _livingEntity.IsAlive;
 
+        protected virtual bool UseRelativeMov => true;
+
         // Server only
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _livingEntity = GetComponent<LivingEntity>();
             _controller = GetComponent<CharacterController>();
@@ -291,7 +293,9 @@ namespace MMOJam.Player
             else
             {
                 var pos = _mov;
-                Vector3 desiredMove = IsAlive ? transform.forward * pos.y + transform.right * pos.x : Vector3.zero;
+                Vector3 desiredMove = IsAlive ?
+                    (UseRelativeMov ? (transform.forward * pos.y + transform.right * pos.x) : new Vector3(pos.x, 0f, pos.y))
+                    : Vector3.zero;
 
                 // Get a normal for the surface that is being touched to move along it
                 Physics.SphereCast(transform.position, _controller.radius, Vector3.down, out RaycastHit hitInfo,
