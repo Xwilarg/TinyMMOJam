@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UIElements;
@@ -20,6 +21,8 @@ namespace MMOJam.Manager
         private List<short> _craftRecipeIds = new();
 
         private Image _minimap;
+
+        private float _psaTimer;
 
 
         private void Awake()
@@ -64,6 +67,31 @@ namespace MMOJam.Manager
                     ServerManager.Instance.RequestCraftServerRpc(player.NetworkObjectId, recipeId);
                 };
             };
+        }
+
+        private void Update()
+        {
+            if (_psaTimer > 0f)
+            {
+                _psaTimer -= Time.deltaTime;
+                if (_psaTimer < 0f)
+                {
+                    _factionName.visible = false;
+                    _factionSubtitle.visible = false;
+                }
+            }
+        }
+
+        [Rpc(SendTo.ClientsAndHost)]
+        public void DispatchPsaRpc(string message, string subtitle)
+        {
+            _factionName.visible = true;
+            _factionSubtitle.visible = true;
+
+            _factionName.text = message;
+            _factionSubtitle.text = subtitle;
+
+            _psaTimer = 3f;
         }
 
         public void ToggleMinimap(bool value)

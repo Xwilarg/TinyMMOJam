@@ -1,5 +1,7 @@
 ﻿using MMOJam.Zone;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MMOJam.Manager
 {
@@ -26,9 +28,16 @@ namespace MMOJam.Manager
                 if (ServerManager.Instance.AreOthersFactionDead(winner))
                 {
                     // We win yay
-                    Debug.Log($"{winner.Name} won!");
+                    UIManager.Instance.DispatchPsaRpc($"{winner.Name} won!", "The server will now restart for the next game");
+                    StartCoroutine(WaitAndRestart());
                 }
             }
+        }
+
+        private IEnumerator WaitAndRestart()
+        {
+            yield return new WaitForSeconds(5f);
+            SceneManager.LoadScene("Main");
         }
     }
 }
