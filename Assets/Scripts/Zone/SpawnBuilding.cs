@@ -6,6 +6,9 @@ namespace MMOJam.Zone
 {
     internal class SpawnBuilding : ABuilding
     {
+        [SerializeField]
+        private Transform _spawnPoint;
+
         public override void BuildingDestroyed(FactionInfo faction)
         {
             base.BuildingDestroyed(faction);
@@ -19,7 +22,7 @@ namespace MMOJam.Zone
 
         public void SpawnPlayer(PlayerController player)
         {
-            player.transform.position = transform.position;
+            player.transform.position = _spawnPoint.transform.position;
         }
 
         public override void OnZoneEnter(PlayerController player)
