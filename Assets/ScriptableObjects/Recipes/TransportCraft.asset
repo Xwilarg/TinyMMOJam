@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6b307cfa7d7eef49bf26cc90b1ef67d, type: 3}
-  m_Name: QuadCraft
+  m_Name: TransportCraft
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.CraftingRecipe
-  resultName: ATV
+  resultName: transport truck
   recipeId: 0
   inputs:
   - resourceId: 0

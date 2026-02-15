@@ -869,7 +869,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.Manager.CraftingManager
   _existing:
+  - {fileID: 11400000, guid: 49a5e7b2e668fa24990470cb286b1bab, type: 2}
   - {fileID: 11400000, guid: bf05b89e7f1620248bb6309d61202c94, type: 2}
+  - {fileID: 11400000, guid: 2bc87d3ee1f2b434497fe3b7ac20928f, type: 2}
 --- !u!1001 &596254944
 PrefabInstance:
   m_ObjectHideFlags: 0
