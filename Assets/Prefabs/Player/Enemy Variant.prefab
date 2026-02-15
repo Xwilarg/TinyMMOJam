@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8181979042263402989, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 2365638004
+      value: 277469906
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1944831495720818567, guid: c3623ae413006994eb2c2fe090256c1c, type: 3}
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.Player.EnemyController
   ShowTopMostFoldoutHeaderGroup: 1
-  _mouvementSpeed: 5
+  _mouvementSpeed: 2
   _gravityMultiplier: 0.75
   _renderer: {fileID: 0}
   _lr: {fileID: 1868458868021570316}

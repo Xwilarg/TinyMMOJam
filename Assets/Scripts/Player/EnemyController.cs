@@ -54,7 +54,7 @@ namespace MMOJam.Player
             if (_targets.Count == 0)
             {
                 var dirSp = (_spawnPoint - transform.position).normalized;
-                _mov = new Vector2(dirSp.x, dirSp.z);
+                _mov = Vector2.zero;
                 return;
             }
 
