@@ -12,6 +12,8 @@ namespace MMOJam.Player
 
         private float _timerReloadAttack = 0f;
 
+        private Vector3 _spawnPoint;
+
         private NavMeshPath _path;
         private int _pathIndex;
 
@@ -22,6 +24,7 @@ namespace MMOJam.Player
             base.Awake();
 
             _path = new();
+            _spawnPoint = transform.position;
         }
 
         protected override void OnTriggerEnter(Collider other)
@@ -50,7 +53,8 @@ namespace MMOJam.Player
 
             if (_targets.Count == 0)
             {
-                _mov = Vector2.zero;
+                var dirSp = (_spawnPoint - transform.position).normalized;
+                _mov = new Vector2(dirSp.x, dirSp.z);
                 return;
             }
 
@@ -75,6 +79,10 @@ namespace MMOJam.Player
                 Debug.Log("[ENN] Attacking player for 5 damage!");
                 _targets[0].TakeDamage(5);
                 _timerReloadAttack = 1f;
+            }
+            else
+            {
+                _timerReloadAttack = .5f; // So we don't spam Vector3.Distance
             }
 
             if (_timerRefreshPath > 0f)
