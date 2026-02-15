@@ -58,7 +58,11 @@ namespace MMOJam.Player
                 {
                     _pathIndex++;
                 }
-                if (_pathIndex < _path.corners.Length) _mov = (_path.corners[_pathIndex] - transform.position).normalized;
+                if (_pathIndex < _path.corners.Length)
+                {
+                    var dir = (_path.corners[_pathIndex] - transform.position).normalized;
+                    _mov = new Vector2(dir.x, dir.z);
+                }
             }
 
             if (_timerRefreshPath > 0f)
