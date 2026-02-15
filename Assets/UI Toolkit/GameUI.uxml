@@ -1,17 +1,17 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Image name="minimap" source="project://database/Assets/Minimap.renderTexture?fileID=8400000&amp;guid=942f8bf8a904c624a9e9a751a2a06015&amp;type=2#Minimap" style="top: 0; left: 0; position: absolute; width: 250px; height: 250px; visibility: hidden;"/>
     <ui:GroupBox name="network-container" style="width: 200px; height: 150px; justify-content: space-around; align-self: center; align-items: stretch;">
-        <ui:Button text="Join Dedicated Server" name="btn-join_dedicated"/>
-        <ui:Button text="Start Host" name="btn-start_host"/>
-        <ui:Button text="Start Client" name="btn-start_client"/>
+        <ui:Button text="Join Dedicated Server" name="btn-join_dedicated" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/SourGummy_SemiExpanded-Regular.ttf?fileID=12800000&amp;guid=c29f54425248cf74dba5e69fee87ec38&amp;type=3#SourGummy_SemiExpanded-Regular&quot;);"/>
+        <ui:Button text="Start Host" name="btn-start_host" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/SourGummy_SemiExpanded-Regular.ttf?fileID=12800000&amp;guid=c29f54425248cf74dba5e69fee87ec38&amp;type=3#SourGummy_SemiExpanded-Regular&quot;);"/>
+        <ui:Button text="Start Client" name="btn-start_client" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/SourGummy_SemiExpanded-Regular.ttf?fileID=12800000&amp;guid=c29f54425248cf74dba5e69fee87ec38&amp;type=3#SourGummy_SemiExpanded-Regular&quot;);"/>
     </ui:GroupBox>
-    <ui:Label text="Press &apos;E&apos; to interact" name="interact_text" style="position: absolute; top: 0; right: 0;"/>
-    <ui:Label text="You are in faction name" name="faction_text" style="align-self: center; font-size: 25px;"/>
-    <ui:Label text="You are in faction name" name="subfaction_text" style="align-self: center;"/>
+    <ui:Label text="Press &apos;E&apos; to interact" name="interact_text" style="position: absolute; top: 0; right: 0; -unity-font-definition: url(&quot;project://database/Assets/Fonts/SourGummy_SemiExpanded-Regular.ttf?fileID=12800000&amp;guid=c29f54425248cf74dba5e69fee87ec38&amp;type=3#SourGummy_SemiExpanded-Regular&quot;);"/>
+    <ui:Label text="You are in faction name" name="faction_text" style="align-self: center; font-size: 25px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/SourGummy_SemiExpanded-Regular.ttf?fileID=12800000&amp;guid=c29f54425248cf74dba5e69fee87ec38&amp;type=3#SourGummy_SemiExpanded-Regular&quot;); -unity-font-style: bold;"/>
+    <ui:Label text="You are in faction name" name="subfaction_text" style="align-self: center; -unity-font-definition: url(&quot;project://database/Assets/Fonts/SourGummy_SemiExpanded-Regular.ttf?fileID=12800000&amp;guid=c29f54425248cf74dba5e69fee87ec38&amp;type=3#SourGummy_SemiExpanded-Regular&quot;);"/>
     <ui:VisualElement name="ressource_count" style="flex-grow: 0; align-items: flex-start; justify-content: flex-end; align-self: flex-end; flex-direction: column; bottom: 0; right: 0; position: absolute;">
         <ui:VisualElement name="ressource-1" style="flex-grow: 1; justify-content: flex-end; flex-direction: row; align-items: center;">
             <ui:Image source="project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-4521532143779581420&amp;guid=4300465fba3070a418b125727f0b2eee&amp;type=3#arrow-right" name=""/>
-            <ui:Label text="0" name="ressource_1_amount"/>
+            <ui:Label text="0" name="ressource_1_amount" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/SourGummy_SemiExpanded-Regular.ttf?fileID=12800000&amp;guid=c29f54425248cf74dba5e69fee87ec38&amp;type=3#SourGummy_SemiExpanded-Regular&quot;);"/>
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement style="flex-grow: 1; position: absolute; left: 0; bottom: 0; justify-content: flex-end; align-self: flex-start; align-items: stretch;">
@@ -19,8 +19,8 @@
     </ui:VisualElement>
     <ui:VisualElement name="disconnected" style="flex-grow: 1; position: absolute; top: 0; right: 0; bottom: 0; left: 0; justify-content: center; align-items: center; align-self: center; display: flex;">
         <ui:Image source="project://database/Resources/unity_builtin_extra?fileID=10305&amp;guid=0000000000000000f000000000000000&amp;type=0#Default-Checker" style="width: 200px; height: 200px; align-items: center; justify-content: center;">
-            <ui:Label text="You got disconnected"/>
-            <ui:Button text="Back to main menu&#10;" name="disconnected-menu" style="top: 20px;"/>
+            <ui:Label text="You got disconnected" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/SourGummy_SemiExpanded-Regular.ttf?fileID=12800000&amp;guid=c29f54425248cf74dba5e69fee87ec38&amp;type=3#SourGummy_SemiExpanded-Regular&quot;);"/>
+            <ui:Button text="Back to main menu&#10;" name="disconnected-menu" style="top: 20px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/SourGummy_SemiExpanded-Regular.ttf?fileID=12800000&amp;guid=c29f54425248cf74dba5e69fee87ec38&amp;type=3#SourGummy_SemiExpanded-Regular&quot;);"/>
         </ui:Image>
     </ui:VisualElement>
 </ui:UXML>

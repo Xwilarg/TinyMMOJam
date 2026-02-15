@@ -5,8 +5,6 @@ using UnityEngine;
 
 namespace MMOJam.Manager
 {
-
-
     public class CraftingManager : MonoBehaviour
     {
         [SerializeField]
