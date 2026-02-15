@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Cinemachine;
 using Unity.Netcode;
+using Unity.Netcode.Components;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -57,6 +58,8 @@ namespace MMOJam.Player
 
         protected virtual bool UseRelativeMov => true;
 
+        private Animator _anim;
+
         // Server only
 
         protected virtual void Awake()
@@ -69,6 +72,7 @@ namespace MMOJam.Player
             _coll = GetComponent<Collider>();
             _mr = GetComponentInChildren<SkinnedMeshRenderer>();
             _rb = GetComponent<Rigidbody>();
+            _anim = GetComponentInChildren<Animator>();
 
             _lr.gameObject.SetActive(false);
 
@@ -152,10 +156,11 @@ namespace MMOJam.Player
 
         public void Die()
         {
-            _rb.isKinematic = false;
-            _rb.AddTorque(new Vector3(Random.value, Random.value, Random.value).normalized * 10f);
+            /*_rb.isKinematic = false;
+            _rb.AddTorque(new Vector3(Random.value, Random.value, Random.value).normalized * 10f);*/
+            // TODO: Play and dispatch dead animations
 
-            if (CurrentVehicle.Value != 0)
+            if (CurrentVehicle.Value != 0) // TODO: Is this done on all clients?
             {
                 SetVehicle(null, (SeatType)(-1));
                 LeaveVehicleRpc();
@@ -301,6 +306,8 @@ namespace MMOJam.Player
                 Vector3 desiredMove = IsAlive ?
                     (UseRelativeMov ? (transform.forward * pos.y + transform.right * pos.x) : new Vector3(pos.x, 0f, pos.y))
                     : Vector3.zero;
+
+                _anim.SetBool("IsWalking", desiredMove.magnitude > 0f);
 
                 if (desiredMove.magnitude > 0f) _model.transform.rotation = Quaternion.LookRotation(desiredMove, Vector3.up);
 
