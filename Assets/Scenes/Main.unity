@@ -676,30 +676,6 @@ PrefabInstance:
       propertyPath: _health
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 2341053129316504873, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2341053129316504873, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4858149062819013068, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4858149062819013068, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5545970277631614813, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5545970277631614813, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7594767026814516688, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: _faction
       value: 
@@ -1551,30 +1527,6 @@ PrefabInstance:
     - target: {fileID: 2135090933980604215, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: _health
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2341053129316504873, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2341053129316504873, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4858149062819013068, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4858149062819013068, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5545970277631614813, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5545970277631614813, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7594767026814516688, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: _faction
