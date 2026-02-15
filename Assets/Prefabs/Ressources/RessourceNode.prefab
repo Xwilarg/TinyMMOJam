@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7410924407539411994}
   - component: {fileID: 4234760882259439802}
   - component: {fileID: 749454335030276983}
+  - component: {fileID: 7852383052364940284}
   m_Layer: 8
   m_Name: RessourceNode
   m_TagString: Untagged
@@ -48,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3635912164
+  GlobalObjectIdHash: 453268201
   InScenePlacedSourceGlobalObjectIdHash: 453268201
   DeferredDespawnTick: 0
   Ownership: 1
@@ -102,6 +103,22 @@ CapsuleCollider:
   m_Height: 2.48
   m_Direction: 0
   m_Center: {x: -0.16, y: 0.4, z: 0.4}
+--- !u!208 &7852383052364940284
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623195292691681271}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.155, y: 0.29, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.15, y: 0.16, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7432228868125883653
 GameObject:
   m_ObjectHideFlags: 0
