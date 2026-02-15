@@ -28,6 +28,9 @@ namespace MMOJam.Player
         [SerializeField]
         private LineRenderer _lr;
 
+        [SerializeField]
+        private GameObject _model;
+
         private RuntimeVehicle _currentVehicleObject;
         public NetworkVariable<ulong> CurrentVehicle { private set; get; } = new(0);
         public NetworkVariable<SeatType> CurrentSeat { private set; get; } = new((SeatType)(-1));
@@ -298,6 +301,8 @@ namespace MMOJam.Player
                 Vector3 desiredMove = IsAlive ?
                     (UseRelativeMov ? (transform.forward * pos.y + transform.right * pos.x) : new Vector3(pos.x, 0f, pos.y))
                     : Vector3.zero;
+
+                _model.transform.rotation = Quaternion.LookRotation(desiredMove, Vector3.up);
 
                 // Get a normal for the surface that is being touched to move along it
                 Physics.SphereCast(transform.position, _controller.radius, Vector3.down, out RaycastHit hitInfo,

@@ -160,6 +160,7 @@ MonoBehaviour:
   _gravityMultiplier: 0.75
   _renderer: {fileID: 0}
   _lr: {fileID: 8671688564745002720}
+  _model: {fileID: 6037228770112221399}
   _ressource_controller: {fileID: 0}
 --- !u!114 &1411841755755137457
 MonoBehaviour:
@@ -676,6 +677,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d4989bfa0e6dce4fa73faa7f2b4cb18, type: 3}
+--- !u!1 &6037228770112221399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 577335435599522502, guid: 2d4989bfa0e6dce4fa73faa7f2b4cb18, type: 3}
+  m_PrefabInstance: {fileID: 6614538882516589073}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6378041797473397357 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 236662359699484796, guid: 2d4989bfa0e6dce4fa73faa7f2b4cb18, type: 3}
