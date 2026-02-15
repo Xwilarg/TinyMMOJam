@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TransportCraft
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.CraftingRecipe
   resultName: transport truck
-  recipeId: 0
+  recipeId: 1
   inputs:
   - resourceId: 0
     amount: 5

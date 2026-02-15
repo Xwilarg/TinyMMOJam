@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TankCraft
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.CraftingRecipe
   resultName: tank
-  recipeId: 0
+  recipeId: 2
   inputs:
   - resourceId: 0
     amount: 10
