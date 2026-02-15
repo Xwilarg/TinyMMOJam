@@ -215,10 +215,16 @@ namespace MMOJam.Player
             _interactibles.RemoveAll(x => x == null);
         }
 
+        [Rpc(SendTo.Server)]
+        public void SetVehicleServerRpc(ulong vehicle, SeatType seat)
+        {
+            CurrentVehicle.Value = vehicle;
+            CurrentSeat.Value = seat;
+        }
+
         public void SetVehicle(RuntimeVehicle vehicle, SeatType seat)
         {
-            CurrentVehicle.Value = vehicle == null ? 0 : vehicle.Key;
-            CurrentSeat.Value = seat;
+            SetVehicleServerRpc(vehicle == null ? 0 : vehicle.Key, seat);
 
             transform.parent = vehicle == null ? null : vehicle.transform;
             if (vehicle != null)
