@@ -6,6 +6,7 @@ namespace MMOJam
     [CreateAssetMenu(menuName = "ScriptableObject/Recipe")]
     public class CraftingRecipe : ScriptableObject
     {
+        public string resultName;
         public short recipeId;
 
         public List<ResourceAmount> inputs;

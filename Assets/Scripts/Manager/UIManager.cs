@@ -59,10 +59,11 @@ namespace MMOJam.Manager
                 var button = (Button)element;
                 short recipeId = _craftRecipeIds[index];
 
-                button.text = $"Craft recipe {recipeId}";
+                var recipe = CraftingManager.Instance.GetRecipe(recipeId);
+                button.text = $"Craft {recipe.resultName}";
                 button.clicked += () =>
                 {
-                    Debug.Log($"Craft recipe {recipeId}");
+                    Debug.Log($"Craft recipe {recipe.resultName}");
                     var player = ServerManager.Instance.GetLocalPlayer();
                     ServerManager.Instance.RequestCraftServerRpc(player.NetworkObjectId, recipeId);
                 };
