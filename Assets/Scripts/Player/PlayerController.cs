@@ -412,6 +412,8 @@ namespace MMOJam.Player
             {
                 if (CurrentVehicle.Value != 0)
                 {
+                    var p = Random.insideUnitCircle.normalized * 2f;
+                    transform.position = transform.position + new Vector3(p.x, 0f, p.y);
                     SetVehicle(null, (SeatType)(-1));
                     LeaveVehicleRpc();
                 }
