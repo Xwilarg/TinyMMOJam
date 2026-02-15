@@ -148,12 +148,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5484443556714389679, guid: 5388d776868b4b04bba81564f7ca924b, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 2438315343
+      value: 542341366
       objectReference: {fileID: 0}
     - target: {fileID: 5484443556714389679, guid: 5388d776868b4b04bba81564f7ca924b, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 1187430288
       objectReference: {fileID: 0}
+    - target: {fileID: 6977773526780714546, guid: 5388d776868b4b04bba81564f7ca924b, type: 3}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: 34099370b4e20384f84b5cb7ae2038ec, type: 2}
     - target: {fileID: 7658624505896570563, guid: 5388d776868b4b04bba81564f7ca924b, type: 3}
       propertyPath: m_IsActive
       value: 0
