@@ -265,6 +265,7 @@ namespace MMOJam.Player
             }
         }
 
+        private float _vehicleMoveTick = 0f;
         protected virtual void Update()
         {
             if (!IsOwner)
@@ -272,7 +273,12 @@ namespace MMOJam.Player
 
             if (CurrentVehicle.Value != 0 && CurrentSeat.Value == SeatType.Driver)
             {
-                _currentVehicleObject.Move(_mov);
+                if (_vehicleMoveTick > 0f) _vehicleMoveTick -= Time.deltaTime;
+                else
+                {
+                    _currentVehicleObject.Move(_mov);
+                    _vehicleMoveTick = .25f;
+                }
             }
             else
             {
@@ -388,6 +394,7 @@ namespace MMOJam.Player
                 else
                 {
                     InteractPlayerRpc();
+                    _vehicleMoveTick = 0f;
                 }
             }
         }

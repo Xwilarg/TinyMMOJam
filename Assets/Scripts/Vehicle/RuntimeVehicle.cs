@@ -16,6 +16,9 @@ namespace MMOJam.Vehicle
 
         private Rigidbody _rb;
 
+        private Vector2 _mov;
+        private float _lastInput;
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
@@ -25,6 +28,30 @@ namespace MMOJam.Vehicle
                 EjectPlayers();
                 Destroy(gameObject);
             });
+        }
+
+        private void FixedUpdate()
+        {
+            if (!ServerManager.Instance.IsAuthority) return;
+
+            if(_lastInput <= 0f)
+            {
+                _rb.linearVelocity = Vector3.zero;
+                return;
+            }
+
+            Vector3 desiredMove = transform.forward * _mov.y * Time.fixedDeltaTime * 5_000f;// + transform.right * mov.x;
+            _rb.AddForce(desiredMove);
+            _rb.linearVelocity = _rb.linearVelocity.normalized * Mathf.Clamp(_rb.linearVelocity.magnitude, 0f, 10f);
+
+            transform.Rotate(Vector3.up, _mov.x * _rb.linearVelocity.magnitude * Time.deltaTime * 10f);
+        }
+
+        private void Update()
+        {
+            if (!ServerManager.Instance.IsAuthority) return;
+
+            _lastInput -= Time.deltaTime;
         }
 
         public override void InteractClient(PlayerController player)
@@ -76,11 +103,8 @@ namespace MMOJam.Vehicle
             {
                 mov.x = -mov.x;
             }
-            Vector3 desiredMove = transform.forward * mov.y * Time.deltaTime * 5_000f;// + transform.right * mov.x;
-            _rb.AddForce(desiredMove);
-            _rb.linearVelocity = _rb.linearVelocity.normalized * Mathf.Clamp(_rb.linearVelocity.magnitude, 0f, 10f);
-
-            transform.Rotate(Vector3.up, mov.x * _rb.linearVelocity.magnitude * Time.deltaTime * 10f);
+            _mov = mov;
+            _lastInput = 1f;
         }
     }
 }
