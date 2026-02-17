@@ -25,10 +25,11 @@ namespace MMOJam.Manager
         private void Start()
         {
             var nm = GetComponent<NetworkManager>();
+            var transport = GetComponent<UnityTransport>();
 #if UNITY_SERVER
+            transport.ConnectionData.Port = 9761;
             nm.StartServer();
 #else
-            var transport = GetComponent<UnityTransport>();
 
             _uiDocument.rootVisualElement.Q<Button>("btn-start_host").clicked += () =>
             {
