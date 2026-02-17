@@ -16,13 +16,15 @@ namespace MMOJam.Manager
         {
             Instance = this;
 
-            var nm = GetComponent<NetworkManager>();
-
 /*#if !UNITY_EDITOR
             _uiDocument.rootVisualElement.Q<Button>("btn-start_host").visible = false;
             _uiDocument.rootVisualElement.Q<Button>("btn-start_client").visible = false;
 #endif*/
+        }
 
+        private void Start()
+        {
+            var nm = GetComponent<NetworkManager>();
 #if UNITY_SERVER
             nm.StartServer();
 #else
