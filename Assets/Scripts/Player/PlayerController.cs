@@ -368,13 +368,13 @@ namespace MMOJam.Player
         }
 
         [Rpc(SendTo.Server)]
-        public void ShootServerRpc(Vector2 mousePos)
+        public void ShootServerRpc(Vector3 rayStartPoint, Vector3 rayDir)
         {
             if (!IsAlive) return;
 
             if (CurrentVehicle.Value == 0)
             {
-                var ray = _cam.ScreenPointToRay(mousePos);
+                var ray = new Ray(rayStartPoint, rayDir);
                 if (Physics.Raycast(ray, out var hitInfo, float.MaxValue, LayerMask.GetMask("World")))
                 {
                     var startPos = transform.position + Vector3.up * 1f;
@@ -406,10 +406,11 @@ namespace MMOJam.Player
         {
             if (IsLocalHuman && IsAlive && value.phase == InputActionPhase.Started)
             {
-                var mousePos = CursorUtils.GetPosition(_pInput);
+                var mousePos = Mouse.current.position.ReadValue();// CursorUtils.GetPosition(_pInput);
                 if (mousePos != null)
                 {
-                    ShootServerRpc(mousePos.Value);
+                    var ray = _cam.ScreenPointToRay(mousePos);
+                    ShootServerRpc(ray.origin, ray.direction);
                 }
                 else Debug.LogWarning("Mouse position not found");
             }
