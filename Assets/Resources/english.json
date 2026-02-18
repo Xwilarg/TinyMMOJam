@@ -1,0 +1,24 @@
+{
+    "player_disconnected": "You got disconnected",
+    "back_to_menu": "Back to main menu",
+
+    "interaction_hint": "Press 'E' to interact",
+    "craft_hint": "Craft {0}",
+
+    "join_server": "Join Dedicated Server",
+    "start_host": "Start Host",
+    "start_client": "Start Client",
+
+    "vehicle_motocycle": "motocycle",
+    "vehicle_transport": "transport truck",
+    "vehicle_tank": "tank",
+
+    "faction_assignation": "You are in the {0}",
+    "faction1_name": "MARC faction",
+    "faction1_desc": "Massively Anarchist Revolutionary Congregate, basically the bad guys",
+    "faction2_name": "Fort Oranje faction",
+    "faction2_desc": "Flooding others nations since 1927",
+
+    "faction_won": "{0} won!",
+    "server_restart": "The server will soon restart for the next game"
+}

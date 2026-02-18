@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b307cfa7d7eef49bf26cc90b1ef67d, type: 3}
   m_Name: TankCraft
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.CraftingRecipe
-  resultName: tank
+  resultName: vehicle_tank
   recipeId: 2
   inputs:
   - resourceId: 0

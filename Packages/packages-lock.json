@@ -121,7 +121,7 @@
     },
     "com.unity.nuget.newtonsoft-json": {
       "version": "3.2.2",
-      "depth": 1,
+      "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -292,6 +292,15 @@
       "source": "git",
       "dependencies": {},
       "hash": "2f52945505074189586e75c6fc4a4aac2e509333"
+    },
+    "eu.zirk.sketch.translation": {
+      "version": "https://github.com/Xwilarg/Sketch.git?path=/Packages/eu.zirk.sketch.translation",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.2"
+      },
+      "hash": "d0512b7b9382b2f3695a6451cac34e22d832480e"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",

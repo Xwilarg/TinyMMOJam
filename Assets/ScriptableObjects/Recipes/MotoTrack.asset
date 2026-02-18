@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b307cfa7d7eef49bf26cc90b1ef67d, type: 3}
   m_Name: MotoTrack
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.CraftingRecipe
-  resultName: motocycle
+  resultName: vehicle_motocycle
   recipeId: 0
   inputs:
   - resourceId: 0

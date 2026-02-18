@@ -1,0 +1,24 @@
+{
+    "player_disconnected": "Vous avez été disconnecté",
+    "back_to_menu": "Retour au menu",
+
+    "interaction_hint": "Appuyez sur 'E' pour utiliser",
+    "craft_hint": "Fabriquer {0}",
+
+    "join_server": "Rejoindre serveur dédié",
+    "start_host": "Démarrer host",
+    "start_client": "Démarrer client",
+
+    "vehicle_motocycle": "moto",
+    "vehicle_transport": "camion de transport",
+    "vehicle_tank": "tank",
+
+    "faction_assignation": "Vous êtes dans la {0}",
+    "faction1_name": "faction MARC",
+    "faction1_desc": "Massivement Anarchiste et Révolutionnaire Congrégé, en gros les méchants",
+    "faction2_name": "faction Fort Oranje",
+    "faction2_desc": "Immerge les autres pays depuis 1927",
+
+    "faction_won": "{0} ont gagnés !",
+    "server_restart": "Le serveur va bientôt redémarrer pour la manche suivante"
+}

@@ -1,9 +1,10 @@
 ﻿using MMOJam.Player;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UIElements;
 
 namespace MMOJam.Manager
@@ -52,6 +53,17 @@ namespace MMOJam.Manager
             _ressource_amount = _ui.rootVisualElement.Q<Label>("ressource_1_amount");
 
             _minimap = _ui.rootVisualElement.Q<Image>("minimap");
+
+            foreach (var text in _ui.rootVisualElement.Query<TextElement>().ToList())
+            {
+
+                var sentence = text.text;
+                foreach (var match in Regex.Matches(text.text, "{([^}]+)}").Cast<Match>())
+                {
+                    sentence = sentence.Replace(match.Value, Sketch.Translation.Translate.Instance.Tr(match.Groups[1].Value));
+                }
+                text.text = sentence;
+            }
         }
 
         private void Start()
@@ -71,7 +83,7 @@ namespace MMOJam.Manager
                 short recipeId = _craftRecipeIds[index];
 
                 var recipe = CraftingManager.Instance.GetRecipe(recipeId);
-                button.text = $"Craft {recipe.resultName}";
+                button.text = Sketch.Translation.Translate.Instance.Tr("craft_hint", Sketch.Translation.Translate.Instance.Tr(recipe.resultName));
                 button.SetEnabled(Player != null && CraftingManager.Instance.CanCraft(Player, recipeId, out var _));
                 button.clicked += () =>
                 {
@@ -101,8 +113,8 @@ namespace MMOJam.Manager
             _factionName.visible = true;
             _factionSubtitle.visible = true;
 
-            _factionName.text = message;
-            _factionSubtitle.text = subtitle;
+            _factionName.text = Sketch.Translation.Translate.Instance.Tr(message);
+            _factionSubtitle.text = Sketch.Translation.Translate.Instance.Tr(subtitle);
 
             _psaTimer = 3f;
         }
@@ -124,8 +136,8 @@ namespace MMOJam.Manager
             _factionName.visible = true;
             _factionSubtitle.visible = true;
 
-            _factionName.text = "You are in the " + faction.Name + " faction";
-            _factionSubtitle.text = faction.Description;
+            _factionName.text = Sketch.Translation.Translate.Instance.Tr("faction_assignation", Sketch.Translation.Translate.Instance.Tr(faction.Name));
+            _factionSubtitle.text = Sketch.Translation.Translate.Instance.Tr(faction.Description);
 
             StartCoroutine(WaitAndHideFactionNameCoroutine());
         }

@@ -1,4 +1,5 @@
 ﻿using MMOJam.Zone;
+using Sketch.Translation;
 using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace MMOJam.Manager
         private void Awake()
         {
             Instance = this;
+            Translate.Instance.SetLanguages(new string[] { "english", "french" });
         }
 
         public void InitNetwork()
@@ -29,7 +31,7 @@ namespace MMOJam.Manager
                 if (ServerManager.Instance.AreOthersFactionDead(winner))
                 {
                     // We win yay
-                    UIManager.Instance.DispatchPsaRpc($"{winner.Name} won!", "The server will now restart for the next game");
+                    UIManager.Instance.DispatchPsaRpc(Translate.Instance.Tr("faction_won", Translate.Instance.Tr(winner.Name)), Translate.Instance.Tr("server_restart"));
                     StartCoroutine(WaitAndRestart());
                 }
             }

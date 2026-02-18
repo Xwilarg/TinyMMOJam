@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Faction 2
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.SO.FactionInfo
   Id: 2
-  Name: Fort Oranje faction
-  Description: Flooding others nations since 1927
+  Name: faction2_name
+  Description: faction2_desc
   Color: {r: 1, g: 0.41951597, b: 0, a: 1}
   Material: {fileID: 2100000, guid: cd554829b95367141a75247c6a02cc8e, type: 2}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Faction 1
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.SO.FactionInfo
   Id: 1
-  Name: MARC faction
-  Description: Massively Anarchist Revolutionary Congregate, basically the bad guys
+  Name: faction1_name
+  Description: faction1_desc
   Color: {r: 0, g: 0.40248108, b: 1, a: 1}
   Material: {fileID: 2100000, guid: d5bb0f5b5ae2bcc4195744fcdf756d60, type: 2}
