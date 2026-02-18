@@ -1,5 +1,6 @@
 ﻿using MMOJam.Zone;
 using System.Collections;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -37,6 +38,9 @@ namespace MMOJam.Manager
         private IEnumerator WaitAndRestart()
         {
             yield return new WaitForSeconds(5f);
+            NetworkManager.Singleton.Shutdown();
+            Destroy(gameObject);
+            yield return new WaitForEndOfFrame();
             SceneManager.LoadScene("Main");
         }
     }
