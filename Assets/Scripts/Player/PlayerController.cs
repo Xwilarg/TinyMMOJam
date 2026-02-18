@@ -375,25 +375,23 @@ namespace MMOJam.Player
             if (CurrentVehicle.Value == 0)
             {
                 var ray = new Ray(rayStartPoint, rayDir);
-                if (Physics.Raycast(ray, out var hitInfo, float.MaxValue, LayerMask.GetMask("World")))
-                {
-                    var startPos = transform.position + Vector3.up * 1f;
-                    var dir = (hitInfo.point - transform.position).normalized;
-                    dir.y = 0f;
-                    Debug.DrawLine(startPos, startPos + (dir * 10f), Color.red, 2f);
 
-                    Physics.Raycast(startPos, dir, out var hit, float.MaxValue, LayerMask.GetMask("World", "Prop", "MovingProp", "Player"));
-                    if (hit.collider != null)
-                    {
-                        Debug.Log($"[HIT] {name} raycast hit {hit.collider.name}");
-                        if (hit.collider.TryGetComponent<IShootable>(out var living))
-                        {
-                            Debug.Log($"[HIT] {name} shot {hit.collider.name}");
-                            living.TakeDamage(ServerManager.Instance.GetFaction(CurrentFaction.Value), 5);
-                        }
-                        ShootClientVfxRpc(hit.point);
-                    }
-                    else ShootClientVfxRpc(startPos + (dir * 50f));
+                // Raycast against world to know where the mouse points
+                if (Physics.Raycast(ray, out var hitInfo, 500f, LayerMask.GetMask("World")))
+                {
+                    Vector3 spawnPos = transform.position + Vector3.up * 1f;
+
+                    // Direction = from player to hit point
+                    Vector3 direction = (hitInfo.point - spawnPos);
+                    direction.y = 0f; // keep projectile horizontal
+                    direction.Normalize();
+
+                    ProjectileManager.Instance.SpawnProjectile(
+                        projectileId: 0,
+                        position: spawnPos,
+                        direction: direction,
+                        factionId: CurrentFaction.Value
+                    );
                 }
             }
             else if (CurrentSeat.Value == SeatType.Shooter) // We are in a turret that can shoot!
