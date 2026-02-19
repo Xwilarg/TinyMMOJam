@@ -14,6 +14,8 @@ namespace MMOJam.Vehicle
         [SerializeField]
         private VehicleInfo _info;
 
+        public ProjectileData ProjectileData => _info.Projectile;
+
         private Rigidbody _rb;
 
         private Vector2 _mov;

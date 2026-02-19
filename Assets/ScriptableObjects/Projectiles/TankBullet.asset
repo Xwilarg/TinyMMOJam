@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ed78ae42d1884e41bbe95b57ce901dd, type: 3}
-  m_Name: basic bullet
+  m_Name: TankBullet
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.ProjectileData
-  projectileId: 0
-  speed: 8
-  damage: 1
-  lifetime: 2
-  prefab: {fileID: 4650465851784190028, guid: ea9e6dc124356c74da7a8ca79095a392, type: 3}
+  projectileId: 1
+  speed: 15
+  damage: 5
+  lifetime: 4
+  prefab: {fileID: 2757407182242929012, guid: cde4dd9618ad3bd458789e52a6ac829e, type: 3}

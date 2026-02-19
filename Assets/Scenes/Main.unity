@@ -1560,6 +1560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.ProjectileManager
   _database:
   - {fileID: 11400000, guid: 87bf933c65ad0b54886fa5353a533557, type: 2}
+  - {fileID: 11400000, guid: 0792441505d727c4baeda25402da9715, type: 2}
 --- !u!1001 &500711515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5673,6 +5674,71 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 754375739613261045, guid: 0cdd49b3350ead440a696282dc5f19de, type: 3}
   m_PrefabInstance: {fileID: 1728075925}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1746886487
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1271989788064503957, guid: f72bb18ac26323d4388dd8819e7f58e5, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3184965000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271989788064503957, guid: f72bb18ac26323d4388dd8819e7f58e5, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 542341366
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996193931750703800, guid: f72bb18ac26323d4388dd8819e7f58e5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.512957
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996193931750703800, guid: f72bb18ac26323d4388dd8819e7f58e5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000021699368
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996193931750703800, guid: f72bb18ac26323d4388dd8819e7f58e5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.0122261
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996193931750703800, guid: f72bb18ac26323d4388dd8819e7f58e5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996193931750703800, guid: f72bb18ac26323d4388dd8819e7f58e5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996193931750703800, guid: f72bb18ac26323d4388dd8819e7f58e5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996193931750703800, guid: f72bb18ac26323d4388dd8819e7f58e5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996193931750703800, guid: f72bb18ac26323d4388dd8819e7f58e5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996193931750703800, guid: f72bb18ac26323d4388dd8819e7f58e5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996193931750703800, guid: f72bb18ac26323d4388dd8819e7f58e5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421442112856693184, guid: f72bb18ac26323d4388dd8819e7f58e5, type: 3}
+      propertyPath: m_Name
+      value: Motocycle Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f72bb18ac26323d4388dd8819e7f58e5, type: 3}
 --- !u!1001 &1779872619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7247,6 +7313,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2057505378754785857, guid: ea9e6dc124356c74da7a8ca79095a392, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3720860104
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057505378754785857, guid: ea9e6dc124356c74da7a8ca79095a392, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 820503100
+      objectReference: {fileID: 0}
     - target: {fileID: 4304798421971989799, guid: ea9e6dc124356c74da7a8ca79095a392, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.12151
@@ -7320,3 +7394,4 @@ SceneRoots:
   - {fileID: 633979113}
   - {fileID: 1900950299}
   - {fileID: 6965522414952471910}
+  - {fileID: 1746886487}

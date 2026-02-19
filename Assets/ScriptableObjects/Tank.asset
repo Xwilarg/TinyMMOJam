@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.SO.VehicleInfo
   Name: vehicle_tank
   Seats: 000000000300000001000000
+  Projectile: {fileID: 11400000, guid: 0792441505d727c4baeda25402da9715, type: 2}

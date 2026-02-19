@@ -2,13 +2,11 @@ using MMOJam.Manager;
 using MMOJam.SO;
 using MMOJam.Vehicle;
 using MMOJam.Zone;
-using Sketch.Common;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Cinemachine;
 using Unity.Netcode;
-using Unity.Netcode.Components;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -49,6 +47,8 @@ namespace MMOJam.Player
 
         protected Vector2 _mov;
         private float _verticalSpeed;
+
+        private float _shootTimer = -1f;
 
         public bool IsAi { set; get; }
 
@@ -292,6 +292,8 @@ namespace MMOJam.Player
             if (!IsOwner)
                 return;
 
+            if (_shootTimer > 0f) _shootTimer -= 0f;
+
             if (CurrentVehicle.Value != 0 && CurrentSeat.Value == SeatType.Driver)
             {
                 if (_vehicleMoveTick > 0f && _lastVehiculeDir == _mov) _vehicleMoveTick -= Time.deltaTime;
@@ -372,10 +374,9 @@ namespace MMOJam.Player
         {
             if (!IsAlive) return;
 
+            var ray = new Ray(rayStartPoint, rayDir);
             if (CurrentVehicle.Value == 0)
             {
-                var ray = new Ray(rayStartPoint, rayDir);
-
                 // Raycast against world to know where the mouse points
                 if (Physics.Raycast(ray, out var hitInfo, 500f, LayerMask.GetMask("World")))
                 {
@@ -388,21 +389,37 @@ namespace MMOJam.Player
 
                     ProjectileManager.Instance.SpawnProjectile(
                         projectileId: 0,
-                        position: spawnPos,
+                        position: spawnPos + direction,
                         direction: direction,
                         factionId: CurrentFaction.Value
                     );
                 }
             }
-            else if (CurrentSeat.Value == SeatType.Shooter) // We are in a turret that can shoot!
+            else if (CurrentSeat.Value == SeatType.Shooter && _currentVehicleObject.ProjectileData != null) // We are in a turret that can shoot!
             {
+                // Raycast against world to know where the mouse points
+                if (Physics.Raycast(ray, out var hitInfo, 500f, LayerMask.GetMask("World")))
+                {
+                    Vector3 spawnPos = transform.position + Vector3.up * 1f;
 
+                    // Direction = from player to hit point
+                    Vector3 direction = (hitInfo.point - spawnPos);
+                    direction.y = 0f; // keep projectile horizontal
+                    direction.Normalize();
+
+                    ProjectileManager.Instance.SpawnProjectile(
+                        projectileId: 1,
+                        position: spawnPos + direction,
+                        direction: direction,
+                        factionId: CurrentFaction.Value
+                    );
+                }
             }
         }
 
         public void OnShoot(InputAction.CallbackContext value)
         {
-            if (IsLocalHuman && IsAlive && value.phase == InputActionPhase.Started)
+            if (IsLocalHuman && IsAlive && value.phase == InputActionPhase.Started && _shootTimer <= 0f)
             {
                 var mousePos = Mouse.current.position.ReadValue();// CursorUtils.GetPosition(_pInput);
                 if (mousePos != null)
@@ -411,6 +428,7 @@ namespace MMOJam.Player
                     ShootServerRpc(ray.origin, ray.direction);
                 }
                 else Debug.LogWarning("Mouse position not found");
+                _shootTimer = .5f;
             }
         }
 

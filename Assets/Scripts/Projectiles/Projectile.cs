@@ -1,7 +1,7 @@
+using MMOJam.Manager;
+using MMOJam.SO;
 using Unity.Netcode;
 using UnityEngine;
-using MMOJam.Player;
-using MMOJam.Manager;
 
 namespace MMOJam
 {
@@ -9,21 +9,32 @@ namespace MMOJam
     {
         private int _projectileId;
         private int _factionId;
-        private float _speed;
+        private NetworkVariable<float> _speed = new();
         private int _damage;
         private float _lifetime;
 
-        private Vector3 _direction;
+        private NetworkVariable<Vector3> _direction = new();
         private float _timer;
 
-        public void Initialize(int id, ProjectileData data, int factionId, Vector3 direction)
+        private FactionInfo _faction;
+
+        public void Initialize(int id, ProjectileData data, int factionId, Vector3 position, Vector3 direction, FactionInfo faction)
         {
             _projectileId = id;
-            _speed = data.speed;
+            _speed.Value = data.speed;
             _damage = data.damage;
             _lifetime = data.lifetime;
             _factionId = factionId;
-            _direction = direction.normalized;
+            _direction.Value = direction.normalized;
+            _faction = faction;
+
+            SyncPosRpc(position);
+        }
+
+        [Rpc(SendTo.ClientsAndHost)]
+        public void SyncPosRpc(Vector3 position)
+        {
+            transform.position = position;
         }
 
         public override void OnNetworkSpawn()
@@ -39,11 +50,11 @@ namespace MMOJam
         private void Update()
         {
             // Move
-            transform.position += _direction * _speed * Time.deltaTime;
+            transform.position += _direction.Value * _speed.Value * Time.deltaTime;
 
             // Rotate to face movement direction
-            if (_direction != Vector3.zero)
-                transform.rotation = Quaternion.LookRotation(_direction);
+            if (_direction.Value != Vector3.zero)
+                transform.rotation = Quaternion.LookRotation(_direction.Value);
 
             if (!IsServer)
                 return;
@@ -58,24 +69,15 @@ namespace MMOJam
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!IsServer)
+            if (!ServerManager.Instance.IsAuthority)
                 return;
 
-            if (other.TryGetComponent(out LivingEntity entity))
+            if (other.TryGetComponent<IShootable>(out var living))
             {
-                if (other.TryGetComponent(out PlayerController player))
-                {
-                    if (player.CurrentFaction.Value == _factionId)
-                        return;
-                }
-
-                entity.TakeDamage(
-                    ServerManager.Instance.GetFaction(_factionId),
-                    _damage
-                );
-
-                ProjectileManager.Instance.DespawnProjectile(this);
+                living.TakeDamage(_faction, _damage);
             }
+
+            ProjectileManager.Instance.DespawnProjectile(this);
         }
     }
 }

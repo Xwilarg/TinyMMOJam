@@ -41,7 +41,7 @@ namespace MMOJam
             netObj.Spawn(); // SERVER ONLY
 
             var proj = go.GetComponent<Projectile>();
-            proj.Initialize(projectileId, data, factionId, direction);
+            proj.Initialize(projectileId, data, factionId, position, direction, ServerManager.Instance.GetFaction(factionId));
 
             RegisterProjectile(proj);
 
@@ -66,7 +66,9 @@ namespace MMOJam
             UnregisterProjectile(proj);
 
             if (proj.NetworkObject != null && proj.NetworkObject.IsSpawned)
+            {
                 proj.NetworkObject.Despawn(true);
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ namespace MMOJam.SO
     {
         public string Name;
         public SeatType[] Seats;
+        public ProjectileData Projectile;
     }
 
     public enum SeatType
