@@ -1,5 +1,5 @@
 {
-    "player_disconnected": "You got disconnected",
+    "player_disconnected": "You have been disconnected",
     "back_to_menu": "Back to main menu",
 
     "interaction_hint": "Press 'E' to interact",
@@ -9,7 +9,7 @@
     "start_host": "Start Host",
     "start_client": "Start Client",
 
-    "vehicle_motocycle": "motocycle",
+    "vehicle_motocycle": "motorcycle",
     "vehicle_transport": "transport truck",
     "vehicle_tank": "tank",
 
