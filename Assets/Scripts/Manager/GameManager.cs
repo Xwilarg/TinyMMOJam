@@ -14,7 +14,7 @@ namespace MMOJam.Manager
         private void Awake()
         {
             Instance = this;
-            Translate.Instance.SetLanguages(new string[] { "english", "french" });
+            Translate.Instance.SetLanguages(new string[] { "english", "french", "dutch" });
         }
 
         public void InitNetwork()
