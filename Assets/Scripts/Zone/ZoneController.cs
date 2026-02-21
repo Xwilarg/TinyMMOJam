@@ -22,8 +22,6 @@ namespace MMOJam.Zone
 
         private void Awake()
         {
-            if (IsServer || IsHost) _factionId.Value = _defaultFaction.Id;
-
             _collider = GetComponent<Collider>();
             _buildings = GetComponentsInChildren<ABuilding>();
             /*
@@ -40,6 +38,7 @@ namespace MMOJam.Zone
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
+            if (IsServer || IsHost) _factionId.Value = _defaultFaction.Id;
 
             Debug.Log($"[FAC] Update attached zone data (current faction is {_factionId.Value})");
             foreach (var building in _buildings)

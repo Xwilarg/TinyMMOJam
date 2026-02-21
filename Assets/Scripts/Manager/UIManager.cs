@@ -123,8 +123,8 @@ namespace MMOJam.Manager
             _factionName.visible = true;
             _factionSubtitle.visible = true;
 
-            _factionName.text = Sketch.Translation.Translate.Instance.Tr(message);
-            _factionSubtitle.text = Sketch.Translation.Translate.Instance.Tr(subtitle);
+            _factionName.text = message;
+            _factionSubtitle.text = subtitle;
 
             _psaTimer = 3f;
         }

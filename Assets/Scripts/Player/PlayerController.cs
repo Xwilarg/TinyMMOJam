@@ -144,8 +144,8 @@ namespace MMOJam.Player
             {
                 Debug.Log("[PLY] Succesfully respawned");
                 _anim.SetTrigger("Revive");
-                _rb.isKinematic = true;
-                transform.rotation = Quaternion.identity;
+                //_rb.isKinematic = true;
+                //transform.rotation = Quaternion.identity;
                 _livingEntity.RestoreHealth();
             }
             _controller.enabled = true;
@@ -174,11 +174,17 @@ namespace MMOJam.Player
             TryRespawn();
         }
 
+        [Rpc(SendTo.ClientsAndHost)]
+        private void DieRpc()
+        {
+            _anim.SetTrigger("Die");
+        }
+
         public void Die()
         {
+            DieRpc();
             /*_rb.isKinematic = false;
             _rb.AddTorque(new Vector3(Random.value, Random.value, Random.value).normalized * 10f);*/
-            _anim.SetTrigger("Die");
 
             if (CurrentVehicle.Value != 0) // TODO: Is this done on all clients?
             {
@@ -232,6 +238,7 @@ namespace MMOJam.Player
                 if (IsServer)
                 {
                     SetupServer();
+                    _livingEntity.TakeDamage(null, 999);
                 }
                 else
                 {
@@ -315,6 +322,8 @@ namespace MMOJam.Player
         {
             if (!IsOwner)
                 return;
+
+            //Debug.Log($"[PLA] IsAlive? {IsAlive}");
 
             if (_shootTimer > 0f) _shootTimer -= Time.deltaTime;
 

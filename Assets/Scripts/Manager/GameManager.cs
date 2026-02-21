@@ -32,7 +32,7 @@ namespace MMOJam.Manager
         public void CheckVictoryCondition()
         {
             var winner = ZoneManager.Instance.GetWinningFaction();
-            if (winner != null) // All buildings belong to a single faction
+            if (winner != null && winner.Id != 0) // All buildings belong to a single faction
             {
                 if (ServerManager.Instance.AreOthersFactionDead(winner))
                 {
