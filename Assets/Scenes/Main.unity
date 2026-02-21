@@ -6539,10 +6539,6 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 2908178442
       objectReference: {fileID: 0}
-    - target: {fileID: 2406346245299902770, guid: 11bc37fc5520c38469bded9ded9114cc, type: 3}
-      propertyPath: _position.x
-      value: 55.8
-      objectReference: {fileID: 0}
     - target: {fileID: 4306413776190850482, guid: 11bc37fc5520c38469bded9ded9114cc, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3160397928
@@ -6554,10 +6550,6 @@ PrefabInstance:
     - target: {fileID: 5289771640826020872, guid: 11bc37fc5520c38469bded9ded9114cc, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 4253788294
-      objectReference: {fileID: 0}
-    - target: {fileID: 5289771640826020872, guid: 11bc37fc5520c38469bded9ded9114cc, type: 3}
-      propertyPath: SynchronizeTransform
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6010612001126407685, guid: 11bc37fc5520c38469bded9ded9114cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6753,10 +6745,6 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 274688545
       objectReference: {fileID: 0}
-    - target: {fileID: 3331489127551564546, guid: 2e17c1435e49675479ef904d3ad8fe9c, type: 3}
-      propertyPath: _position.x
-      value: -21.25
-      objectReference: {fileID: 0}
     - target: {fileID: 3791371314976991106, guid: 2e17c1435e49675479ef904d3ad8fe9c, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 256770418
@@ -6764,10 +6752,6 @@ PrefabInstance:
     - target: {fileID: 5059750042695738936, guid: 2e17c1435e49675479ef904d3ad8fe9c, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 517155244
-      objectReference: {fileID: 0}
-    - target: {fileID: 5059750042695738936, guid: 2e17c1435e49675479ef904d3ad8fe9c, type: 3}
-      propertyPath: SynchronizeTransform
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5385423954980428578, guid: 2e17c1435e49675479ef904d3ad8fe9c, type: 3}
       propertyPath: m_Name
@@ -6874,17 +6858,9 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 801807546
       objectReference: {fileID: 0}
-    - target: {fileID: 4307273337263598985, guid: 4b748e63bbe1f1946bdb51a9a07c267e, type: 3}
-      propertyPath: SynchronizeTransform
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5290882402173922355, guid: 4b748e63bbe1f1946bdb51a9a07c267e, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 475705312
-      objectReference: {fileID: 0}
-    - target: {fileID: 6037785762403414195, guid: 4b748e63bbe1f1946bdb51a9a07c267e, type: 3}
-      propertyPath: _position.x
-      value: 128.25
       objectReference: {fileID: 0}
     - target: {fileID: 8247616617965884147, guid: 4b748e63bbe1f1946bdb51a9a07c267e, type: 3}
       propertyPath: GlobalObjectIdHash
