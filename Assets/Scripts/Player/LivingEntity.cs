@@ -48,6 +48,7 @@ namespace MMOJam.Player
             {
                 if (_player.IsAi)
                 {
+                    EnemyManager.Instance.SpawnWave(1);
                     Destroy(gameObject);
                 }
                 else

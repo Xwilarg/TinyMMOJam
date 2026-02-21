@@ -57,6 +57,7 @@ namespace MMOJam
             if (_res_amount < 1) 
             {
                 ServerManager.Instance.UnregisterInteractible(this);
+                RessourcesManager.Instance.SpawnResources();
                 Destroy(gameObject);
             }
         }
