@@ -3,7 +3,6 @@ using MMOJam.SO;
 using MMOJam.Vehicle;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Cinemachine;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,15 +14,6 @@ namespace MMOJam.Manager
     {
         public static ServerManager Instance { private set; get; }
 
-        [SerializeField]
-        private FactionInfo[] _factions;
-
-        [SerializeField]
-        private UIDocument _ui;
-
-        [SerializeField]
-        private CinemachineCamera _cam;
-
         private Dictionary<ulong, AInteractible> _interactibles = new();
         private readonly List<PlayerController> _players = new();
         private PlayerController _me = null;
@@ -32,13 +22,13 @@ namespace MMOJam.Manager
 
         public bool IsAuthority => IsHost || IsServer;
 
-        private void Awake()
+        private void Start()
         {
             Instance = this;
             _manager = GetComponent<NetworkManager>();
 
-            _ui.rootVisualElement.Q<VisualElement>("disconnected").visible = false;
-            _ui.rootVisualElement.Q<Button>("disconnected-menu").clicked += () =>
+            UIManager.Instance.UI.rootVisualElement.Q<VisualElement>("disconnected").visible = false;
+            UIManager.Instance.UI.rootVisualElement.Q<Button>("disconnected-menu").clicked += () =>
             {
                 SceneManager.LoadScene("Menu");
             };
@@ -55,7 +45,7 @@ namespace MMOJam.Manager
                 if (player.IsOwner) _me = player;
             }
 
-            _cam.Lens.OrthographicSize = 7.5f;
+            UIManager.Instance.Cam.Lens.OrthographicSize = 7.5f;
         }
 
         public override void OnNetworkDespawn()
@@ -134,20 +124,20 @@ namespace MMOJam.Manager
 
         public FactionInfo GetFaction(int factionId)
         {
-            return _factions.FirstOrDefault(f => f.Id == factionId);
+            return UIManager.Instance.Factions.FirstOrDefault(f => f.Id == factionId);
         }
 
         public int GetNextFaction()
         {
 #if UNITY_EDITOR
-            if (_factions.Any(f => f.Id == 0) || _factions.GroupBy(f => f.Id).Any(x => x.Count() > 1))
+            if (UIManager.Instance.Factions.Any(f => f.Id == 0) || UIManager.Instance.Factions.GroupBy(f => f.Id).Any(x => x.Count() > 1))
             {
                 throw new System.InvalidOperationException("You should properly setup your SO");
             }
 #endif
 
             // Get next faction with least players
-            return _factions.OrderBy(f => _players.Count(p => p.CurrentFaction.Value == f.Id)).First().Id;
+            return UIManager.Instance.Factions.OrderBy(f => _players.Count(p => p.CurrentFaction.Value == f.Id)).First().Id;
         }
 
         public IEnumerable<PlayerController> GetAllOtherFactionPlayer(FactionInfo faction)

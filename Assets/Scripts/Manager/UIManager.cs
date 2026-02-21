@@ -1,8 +1,10 @@
 ﻿using MMOJam.Player;
+using MMOJam.SO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Unity.Cinemachine;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -15,6 +17,14 @@ namespace MMOJam.Manager
 
         [SerializeField]
         private UIDocument _ui;
+        public UIDocument UI => _ui;
+        [SerializeField]
+        private FactionInfo[] _factions;
+        public FactionInfo[] Factions => _factions;
+
+        [SerializeField]
+        private CinemachineCamera _cam;
+        public CinemachineCamera Cam => _cam;
 
         private ListView _craftingList;
         private Label _label;
