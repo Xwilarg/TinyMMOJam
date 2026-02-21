@@ -32,6 +32,10 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1470744395554074050, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
+      propertyPath: _spawnPoint
+      value: 
+      objectReference: {fileID: 5356193345565928267}
     - target: {fileID: 1975669230628256487, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 55.8
@@ -172,6 +176,10 @@ PrefabInstance:
       propertyPath: _faction
       value: 
       objectReference: {fileID: 11400000, guid: 3dd97efbfca46ca429ff6e82440bab16, type: 2}
+    - target: {fileID: 7594767026814516688, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
+      propertyPath: _defaultFaction
+      value: 
+      objectReference: {fileID: 11400000, guid: 3dd97efbfca46ca429ff6e82440bab16, type: 2}
     - target: {fileID: 7810915301346728554, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.6087631
@@ -216,5 +224,10 @@ PrefabInstance:
 --- !u!1 &5116069472823405700 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1079994618605013094, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
+  m_PrefabInstance: {fileID: 5188999400735827170}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5356193345565928267 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 168324296472940457, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
   m_PrefabInstance: {fileID: 5188999400735827170}
   m_PrefabAsset: {fileID: 0}

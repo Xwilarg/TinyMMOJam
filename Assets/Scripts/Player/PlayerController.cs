@@ -128,6 +128,13 @@ namespace MMOJam.Player
             MoveToSpawnpoint();
         }
 
+        private void ClientMoveToSpawnPoint()
+        {
+            _controller.enabled = false;
+            ZoneManager.Instance.SpawnAtFaction(CurrentFaction.Value, this);
+            _controller.enabled = true;
+        }
+
         public void MoveToSpawnpoint()
         {
             Debug.Log($"[PLY] Moving to spawn point");
@@ -142,6 +149,12 @@ namespace MMOJam.Player
                 _livingEntity.RestoreHealth();
             }
             _controller.enabled = true;
+        }
+
+        public void MoveTo(Vector3 pos)
+        {
+            Debug.Log($"[PLA] Player teleported to {pos}");
+            transform.position = pos;
         }
 
         public void TryRespawn()
@@ -223,6 +236,7 @@ namespace MMOJam.Player
                 else
                 {
                     ShowFactionData(CurrentFaction.Value);
+                    ClientMoveToSpawnPoint();
                 }
             }
         }

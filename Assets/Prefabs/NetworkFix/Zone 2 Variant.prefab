@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zone 2 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1470744395554074050, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
+      propertyPath: _spawnPoint
+      value: 
+      objectReference: {fileID: 4105748458508501706}
     - target: {fileID: 1975669230628256487, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 128.25
@@ -112,6 +116,10 @@ PrefabInstance:
       propertyPath: _faction
       value: 
       objectReference: {fileID: 11400000, guid: a8f606ab604766847b3ad3b79a553bd6, type: 2}
+    - target: {fileID: 7594767026814516688, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
+      propertyPath: _defaultFaction
+      value: 
+      objectReference: {fileID: 11400000, guid: a8f606ab604766847b3ad3b79a553bd6, type: 2}
     - target: {fileID: 8340794007020282192, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3596429303
@@ -128,5 +136,10 @@ PrefabInstance:
 --- !u!1 &3769626224739910917 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1079994618605013094, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
+  m_PrefabInstance: {fileID: 4227910787866791267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4105748458508501706 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 168324296472940457, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
   m_PrefabInstance: {fileID: 4227910787866791267}
   m_PrefabAsset: {fileID: 0}

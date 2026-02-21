@@ -130,7 +130,7 @@ namespace MMOJam.Manager
         public int GetNextFaction()
         {
 #if UNITY_EDITOR
-            if (UIManager.Instance.Factions.Any(f => f.Id == 0) || UIManager.Instance.Factions.GroupBy(f => f.Id).Any(x => x.Count() > 1))
+            if (/*UIManager.Instance.Factions.Any(f => f.Id == 0) || */UIManager.Instance.Factions.GroupBy(f => f.Id).Any(x => x.Count() > 1))
             {
                 throw new System.InvalidOperationException("You should properly setup your SO");
             }

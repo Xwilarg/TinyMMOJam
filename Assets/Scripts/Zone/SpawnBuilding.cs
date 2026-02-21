@@ -22,7 +22,7 @@ namespace MMOJam.Zone
 
         public void SpawnPlayer(PlayerController player)
         {
-            player.transform.position = _spawnPoint.transform.position;
+            player.MoveTo(_spawnPoint.transform.position);
         }
 
         public override void OnZoneEnter(PlayerController player)
