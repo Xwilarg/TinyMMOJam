@@ -28,13 +28,17 @@ namespace MMOJam
             _direction.Value = direction.normalized;
             _faction = faction;
 
-            SyncPosRpc(position);
+            SyncPosRpc(position, factionId);
         }
 
         [Rpc(SendTo.ClientsAndHost)]
-        public void SyncPosRpc(Vector3 position)
+        public void SyncPosRpc(Vector3 position, int factionId)
         {
             transform.position = position;
+            var mr = GetComponentInChildren<MeshRenderer>();
+            var mats = mr.materials;
+            mats[0] = ServerManager.Instance.GetFaction(factionId).Material;
+            mr.materials = mats;
         }
 
         public override void OnNetworkSpawn()
