@@ -80,6 +80,10 @@ namespace MMOJam
             {
                 living.TakeDamage(_faction, _damage);
             }
+            else if (other.TryGetComponent<Projectile>(out var p))
+            {
+                ProjectileManager.Instance.DespawnProjectile(p);
+            }
 
             ProjectileManager.Instance.DespawnProjectile(this);
         }
