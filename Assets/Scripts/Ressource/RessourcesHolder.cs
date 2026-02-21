@@ -22,12 +22,11 @@ namespace MMOJam
             _ressources[id] = total;
             UIManager.Instance.UpdateCraftingList();
             Debug.Log($"[RGT] [{string.Join(", ", _ressources.Values)}]");
+            SendRessourceClientRpc(id, total);
         }
 
         public bool CheckRessources(short id, long amount)
         {
-            if (!ServerManager.Instance.IsAuthority) return false;
-
             _ressources.TryGetValue(id, out long current);
             if (current < amount) return false;
             return true;
@@ -58,6 +57,7 @@ namespace MMOJam
             _ressources[id] = value;
             Debug.Log($"[RCN] Received resource {id}: {value}");
             UIManager.Instance.UpdateRessources(value);
+            UIManager.Instance.UpdateCraftingList();
         }
     }
 }

@@ -39,16 +39,13 @@ namespace MMOJam.Manager
         public bool CanCraft(PlayerController player, short recipeId, out CraftingRecipe recipe)
         {
             RessourcesHolder holder = player.GetComponent<RessourcesHolder>();
-
             if (!_recipes.TryGetValue(recipeId, out recipe))
                 return false;
-
             foreach (var res in recipe.inputs)
             {
                 if (!holder.CheckRessources(res.resourceId, res.amount))
                     return false;
             }
-
             return true;
         }
 
