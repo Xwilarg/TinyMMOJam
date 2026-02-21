@@ -292,7 +292,7 @@ namespace MMOJam.Player
             if (!IsOwner)
                 return;
 
-            if (_shootTimer > 0f) _shootTimer -= 0f;
+            if (_shootTimer > 0f) _shootTimer -= Time.deltaTime;
 
             if (CurrentVehicle.Value != 0 && CurrentSeat.Value == SeatType.Driver)
             {
