@@ -85,6 +85,10 @@ namespace MMOJam.Player
                 _controller.enabled = newValue == 0;
 
                 _currentVehicleObject = newValue == 0 ? null : ServerManager.Instance.GetVehicle(newValue);
+                if (_currentVehicleObject != null && IsLocalPlayer)
+                {
+                    transform.position = _currentVehicleObject.transform.position;
+                }
                 transform.rotation = Quaternion.identity;
             };
 
@@ -452,7 +456,7 @@ namespace MMOJam.Player
                 // Raycast against world to know where the mouse points
                 if (Physics.Raycast(ray, out var hitInfo, 500f, LayerMask.GetMask("World")))
                 {
-                    Vector3 spawnPos = transform.position + Vector3.up * 1f;
+                    Vector3 spawnPos = transform.position + Vector3.up * 5f;
 
                     // Direction = from player to hit point
                     Vector3 direction = (hitInfo.point - spawnPos);

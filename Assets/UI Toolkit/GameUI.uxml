@@ -2,7 +2,7 @@
     <ui:Image name="minimap" source="project://database/Assets/Minimap.renderTexture?fileID=8400000&amp;guid=942f8bf8a904c624a9e9a751a2a06015&amp;type=2#Minimap" style="top: 0; left: 0; position: absolute; width: 250px; height: 250px; visibility: hidden;"/>
     <ui:GroupBox name="network-container" style="width: 200px; height: 300px; justify-content: space-around; align-self: center; align-items: stretch;">
         <ui:Button text="{join_server}" name="btn-join_dedicated" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/SourGummy_SemiExpanded-Regular.ttf?fileID=12800000&amp;guid=c29f54425248cf74dba5e69fee87ec38&amp;type=3#SourGummy_SemiExpanded-Regular&quot;); margin-bottom: 2px;"/>
-        <ui:Label text="{or}"/>
+        <ui:Label text="{or}" style="align-self: center;"/>
         <ui:TextField label="" placeholder-text="" name="field-ip" value="127.0.0.1"/>
         <ui:IntegerField label="" value="7777" name="field-port"/>
         <ui:Button text="{start_host}" name="btn-start_host" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/SourGummy_SemiExpanded-Regular.ttf?fileID=12800000&amp;guid=c29f54425248cf74dba5e69fee87ec38&amp;type=3#SourGummy_SemiExpanded-Regular&quot;);"/>
