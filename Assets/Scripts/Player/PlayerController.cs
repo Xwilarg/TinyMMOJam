@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Cinemachine;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -102,11 +103,16 @@ namespace MMOJam.Player
 
             CurrentFaction.OnValueChanged += (oldValue, newValue) =>
             {
-                UIManager.Instance.ShowFactionName(CurrentFaction.Value);
-                var mats = _mr.materials;
-                mats[0] = ServerManager.Instance.GetFaction(newValue).Material; // not properly sync
-                _mr.materials = mats;
+                ShowFactionData(newValue);
             };
+        }
+
+        private void ShowFactionData(int newValue)
+        {
+            UIManager.Instance.ShowFactionName(CurrentFaction.Value);
+            var mats = _mr.materials;
+            mats[0] = ServerManager.Instance.GetFaction(newValue).Material; // not properly sync
+            _mr.materials = mats;
         }
 
         public bool IsLocalHuman => IsOwner && !IsAi;
@@ -178,7 +184,7 @@ namespace MMOJam.Player
                 UIManager.Instance.Player = this;
             }
 
-            if (IsHost || IsServer || (IsLocalHuman))
+            if (IsHost || IsServer || IsLocalHuman)
             {
                 var tArea = GetComponentInChildren<TriggerArea>();
                 tArea.OnTriggerEnterEvent.AddListener((c) =>
@@ -213,6 +219,10 @@ namespace MMOJam.Player
                 if (IsServer)
                 {
                     SetupServer();
+                }
+                else
+                {
+                    ShowFactionData(CurrentFaction.Value);
                 }
             }
         }

@@ -26,6 +26,15 @@ namespace MMOJam.Zone
 
             _collider = GetComponent<Collider>();
             _buildings = GetComponentsInChildren<ABuilding>();
+            /*
+            _factionId.OnValueChanged += (int oldValue, int newValue) =>
+            {
+                foreach (var building in _buildings)
+                {
+                    building.AttachedZone = this;
+                    building.UpdateFactionData();
+                }
+            };*/
         }
 
         public override void OnNetworkSpawn()
