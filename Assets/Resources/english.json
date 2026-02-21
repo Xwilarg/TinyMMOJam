@@ -20,5 +20,7 @@
     "faction2_desc": "Flooding others nations since 1927",
 
     "faction_won": "{0} won!",
-    "server_restart": "The server will soon restart for the next game"
+    "server_restart": "The server will soon restart for the next game",
+
+    "resource_iron": "Iron"
 }

@@ -11,6 +11,8 @@ namespace MMOJam
         public int damage;
         public float lifetime;
 
+        public float deviation;
+
         public GameObject prefab;
     }
 }

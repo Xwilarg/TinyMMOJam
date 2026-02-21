@@ -26,7 +26,7 @@ namespace MMOJam.Manager
         public void InitNetwork()
         {
             EnemyManager.Instance.SpawnWave(2);
-            RessourcesManager.Instance.SpawnResources();
+            for (int i = 0; i < 10; i++) RessourcesManager.Instance.SpawnResources();
         }
 
         public void CheckVictoryCondition()

@@ -78,7 +78,7 @@ MonoBehaviour:
   _res_id: 0
   _mine_amount: 1
   _res_amount: 10
-  _name: PLACEHOLDER
+  _name: resource_iron
   _uiRoot: {fileID: 7432228868125883653}
 --- !u!136 &749454335030276983
 CapsuleCollider:

@@ -3,6 +3,7 @@ using MMOJam.Manager;
 using TMPro;
 using UnityEngine;
 using Unity.Netcode;
+using Sketch.Translation;
 
 namespace MMOJam
 {
@@ -22,6 +23,9 @@ namespace MMOJam
         
         private void Awake()
         {
+            _ui_text = _uiRoot.GetComponent<TextMeshPro>();
+            UpdateUI();
+
             if (IsClient)
                 return;
 
@@ -31,15 +35,11 @@ namespace MMOJam
                 return;
             }
 
-            _ui_text = _uiRoot.GetComponent<TextMeshPro>();
-
             if (_ui_text == null)
             {
                 Debug.LogError($"{name}: No TextMeshProUGUI found in UI Root!");
                 return;
             }
-
-            UpdateUI();
         }
         public override void InteractClient(PlayerController player)
         {
@@ -73,7 +73,7 @@ namespace MMOJam
 
         private void UpdateUI()
         {
-            _ui_text.text = _name + "\n" + _res_amount;
+            _ui_text.text = Translate.Instance.Tr(_name) + "\n" + _res_amount;
         }
     }
 }

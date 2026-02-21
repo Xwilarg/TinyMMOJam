@@ -20,5 +20,7 @@
     "faction2_desc": "Immerge les autres pays depuis 1927",
 
     "faction_won": "{0} ont gagnés !",
-    "server_restart": "Le serveur va bientôt redémarrer pour la manche suivante"
+    "server_restart": "Le serveur va bientôt redémarrer pour la manche suivante",
+
+    "resource_iron": "Fer"
 }
