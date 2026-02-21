@@ -1530,6 +1530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51edd7f1d35fc1445a69b82e9fb96f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.Manager.GameManager
+  _cam: {fileID: 1891154065}
 --- !u!114 &440216071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1944,11 +1945,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4858149062819013068, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.999969
+      value: -7.000031
       objectReference: {fileID: 0}
     - target: {fileID: 4858149062819013068, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.250011
+      value: -16.249958
       objectReference: {fileID: 0}
     - target: {fileID: 4858149062819013068, guid: 7dea5cb28bb503748aa83dda45de51fe, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3724,7 +3725,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -100
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 1
@@ -6257,7 +6258,7 @@ MonoBehaviour:
   Lens:
     FieldOfView: 60
     OrthographicSize: 10
-    NearClipPlane: -100
+    NearClipPlane: 0.01
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
