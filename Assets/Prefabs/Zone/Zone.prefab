@@ -61,7 +61,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
   SyncOwnerTransformWhenParented: 0
   AllowOwnerToParent: 0
 --- !u!114 &7594767026814516688
@@ -310,6 +310,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Command Center
       objectReference: {fileID: 0}
+    - target: {fileID: 4986773024276329424, guid: 0e5a997a8d4101744b98b80cda7a89c7, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3638992109
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986773024276329424, guid: 0e5a997a8d4101744b98b80cda7a89c7, type: 3}
+      propertyPath: AutoObjectParentSync
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -372,6 +380,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7781946962900048024, guid: 9590df766f52ee446bdda68723de802d, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1123686918
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781946962900048024, guid: 9590df766f52ee446bdda68723de802d, type: 3}
+      propertyPath: AutoObjectParentSync
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -390,6 +406,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1975669230628256487}
     m_Modifications:
+    - target: {fileID: 854421039606517154, guid: 9c42b14714de2754386a2b3259bf6583, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2962048437
+      objectReference: {fileID: 0}
+    - target: {fileID: 854421039606517154, guid: 9c42b14714de2754386a2b3259bf6583, type: 3}
+      propertyPath: AutoObjectParentSync
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1506625281849414011, guid: 9c42b14714de2754386a2b3259bf6583, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22

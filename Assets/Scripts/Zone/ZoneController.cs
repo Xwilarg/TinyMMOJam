@@ -2,6 +2,7 @@
 using MMOJam.Player;
 using MMOJam.SO;
 using MMOJam.Vehicle;
+using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -24,7 +25,7 @@ namespace MMOJam.Zone
         {
             _collider = GetComponent<Collider>();
             _buildings = GetComponentsInChildren<ABuilding>();
-            /*
+
             _factionId.OnValueChanged += (int oldValue, int newValue) =>
             {
                 foreach (var building in _buildings)
@@ -32,7 +33,7 @@ namespace MMOJam.Zone
                     building.AttachedZone = this;
                     building.UpdateFactionData();
                 }
-            };*/
+            };
         }
 
         public override void OnNetworkSpawn()
