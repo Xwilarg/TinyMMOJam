@@ -239,7 +239,7 @@ namespace MMOJam.Player
                 if (IsServer)
                 {
                     SetupServer();
-                    _livingEntity.TakeDamage(null, 999);
+                    StartCoroutine(WaitAndKill());
                 }
                 else
                 {
@@ -247,6 +247,12 @@ namespace MMOJam.Player
                     ClientMoveToSpawnPoint();
                 }
             }
+        }
+
+        private IEnumerator WaitAndKill()
+        {
+            yield return new WaitForEndOfFrame();
+            _livingEntity.TakeDamage(null, 999);
         }
 
         public override void OnNetworkDespawn()
