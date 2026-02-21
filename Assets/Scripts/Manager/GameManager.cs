@@ -1,6 +1,7 @@
 ﻿using MMOJam.Zone;
 using Sketch.Translation;
 using System.Collections;
+using Unity.Cinemachine;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,10 +12,15 @@ namespace MMOJam.Manager
     {
         public static GameManager Instance { private set; get; }
 
+        [SerializeField]
+        private CinemachineCamera _cam;
+
         private void Awake()
         {
             Instance = this;
             Translate.Instance.SetLanguages(new string[] { "english", "french", "dutch" });
+
+            _cam.Lens.NearClipPlane = -100f;
         }
 
         public void InitNetwork()
