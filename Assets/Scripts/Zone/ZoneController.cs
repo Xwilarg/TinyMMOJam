@@ -10,19 +10,29 @@ namespace MMOJam.Zone
     public class ZoneController : NetworkBehaviour
     {
         [SerializeField]
-        private FactionInfo _faction;
+        private FactionInfo _defaultFaction;
+
+        private NetworkVariable<int> _factionId = new(0);
 
         private Collider _collider;
 
-        public FactionInfo Faction => _faction;
+        public FactionInfo Faction => ServerManager.Instance.GetFaction(_factionId.Value);
 
         private ABuilding[] _buildings;
 
         private void Awake()
         {
-            _collider = GetComponent<Collider>();
+            if (IsServer || IsHost) _factionId.Value = _defaultFaction.Id;
 
+            _collider = GetComponent<Collider>();
             _buildings = GetComponentsInChildren<ABuilding>();
+        }
+
+        public override void OnNetworkSpawn()
+        {
+            base.OnNetworkSpawn();
+
+            Debug.Log($"[FAC] Update attached zone data (current faction is {_factionId.Value})");
             foreach (var building in _buildings)
             {
                 building.AttachedZone = this;
@@ -32,7 +42,7 @@ namespace MMOJam.Zone
 
         public void ConvertZoneTo(FactionInfo faction)
         {
-            _faction = faction;
+            _factionId.Value = faction.Id;
 
             foreach (var building in _buildings)
             {

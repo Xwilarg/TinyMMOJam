@@ -1,5 +1,4 @@
-﻿using MMOJam.Manager;
-using MMOJam.Player;
+﻿using MMOJam.Player;
 using MMOJam.SO;
 using Unity.Netcode;
 using UnityEngine;
@@ -38,6 +37,11 @@ namespace MMOJam.Zone
 
         public void UpdateFactionData()
         {
+            /*
+            Debug.Log($"[FAC] Null check: flag ({_flag == null})");
+            Debug.Log($"[FAC] Null check: zone ({AttachedZone == null})");
+            Debug.Log($"[FAC] Null check: faction ({AttachedZone.Faction == null})");
+            */
             _flag.material = AttachedZone.Faction.Material;
         }
 

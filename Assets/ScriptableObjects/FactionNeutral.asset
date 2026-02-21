@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 838837f574c6f844b8288d37dc7eee90, type: 3}
   m_Name: FactionNeutral
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.SO.FactionInfo
-  Id: 2
+  Id: 0
   Name: neutral faction
   Description: If you see this text, something is probably wrong
   Color: {r: 1, g: 1, b: 1, a: 1}
