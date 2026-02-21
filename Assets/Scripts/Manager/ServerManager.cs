@@ -32,12 +32,16 @@ namespace MMOJam.Manager
 
         public void TakeDamageAt(Vector3 pos, int damage)
         {
-            if (IsClient)
+            if (IsServer)
             {
+                TakeDamageAtRpc(pos, damage);
+            }
+            else
+            {
+                // Shouldn't happen?
                 var bullet = Instantiate(GameManager.Instance.BulletPrefab, pos, Quaternion.identity);
                 bullet.GetComponent<TMP_Text>().text = (-damage).ToString();
             }
-            else TakeDamageAtRpc(pos, damage);
         }
         private void Start()
         {
