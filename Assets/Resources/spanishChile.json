@@ -1,0 +1,29 @@
+{
+    "player_disconnected": "Te caíste del server, po",
+    "back_to_menu": "Volver al menú principal al tiro",
+
+    "interaction_hint": "Aprieta la 'E', po weón",
+    "craft_hint": "Craftear {0} al toque",
+
+    "join_server": "Meterse al server dedicado",
+    "start_host": "Crear la partida (yo hosteo)",
+    "start_client": "Meterse a la partida",
+    "or": "o sino",
+
+    "vehicle_motocycle": "moto",
+    "vehicle_transport": "camión culiao grande",
+    "vehicle_tank": "tanque brigido",
+
+    "faction_assignation": "Te tocó {0}, aperra",
+    "faction1_name": "Facción MARC",
+    "faction1_desc": "Congregado Revolucionario Anarquista Masivo… o sea, los malos culiaos",
+    "faction2_name": "Facción Fort Oranje",
+    "faction2_desc": "Invadiendo países desde el 1927, terrible care'raja",
+    "neutral_name": "Facción neutral",
+    "neutral_desc": "Si estai viendo esta wea, quedó la cagá",
+
+    "faction_won": "¡{0} ganó la wea!",
+    "server_restart": "El server se reinicia al tiro pa la otra partida, no se me vayan",
+
+    "resource_iron": "Hierro"
+}
