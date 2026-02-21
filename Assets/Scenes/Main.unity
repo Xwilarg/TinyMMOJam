@@ -1305,6 +1305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.Manager.GameManager
   _cam: {fileID: 1891154065}
+  _bulletPrefab: {fileID: 8007020263211375737, guid: 9a3490f6e6b1bc74b8f8b6296ff38ff8, type: 3}
 --- !u!114 &440216071
 MonoBehaviour:
   m_ObjectHideFlags: 0

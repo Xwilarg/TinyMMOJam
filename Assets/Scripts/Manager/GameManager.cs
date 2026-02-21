@@ -15,6 +15,10 @@ namespace MMOJam.Manager
         [SerializeField]
         private CinemachineCamera _cam;
 
+        [SerializeField]
+        private GameObject _bulletPrefab;
+        public GameObject BulletPrefab => _bulletPrefab;
+
         private void Awake()
         {
             Instance = this;
