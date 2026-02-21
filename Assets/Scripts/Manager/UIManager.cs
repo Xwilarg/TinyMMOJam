@@ -84,23 +84,44 @@ namespace MMOJam.Manager
             {
                 var button = new Button();
                 button.AddToClassList("craft-button");
+
+                // Register ONCE
+                button.clicked += () =>
+                {
+                    if (button.userData == null)
+                        return;
+
+                    short recipeId = (short)button.userData;
+
+                    var player = ServerManager.Instance.GetLocalPlayer();
+                    ServerManager.Instance.RequestCraftServerRpc(
+                        player.NetworkObjectId,
+                        recipeId
+                    );
+                };
+
                 return button;
             };
 
             _craftingList.bindItem = (element, index) =>
             {
                 var button = (Button)element;
+
                 short recipeId = _craftRecipeIds[index];
+                button.userData = recipeId; // just update data
 
                 var recipe = CraftingManager.Instance.GetRecipe(recipeId);
-                button.text = Sketch.Translation.Translate.Instance.Tr("craft_hint", Sketch.Translation.Translate.Instance.Tr(recipe.resultName));
-                button.SetEnabled(Player != null && CraftingManager.Instance.CanCraft(Player, recipeId, out var _));
-                button.clicked += () =>
-                {
-                    Debug.Log($"Craft recipe {recipe.resultName}");
-                    var player = ServerManager.Instance.GetLocalPlayer();
-                    ServerManager.Instance.RequestCraftServerRpc(player.NetworkObjectId, recipeId);
-                };
+
+                button.text =
+                    Sketch.Translation.Translate.Instance.Tr(
+                        "craft_hint",
+                        Sketch.Translation.Translate.Instance.Tr(recipe.resultName)
+                    );
+
+                button.SetEnabled(
+                    Player != null &&
+                    CraftingManager.Instance.CanCraft(Player, recipeId, out _)
+                );
             };
         }
 
