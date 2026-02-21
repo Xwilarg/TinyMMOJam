@@ -30,7 +30,7 @@ namespace MMOJam.Manager
             UIManager.Instance.UI.rootVisualElement.Q<VisualElement>("disconnected").visible = false;
             UIManager.Instance.UI.rootVisualElement.Q<Button>("disconnected-menu").clicked += () =>
             {
-                SceneManager.LoadScene("Menu");
+                SceneManager.LoadScene("Main");
             };
         }
 
