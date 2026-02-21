@@ -11,7 +11,7 @@
 
     "vehicle_motocycle": "moto",
     "vehicle_transport": "camion de transport",
-    "vehicle_tank": "tank",
+    "vehicle_tank": "char d'assault",
 
     "faction_assignation": "Vous êtes dans la {0}",
     "faction1_name": "faction MARC",

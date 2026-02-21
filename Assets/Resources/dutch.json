@@ -1,0 +1,24 @@
+{
+    "player_disconnected": "De verbinding is verbroken",
+    "back_to_menu": "Terug naar het hoofdmenu",
+
+    "interaction_hint": "Druk op 'E' om te gebruiken",
+    "craft_hint": "{0} maken",
+
+    "join_server": "Verbinden met dedicated server",
+    "start_host": "Host starten",
+    "start_client": "Client starten",
+
+    "vehicle_motocycle": "motor",
+    "vehicle_transport": "transport vrachtwagen",
+    "vehicle_tank": "tank",
+
+    "faction_assignation": "Je bent lid van de {0}",
+    "faction1_name": "MARC faction",
+    "faction1_desc": "Massaal anarchistische revolutionaire groepering, eigenlijk gewoon de slechteriken ",
+    "faction2_name": "Fort Oranje faction",
+    "faction2_desc": "Andere naties overstromen sinds 1927",
+
+    "faction_won": "{0} heeft gewonnen!",
+    "server_restart": "De server zal zo opnieuw starten voor de volgende game"
+}
