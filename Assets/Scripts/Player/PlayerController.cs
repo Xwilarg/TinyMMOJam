@@ -108,7 +108,7 @@ namespace MMOJam.Player
 
             CurrentFaction.OnValueChanged += (oldValue, newValue) =>
             {
-                ShowFactionData(newValue);
+                if (!IsAi) ShowFactionData(newValue);
             };
         }
 
