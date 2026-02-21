@@ -22,7 +22,7 @@ namespace MMOJam.Manager
         private void Awake()
         {
             Instance = this;
-            Translate.Instance.SetLanguages(new string[] { "english", "french", "dutch", "spanishChile" });
+            Translate.Instance.SetLanguages(new string[] { "english", "french", "dutch", "spanishChile", "spanishCostaRica" });
 
             _cam.Lens.NearClipPlane = -100f;
         }

@@ -1,0 +1,29 @@
+{
+    "player_disconnected": "Mae se desconecto esa vara",
+    "back_to_menu": "De vuelta pa' la choza",
+
+    "interaction_hint": "Aprete 'E' mae",
+    "craft_hint": "Haga {0}",
+
+    "join_server": "Metase al servidor dedicado compa",
+    "start_host": "Hostee esa vara usted",
+    "start_client": "Iniciar el cliente",
+    "or": "o, mae, ",
+
+    "vehicle_motocycle": "motomami",
+    "vehicle_transport": "camion ñato",
+    "vehicle_tank": "tanque",
+
+    "faction_assignation": "Diay, le toco con {0}",
+    "faction1_name": "Faccion MARC, que carepicha",
+    "faction1_desc": "Masivivamente Anarquista Revolucion Congregada, osea, los playos",
+    "faction2_name": "Faccion Fuerte Naranja",
+    "faction2_desc": "Pichazeando otros paises desde 1927",
+    "neutral_name": "Faccion neutral",
+    "neutral_desc": "Mae, si esta viendo esta vara, valio picha",
+
+    "faction_won": "{0} gano, que chiva!",
+    "server_restart": "Mae, al chile el servidor se va a reiniciar pa la otra pardita, deme un toque",
+
+    "resource_iron": "Hierro"
+}

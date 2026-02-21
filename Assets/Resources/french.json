@@ -19,6 +19,8 @@
     "faction1_desc": "Massivement Anarchiste et Révolutionnaire Congrégé, en gros les méchants",
     "faction2_name": "faction Fort Oranje",
     "faction2_desc": "Immerge les autres pays depuis 1927",
+    "neutral_name": "faction neutre",
+    "neutral_desc": "Ti tu vois ça, c'est surement un bug",
 
     "faction_won": "{0} ont gagnés !",
     "server_restart": "Le serveur va bientôt redémarrer pour la manche suivante",
