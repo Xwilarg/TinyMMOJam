@@ -3,6 +3,7 @@ using MMOJam.SO;
 using MMOJam.Vehicle;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,6 +23,22 @@ namespace MMOJam.Manager
 
         public bool IsAuthority => IsHost || IsServer;
 
+        [Rpc(SendTo.ClientsAndHost)]
+        public void TakeDamageAtRpc(Vector3 pos, int damage)
+        {
+            var bullet = Instantiate(GameManager.Instance.BulletPrefab, pos, Quaternion.identity);
+            bullet.GetComponent<TMP_Text>().text = (-damage).ToString();
+        }
+
+        public void TakeDamageAt(Vector3 pos, int damage)
+        {
+            if (IsClient)
+            {
+                var bullet = Instantiate(GameManager.Instance.BulletPrefab, pos, Quaternion.identity);
+                bullet.GetComponent<TMP_Text>().text = (-damage).ToString();
+            }
+            else TakeDamageAtRpc(pos, damage);
+        }
         private void Start()
         {
             Instance = this;

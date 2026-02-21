@@ -62,7 +62,7 @@ namespace MMOJam.Zone
             else
             {
                 _health -= amount;
-                GameManager.Instance.TakeDamageAtRpc(transform.position, amount);
+                ServerManager.Instance.TakeDamageAt(transform.position, amount);
 
                 if (_health <= 0)
                 {

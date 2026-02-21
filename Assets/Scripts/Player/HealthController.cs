@@ -36,7 +36,7 @@ namespace Assets.Scripts.Player
             }
 
             _health -= amount;
-            GameManager.Instance.TakeDamageAtRpc(transform.position, amount);
+            ServerManager.Instance.TakeDamageAt(transform.position, amount);
             OnTakeDamage.Invoke();
 
             if (_health <= 0)
