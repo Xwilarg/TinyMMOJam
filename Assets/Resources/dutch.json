@@ -8,6 +8,7 @@
     "join_server": "Verbinden met dedicated server",
     "start_host": "Host starten",
     "start_client": "Client starten",
+    "or": "of",
 
     "vehicle_motocycle": "motor",
     "vehicle_transport": "transport vrachtwagen",
@@ -20,5 +21,7 @@
     "faction2_desc": "Andere naties overstromen sinds 1927",
 
     "faction_won": "{0} heeft gewonnen!",
-    "server_restart": "De server zal zo opnieuw starten voor de volgende game"
+    "server_restart": "De server zal zo opnieuw starten voor de volgende game",
+
+    "resource_iron": "IJzer"
 }
