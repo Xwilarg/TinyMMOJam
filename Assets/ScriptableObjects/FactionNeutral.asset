@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FactionNeutral
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.SO.FactionInfo
   Id: 0
-  Name: neutral faction
-  Description: If you see this text, something is probably wrong
+  Name: neutral_name
+  Description: neutral_desc
   Color: {r: 1, g: 1, b: 1, a: 1}
   Material: {fileID: 2100000, guid: 554ce1ff72043f1419431748896f60ba, type: 2}

@@ -18,6 +18,8 @@
     "faction1_desc": "Massively Anarchist Revolutionary Congregate, basically the bad guys",
     "faction2_name": "Fort Oranje faction",
     "faction2_desc": "Flooding others nations since 1927",
+    "neutral_name": "neutral faction",
+    "neutral_desc": "If you see this, something went wrong",
 
     "faction_won": "{0} won!",
     "server_restart": "The server will soon restart for the next game",
