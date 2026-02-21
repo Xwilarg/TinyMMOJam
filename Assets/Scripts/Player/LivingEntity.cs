@@ -42,6 +42,7 @@ namespace MMOJam.Player
             if (_health.Value < 0) return;
 
             _health.Value -= amount;
+            GameManager.Instance.TakeDamageAtRpc(transform.position, amount);
 
             if (_health.Value <= 0)
             {

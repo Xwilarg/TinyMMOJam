@@ -1,4 +1,5 @@
 ﻿using MMOJam;
+using MMOJam.Manager;
 using MMOJam.SO;
 using Unity.Netcode;
 using UnityEngine;
@@ -35,6 +36,7 @@ namespace Assets.Scripts.Player
             }
 
             _health -= amount;
+            GameManager.Instance.TakeDamageAtRpc(transform.position, amount);
             OnTakeDamage.Invoke();
 
             if (_health <= 0)

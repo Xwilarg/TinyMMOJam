@@ -1,4 +1,5 @@
-﻿using MMOJam.Player;
+﻿using MMOJam.Manager;
+using MMOJam.Player;
 using MMOJam.SO;
 using Unity.Netcode;
 using UnityEngine;
@@ -61,6 +62,7 @@ namespace MMOJam.Zone
             else
             {
                 _health -= amount;
+                GameManager.Instance.TakeDamageAtRpc(transform.position, amount);
 
                 if (_health <= 0)
                 {

@@ -1,6 +1,7 @@
 ﻿using MMOJam.Zone;
 using Sketch.Translation;
 using System.Collections;
+using TMPro;
 using Unity.Cinemachine;
 using Unity.Netcode;
 using UnityEngine;
@@ -17,7 +18,6 @@ namespace MMOJam.Manager
 
         [SerializeField]
         private GameObject _bulletPrefab;
-        public GameObject BulletPrefab => _bulletPrefab;
 
         private void Awake()
         {
@@ -25,6 +25,13 @@ namespace MMOJam.Manager
             Translate.Instance.SetLanguages(new string[] { "english", "french", "dutch" });
 
             _cam.Lens.NearClipPlane = -100f;
+        }
+
+        [Rpc(SendTo.ClientsAndHost)]
+        public void TakeDamageAtRpc(Vector3 pos, int damage)
+        {
+            var bullet = Instantiate(_bulletPrefab, pos, Quaternion.identity);
+            bullet.GetComponent<TMP_Text>().text = (-damage).ToString();
         }
 
         public void InitNetwork()
