@@ -33,15 +33,15 @@ namespace MMOJam.Manager
 
             _uiDocument.rootVisualElement.Q<Button>("btn-start_host").clicked += () =>
             {
-                transport.ConnectionData.Address = "127.0.0.1";
-                transport.ConnectionData.Port = 7777;
+                transport.ConnectionData.Address = _uiDocument.rootVisualElement.Q<TextField>("field-ip").value;
+                transport.ConnectionData.Port = (ushort)_uiDocument.rootVisualElement.Q<IntegerField>("field-port").value;
                 nm.StartHost();
                 _uiDocument.rootVisualElement.Q<GroupBox>("network-container").visible = false;
             };
             _uiDocument.rootVisualElement.Q<Button>("btn-start_client").clicked += () =>
             {
-                transport.ConnectionData.Address = "127.0.0.1";
-                transport.ConnectionData.Port = 7777;
+                transport.ConnectionData.Address = _uiDocument.rootVisualElement.Q<TextField>("field-ip").value;
+                transport.ConnectionData.Port = (ushort)_uiDocument.rootVisualElement.Q<IntegerField>("field-port").value;
                 nm.StartClient();
                 _uiDocument.rootVisualElement.Q<GroupBox>("network-container").visible = false;
             };
