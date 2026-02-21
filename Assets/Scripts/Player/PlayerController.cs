@@ -6,10 +6,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Cinemachine;
-using Unity.Collections.LowLevel.Unsafe;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace MMOJam.Player
 {
@@ -50,6 +50,7 @@ namespace MMOJam.Player
         private float _verticalSpeed;
 
         private float _shootTimer = -1f;
+        private bool _isAttacking;
 
         public bool IsAi { set; get; }
 
@@ -327,6 +328,18 @@ namespace MMOJam.Player
 
             if (_shootTimer > 0f) _shootTimer -= Time.deltaTime;
 
+            if (IsLocalHuman && IsAlive && _isAttacking && _shootTimer <= 0f)
+            {
+                var mousePos = Mouse.current.position.ReadValue();// CursorUtils.GetPosition(_pInput);
+                if (mousePos != null)
+                {
+                    var ray = _cam.ScreenPointToRay(mousePos);
+                    ShootServerRpc(ray.origin, ray.direction);
+                }
+                else Debug.LogWarning("Mouse position not found");
+                _shootTimer = .2f;
+            }
+
             if (CurrentVehicle.Value != 0 && CurrentSeat.Value == SeatType.Driver)
             {
                 if (_vehicleMoveTick > 0f && _lastVehiculeDir == _mov) _vehicleMoveTick -= Time.deltaTime;
@@ -452,17 +465,8 @@ namespace MMOJam.Player
 
         public void OnShoot(InputAction.CallbackContext value)
         {
-            if (IsLocalHuman && IsAlive && value.phase == InputActionPhase.Started && _shootTimer <= 0f)
-            {
-                var mousePos = Mouse.current.position.ReadValue();// CursorUtils.GetPosition(_pInput);
-                if (mousePos != null)
-                {
-                    var ray = _cam.ScreenPointToRay(mousePos);
-                    ShootServerRpc(ray.origin, ray.direction);
-                }
-                else Debug.LogWarning("Mouse position not found");
-                _shootTimer = .5f;
-            }
+            if (value.phase == InputActionPhase.Started) _isAttacking = true;
+            else if (value.phase == InputActionPhase.Canceled) _isAttacking = false;
         }
 
         public void OnInteract(InputAction.CallbackContext value)
