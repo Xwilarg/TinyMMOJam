@@ -127,9 +127,9 @@ namespace MMOJam.Manager
             }
         }
 
-        [Rpc(SendTo.ClientsAndHost)]
-        public void DispatchPsaRpc(string message, string subtitle)
+        public void DispatchPsa(string message, string subtitle)
         {
+            Debug.Log($"[PSA] PSA received: {message}");
             _factionName.visible = true;
             _factionSubtitle.visible = true;
 

@@ -30,6 +30,12 @@ namespace MMOJam.Manager
             bullet.GetComponent<TMP_Text>().text = (-damage).ToString();
         }
 
+        [Rpc(SendTo.ClientsAndHost)]
+        public void DispatchPsaRpc(string message, string subtitle)
+        {
+            UIManager.Instance.DispatchPsa(message, subtitle);
+        }
+
         public void TakeDamageAt(Vector3 pos, int damage)
         {
             if (IsServer)

@@ -72,7 +72,7 @@ namespace MMOJam.Manager
                 if (ServerManager.Instance.AreOthersFactionDead(winner))
                 {
                     // We win yay
-                    UIManager.Instance.DispatchPsaRpc(Sketch.Translation.Translate.Instance.Tr("faction_won", Sketch.Translation.Translate.Instance.Tr(winner.Name)), Sketch.Translation.Translate.Instance.Tr("server_restart"));
+                    ServerManager.Instance.DispatchPsaRpc(Sketch.Translation.Translate.Instance.Tr("faction_won", Sketch.Translation.Translate.Instance.Tr(winner.Name)), Sketch.Translation.Translate.Instance.Tr("server_restart"));
                     StartCoroutine(WaitAndRestart());
                 }
             }
