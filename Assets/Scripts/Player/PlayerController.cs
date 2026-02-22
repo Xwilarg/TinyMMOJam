@@ -92,24 +92,27 @@ namespace MMOJam.Player
                 transform.rotation = Quaternion.identity;
             };
 
-            CurrentZone.OnValueChanged += (oldValue, newValue) =>
+            if (IsLocalHuman)
             {
-                if (newValue.TryGet(out var networkObject))
+                CurrentZone.OnValueChanged += (oldValue, newValue) =>
                 {
-                    var zone = networkObject.GetComponent<ZoneController>();
+                    if (newValue.TryGet(out var networkObject))
+                    {
+                        var zone = networkObject.GetComponent<ZoneController>();
 
-                    Debug.Log("[ZNE] Now entering " + zone.name);
-                }
-                else
+                        Debug.Log("[ZNE] Now entering " + zone.name);
+                    }
+                    else
+                    {
+                        Debug.Log("[ZNE] Now exiting");
+                    }
+                };
+
+                CurrentFaction.OnValueChanged += (oldValue, newValue) =>
                 {
-                    Debug.Log("[ZNE] Now exiting");
-                }
-            };
-
-            CurrentFaction.OnValueChanged += (oldValue, newValue) =>
-            {
-                if (IsLocalHuman) ShowFactionData(newValue);
-            };
+                    ShowFactionData(newValue);
+                };
+            } 
         }
 
         private void ShowFactionData(int newValue)
