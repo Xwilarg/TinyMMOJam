@@ -27,7 +27,7 @@ namespace MMOJam.Manager
                 var sp = _spawnPoints[Random.Range(0, _spawnPoints.Length)];
                 var go = Instantiate(_playerPrefab);
                 go.layer = LayerMask.NameToLayer("MovingProp");
-                go.GetComponent<PlayerController>().IsAi = true;
+                //go.GetComponent<PlayerController>().IsAi = true;
                 var no = go.GetComponent<NetworkObject>();
                 no.Spawn();
                 go.transform.position = sp.GetRandomPos();

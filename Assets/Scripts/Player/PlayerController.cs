@@ -52,7 +52,7 @@ namespace MMOJam.Player
         private float _shootTimer = -1f;
         private bool _isAttacking;
 
-        public bool IsAi { set; get; }
+        public bool IsAi => tag == "AI";
 
         private readonly List<AInteractible> _interactibles = new();
 
