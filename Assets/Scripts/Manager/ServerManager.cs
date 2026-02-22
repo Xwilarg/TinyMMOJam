@@ -49,11 +49,14 @@ namespace MMOJam.Manager
                 bullet.GetComponent<TMP_Text>().text = (-damage).ToString();
             }
         }
-        private void Start()
+        private void Awake()
         {
             Instance = this;
             _manager = GetComponent<NetworkManager>();
+        }
 
+        private void Start()
+        {
             UIManager.Instance.UI.rootVisualElement.Q<VisualElement>("disconnected").visible = false;
             UIManager.Instance.UI.rootVisualElement.Q<Button>("disconnected-menu").clicked += () =>
             {
