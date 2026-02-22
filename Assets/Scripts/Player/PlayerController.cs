@@ -108,7 +108,7 @@ namespace MMOJam.Player
 
             CurrentFaction.OnValueChanged += (oldValue, newValue) =>
             {
-                if (!IsAi) ShowFactionData(newValue);
+                if (IsLocalHuman) ShowFactionData(newValue);
             };
         }
 
@@ -245,7 +245,7 @@ namespace MMOJam.Player
                     SetupServer();
                     StartCoroutine(WaitAndKill());
                 }
-                else
+                else if (IsLocalPlayer)
                 {
                     ShowFactionData(CurrentFaction.Value);
                     ClientMoveToSpawnPoint();
