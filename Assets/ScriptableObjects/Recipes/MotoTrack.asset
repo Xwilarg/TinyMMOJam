@@ -16,6 +16,6 @@ MonoBehaviour:
   recipeId: 0
   inputs:
   - resourceId: 0
-    amount: 2
+    amount: 10
   outputs: []
   crafted: {fileID: 5421442112856693184, guid: f72bb18ac26323d4388dd8819e7f58e5, type: 3}

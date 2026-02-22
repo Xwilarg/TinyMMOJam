@@ -118,9 +118,12 @@ namespace MMOJam.Player
         private void ShowFactionData(int newValue)
         {
             if (IsLocalPlayer) UIManager.Instance.ShowFactionName(CurrentFaction.Value);
-            var mats = _mr.materials;
-            mats[0] = ServerManager.Instance.GetFaction(newValue).Material; // not properly sync
-            _mr.materials = mats;
+            if (!IsAi)
+            {
+                var mats = _mr.materials;
+                mats[0] = ServerManager.Instance.GetFaction(newValue).Material; // not properly sync
+                _mr.materials = mats;
+            }
         }
 
         public bool IsLocalHuman => IsOwner && !IsAi;

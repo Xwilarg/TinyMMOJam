@@ -167,7 +167,7 @@ namespace MMOJam.Manager
 #endif
 
             // Get next faction with least players
-            return UIManager.Instance.Factions.OrderBy(f => _players.Count(p => p.CurrentFaction.Value == f.Id)).First().Id;
+            return UIManager.Instance.Factions.Where(f => f.Id != 0).OrderBy(f => _players.Count(p => p.CurrentFaction.Value == f.Id)).First().Id;
         }
 
         public IEnumerable<PlayerController> GetAllOtherFactionPlayer(FactionInfo faction)
