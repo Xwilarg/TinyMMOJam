@@ -12,7 +12,7 @@ namespace MMOJam.Player
 
         //public bool IsAlive => _health.Value > 0;
 
-        public bool IsAlive { set; get; }
+        public bool IsAlive { set; get; } = true;
 
         [Rpc(SendTo.Server)]
         public void RestoreHealthRpc()
@@ -29,6 +29,7 @@ namespace MMOJam.Player
         public void RestoreHealth()
         {
             RestoreHealthRpc();
+            IsAlive = true;
             ForceBoardcastIsAliveRpc(true);
         }
 
@@ -55,6 +56,7 @@ namespace MMOJam.Player
                 {
                     _player.Die();
                     _player.MoveToSpawnPointRpc();
+                    IsAlive = false;
                     ForceBoardcastIsAliveRpc(false);
 
                     GameManager.Instance.CheckVictoryCondition();

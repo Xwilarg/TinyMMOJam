@@ -112,7 +112,7 @@ namespace MMOJam.Player
                 {
                     ShowFactionData(newValue);
                 };
-            } 
+            }
         }
 
         private void ShowFactionData(int newValue)
@@ -434,11 +434,13 @@ namespace MMOJam.Player
             if (!IsAlive) return;
 
             var ray = new Ray(rayStartPoint, rayDir);
+            Debug.Log($"[PLA] {GetEntityId()} is trying to shoot");
             if (CurrentVehicle.Value == 0)
             {
                 // Raycast against world to know where the mouse points
                 if (Physics.Raycast(ray, out var hitInfo, 500f, LayerMask.GetMask("World")))
                 {
+                    Debug.Log($"[PLA] {GetEntityId()} is shooting toward {hitInfo.point}");
                     Vector3 spawnPos = transform.position + Vector3.up * 1f;
 
                     // Direction = from player to hit point
