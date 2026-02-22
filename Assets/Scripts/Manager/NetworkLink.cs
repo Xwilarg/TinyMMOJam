@@ -64,6 +64,6 @@ namespace MMOJam.Manager
             _uiDocument.rootVisualElement.Q<VisualElement>("lang_menu").visible = false;
             };
 #endif
-            }
+        }
     }
 }
