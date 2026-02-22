@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.SO.VehicleInfo
   Name: vehicle_transport
   Seats: 00000000030000000100000001000000
-  Projectile: {fileID: 0}
+  Projectile: {fileID: 11400000, guid: 022de4342820a4049baae7b194fec333, type: 2}
