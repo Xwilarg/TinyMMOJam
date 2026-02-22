@@ -60,7 +60,7 @@ namespace MMOJam.Manager
 
         public void InitNetwork()
         {
-            EnemyManager.Instance.SpawnWave(2);
+            EnemyManager.Instance.SpawnWave(10);
             for (int i = 0; i < 10; i++) RessourcesManager.Instance.SpawnResources();
         }
 

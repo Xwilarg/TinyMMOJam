@@ -473,7 +473,7 @@ namespace MMOJam.Player
 
                     ProjectileManager.Instance.SpawnProjectile(
                         projectileId: 1,
-                        position: spawnPos + direction * 3f,
+                        position: spawnPos + direction * 5f,
                         direction: direction,
                         factionId: CurrentFaction.Value
                     );
