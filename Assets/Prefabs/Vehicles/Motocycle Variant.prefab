@@ -154,6 +154,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5381490398569540930, guid: 5388d776868b4b04bba81564f7ca924b, type: 3}
+      propertyPath: _health
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5484443556714389679, guid: 5388d776868b4b04bba81564f7ca924b, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 542341366
