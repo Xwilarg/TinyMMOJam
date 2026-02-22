@@ -212,6 +212,7 @@ namespace MMOJam.Player
             {
                 FindFirstObjectByType<CinemachineCamera>().Target.TrackingTarget = transform;
                 UIManager.Instance.Player = this;
+                gameObject.AddComponent<AudioListener>();
             }
 
             if (IsHost || IsServer || IsLocalHuman)
