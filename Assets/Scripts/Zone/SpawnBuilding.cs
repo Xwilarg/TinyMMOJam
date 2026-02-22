@@ -20,7 +20,7 @@ namespace MMOJam.Zone
         public override void BuildingRestored(FactionInfo _)
         { }
 
-        public void SpawnPlayer(PlayerController player)
+        public void DoSpawnPlayer(PlayerController player)
         {
             player.MoveTo(_spawnPoint.transform.position);
         }
@@ -34,7 +34,7 @@ namespace MMOJam.Zone
             base.OnZoneExit(player);
         }
 
-        public override void SpawnPlayer()
+        public override void SpawnPlayer(PlayerController _)
         {
 
         }

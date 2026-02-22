@@ -38,9 +38,9 @@ namespace MMOJam.Zone
             }
         }
 
-        public override void SpawnPlayer()
+        public override void SpawnPlayer(PlayerController pc)
         {
-            UIManager.Instance.ToggleCraftingList(IsAlive);
+            if (pc.IsLocalPlayer) UIManager.Instance.ToggleCraftingList(IsAlive);
         }
     }
 }

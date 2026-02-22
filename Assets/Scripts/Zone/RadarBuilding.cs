@@ -50,10 +50,13 @@ namespace MMOJam.Zone
             }
         }
 
-        public override void SpawnPlayer()
+        public override void SpawnPlayer(PlayerController pc)
         {
-            _camera.SetActive(IsAlive);
-            UIManager.Instance.ToggleMinimap(IsAlive);
+            if (pc.IsLocalPlayer)
+            {
+                _camera.SetActive(IsAlive);
+                UIManager.Instance.ToggleMinimap(IsAlive);
+            }
         }
     }
 }

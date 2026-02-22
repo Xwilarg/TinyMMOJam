@@ -72,7 +72,7 @@ namespace MMOJam.Zone
             }
         }
 
-        public abstract void SpawnPlayer();
+        public abstract void SpawnPlayer(PlayerController pc);
 
         public virtual void BuildingDestroyed(FactionInfo faction)
         {
