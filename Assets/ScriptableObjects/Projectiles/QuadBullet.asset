@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ed78ae42d1884e41bbe95b57ce901dd, type: 3}
+  m_Name: QuadBullet
+  m_EditorClassIdentifier: Assembly-CSharp::MMOJam.ProjectileData
+  projectileId: 1
+  speed: 10
+  damage: 3
+  lifetime: 4
+  deviation: 5
+  prefab: {fileID: 2224586644308517040, guid: 9cfc9cef9312a51408648f6865a5f870, type: 3}
