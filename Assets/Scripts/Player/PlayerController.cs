@@ -107,17 +107,17 @@ namespace MMOJam.Player
                         Debug.Log("[ZNE] Now exiting");
                     }
                 };
-
-                CurrentFaction.OnValueChanged += (oldValue, newValue) =>
-                {
-                    ShowFactionData(newValue);
-                };
             }
+
+            CurrentFaction.OnValueChanged += (oldValue, newValue) =>
+            {
+                ShowFactionData(newValue);
+            };
         }
 
         private void ShowFactionData(int newValue)
         {
-            UIManager.Instance.ShowFactionName(CurrentFaction.Value);
+            if (IsLocalPlayer) UIManager.Instance.ShowFactionName(CurrentFaction.Value);
             var mats = _mr.materials;
             mats[0] = ServerManager.Instance.GetFaction(newValue).Material; // not properly sync
             _mr.materials = mats;
@@ -248,7 +248,7 @@ namespace MMOJam.Player
                     SetupServer();
                     StartCoroutine(WaitAndKill());
                 }
-                else if (IsLocalPlayer)
+                else
                 {
                     ShowFactionData(CurrentFaction.Value);
                     ClientMoveToSpawnPoint();
@@ -431,7 +431,7 @@ namespace MMOJam.Player
         [Rpc(SendTo.Server)]
         public void ShootServerRpc(Vector3 rayStartPoint, Vector3 rayDir)
         {
-            if (!IsAlive) return;
+            //if (!IsAlive) return; // Pain
 
             var ray = new Ray(rayStartPoint, rayDir);
             Debug.Log($"[PLA] {GetEntityId()} is trying to shoot");
