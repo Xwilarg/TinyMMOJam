@@ -82,6 +82,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1003526221902024195, guid: 5388d776868b4b04bba81564f7ca924b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1623406115826754042, guid: 5388d776868b4b04bba81564f7ca924b, type: 3}
       propertyPath: m_Name
       value: Motocycle Variant
