@@ -456,7 +456,7 @@ namespace MMOJam.Player
                 // Raycast against world to know where the mouse points
                 if (Physics.Raycast(ray, out var hitInfo, 500f, LayerMask.GetMask("World")))
                 {
-                    Vector3 spawnPos = transform.position + Vector3.up * 5f;
+                    Vector3 spawnPos = transform.position + Vector3.up * 1f;
 
                     // Direction = from player to hit point
                     Vector3 direction = (hitInfo.point - spawnPos);
@@ -465,7 +465,7 @@ namespace MMOJam.Player
 
                     ProjectileManager.Instance.SpawnProjectile(
                         projectileId: 1,
-                        position: spawnPos + direction,
+                        position: spawnPos + direction * 3f,
                         direction: direction,
                         factionId: CurrentFaction.Value
                     );
