@@ -10,9 +10,9 @@ namespace MMOJam.Player
 
         private NetworkVariable<int> _health = new(10);
 
-        //public bool IsAlive => _health.Value > 0;
+        public bool IsAlive => _health.Value > 0;
 
-        public bool IsAlive { set; get; } = true;
+        //public bool IsAlive { set; get; } = true;
 
         [Rpc(SendTo.Server)]
         public void RestoreHealthRpc()
@@ -20,17 +20,17 @@ namespace MMOJam.Player
             _health.Value = 10;
         }
 
-        [Rpc(SendTo.ClientsAndHost)]
+        /*[Rpc(SendTo.ClientsAndHost)]
         private void ForceBoardcastIsAliveRpc(bool value) // Networkvariable isn't sync idk why
         {
             IsAlive = value;
-        }
+        }*/
 
         public void RestoreHealth()
         {
             RestoreHealthRpc();
-            IsAlive = true;
-            ForceBoardcastIsAliveRpc(true);
+            /*IsAlive = true;
+            ForceBoardcastIsAliveRpc(true);*/
         }
 
         private void Awake()
@@ -56,8 +56,8 @@ namespace MMOJam.Player
                 {
                     _player.Die();
                     _player.MoveToSpawnPointRpc();
-                    IsAlive = false;
-                    ForceBoardcastIsAliveRpc(false);
+                    /*IsAlive = false;
+                    ForceBoardcastIsAliveRpc(false);*/
 
                     GameManager.Instance.CheckVictoryCondition();
                 }

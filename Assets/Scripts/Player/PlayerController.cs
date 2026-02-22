@@ -168,9 +168,22 @@ namespace MMOJam.Player
             transform.position = pos;
         }
 
-        public void TryRespawn()
+        [Rpc(SendTo.Owner)]
+        public void TryRespawnHostRpc()
         {
             StartCoroutine(WaitAndRespawn());
+        }
+
+        public void TryRespawn()
+        {
+            if (IsLocalHuman)
+            {
+                StartCoroutine(WaitAndRespawn());
+            }
+            else
+            {
+                TryRespawnHostRpc();
+            }
         }
 
         private IEnumerator WaitAndRespawn()
@@ -340,6 +353,11 @@ namespace MMOJam.Player
         {
             if (!IsOwner)
                 return;
+
+            if (transform.position.y < -10f)
+            {
+                MoveTo(new Vector3(transform.position.x, 1f, transform.position.z));
+            }
 
             //Debug.Log($"[PLA] IsAlive? {IsAlive}");
 
