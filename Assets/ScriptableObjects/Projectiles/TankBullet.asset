@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed78ae42d1884e41bbe95b57ce901dd, type: 3}
   m_Name: TankBullet
   m_EditorClassIdentifier: Assembly-CSharp::MMOJam.ProjectileData
-  projectileId: 1
+  projectileId: 2
   speed: 15
   damage: 5
   lifetime: 4
