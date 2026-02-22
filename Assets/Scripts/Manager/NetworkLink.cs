@@ -50,13 +50,20 @@ namespace MMOJam.Manager
 
             _uiDocument.rootVisualElement.Q<Button>("btn-join_dedicated").clicked += () =>
             {
+#if UNITY_WEBGL
+                transport.ConnectionData.Address = "gamejam.zirk.eu";
+                transport.ConnectionData.Port = 443;
+                transport.UseEncryption = true;
+                transport.SetClientSecrets("gamejam.zirk.eu");
+#else
                 transport.ConnectionData.Address = "51.159.6.4";
                 transport.ConnectionData.Port = 9761;
+#endif
                 nm.StartClient();
                 _uiDocument.rootVisualElement.Q<GroupBox>("network-container").visible = false;
             _uiDocument.rootVisualElement.Q<VisualElement>("lang_menu").visible = false;
             };
 #endif
-        }
+            }
     }
 }
