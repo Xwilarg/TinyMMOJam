@@ -37,6 +37,7 @@ namespace MMOJam.Manager
                 transport.ConnectionData.Port = (ushort)_uiDocument.rootVisualElement.Q<IntegerField>("field-port").value;
                 nm.StartHost();
                 _uiDocument.rootVisualElement.Q<GroupBox>("network-container").visible = false;
+            _uiDocument.rootVisualElement.Q<VisualElement>("lang_menu").visible = false;
             };
             _uiDocument.rootVisualElement.Q<Button>("btn-start_client").clicked += () =>
             {
@@ -44,6 +45,7 @@ namespace MMOJam.Manager
                 transport.ConnectionData.Port = (ushort)_uiDocument.rootVisualElement.Q<IntegerField>("field-port").value;
                 nm.StartClient();
                 _uiDocument.rootVisualElement.Q<GroupBox>("network-container").visible = false;
+            _uiDocument.rootVisualElement.Q<VisualElement>("lang_menu").visible = false;
             };
 
             _uiDocument.rootVisualElement.Q<Button>("btn-join_dedicated").clicked += () =>
@@ -52,6 +54,7 @@ namespace MMOJam.Manager
                 transport.ConnectionData.Port = 9761;
                 nm.StartClient();
                 _uiDocument.rootVisualElement.Q<GroupBox>("network-container").visible = false;
+            _uiDocument.rootVisualElement.Q<VisualElement>("lang_menu").visible = false;
             };
 #endif
         }

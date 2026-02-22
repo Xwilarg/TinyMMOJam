@@ -63,17 +63,6 @@ namespace MMOJam.Manager
             _ressource_amount = _ui.rootVisualElement.Q<Label>("ressource_1_amount");
 
             _minimap = _ui.rootVisualElement.Q<Image>("minimap");
-
-            foreach (var text in _ui.rootVisualElement.Query<TextElement>().ToList())
-            {
-
-                var sentence = text.text;
-                foreach (var match in Regex.Matches(text.text, "{([^}]+)}").Cast<Match>())
-                {
-                    sentence = sentence.Replace(match.Value, Sketch.Translation.Translate.Instance.Tr(match.Groups[1].Value));
-                }
-                text.text = sentence;
-            }
         }
 
         private void Start()

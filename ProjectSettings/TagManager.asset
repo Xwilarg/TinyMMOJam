@@ -9,6 +9,7 @@ TagManager:
   - Factory
   - Vehicle
   - Trap
+  - ToDelete
   layers:
   - Default
   - TransparentFX

@@ -26,4 +26,11 @@
             <ui:Button text="{back_to_menu}" name="disconnected-menu" style="top: 20px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/SourGummy_SemiExpanded-Regular.ttf?fileID=12800000&amp;guid=c29f54425248cf74dba5e69fee87ec38&amp;type=3#SourGummy_SemiExpanded-Regular&quot;);"/>
         </ui:Image>
     </ui:VisualElement>
+    <ui:VisualElement name="lang_menu" style="flex-grow: 1; position: absolute; top: 0; right: 0; width: 100px;">
+        <ui:Button text="" icon-image="project://database/Assets/Sprites/Flags/PuertoRico.png?fileID=2800000&amp;guid=6787fae14b8927c468f124a282102336&amp;type=3#PuertoRico" name="lang_english" style="height: 100px; width: 100px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0;"/>
+        <ui:Button text="" icon-image="project://database/Assets/Sprites/Flags/France.png?fileID=2800000&amp;guid=4513fed77ef48a146a049df88aaa327e&amp;type=3#France" name="lang_french" style="height: 100px; width: 100px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0;"/>
+        <ui:Button text="" icon-image="project://database/Assets/Sprites/Flags/Netherlands.png?fileID=2800000&amp;guid=9bdd1b65be444e1459a47c1025459073&amp;type=3#Netherlands" name="lang_dutch" style="height: 100px; width: 100px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0;"/>
+        <ui:Button text="" icon-image="project://database/Assets/Sprites/Flags/Chile.png?fileID=2800000&amp;guid=d3bb43119b1fa1647b8ac99f1db8bcb8&amp;type=3#Chile" name="lang_spChile" style="height: 100px; width: 100px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0;"/>
+        <ui:Button text="" icon-image="project://database/Assets/Sprites/Flags/CostaRica.png?fileID=2800000&amp;guid=5d8cf4f0c1f84af46bc9d2453f86e27a&amp;type=3#CostaRica" name="lang_spCostaRica" style="height: 100px; width: 100px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0;"/>
+    </ui:VisualElement>
 </ui:UXML>
