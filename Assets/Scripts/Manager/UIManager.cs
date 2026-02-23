@@ -2,11 +2,9 @@
 using MMOJam.SO;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 using Unity.Cinemachine;
-using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UIElements;
 
 namespace MMOJam.Manager
@@ -21,6 +19,9 @@ namespace MMOJam.Manager
         [SerializeField]
         private FactionInfo[] _factions;
         public FactionInfo[] Factions => _factions;
+
+        [SerializeField]
+        private Font _font;
 
         [SerializeField]
         private CinemachineCamera _cam;
@@ -106,6 +107,7 @@ namespace MMOJam.Manager
                         "craft_hint",
                         Sketch.Translation.Translate.Instance.Tr(recipe.resultName)
                     );
+                button.style.unityFont = _font;
 
                 button.SetEnabled(
                     Player != null &&
